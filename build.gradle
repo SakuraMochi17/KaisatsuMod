@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://maven.minecraftforge.net" }
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        // 現在も1.7.10を支え続けているGTNHチームの最強の修正版
+        classpath 'com.github.GTNewHorizons:ForgeGradle:1.2.11'
+
+    }
+}
+
+apply plugin: 'forge'
+
+// これ以降（version = "1.0" など）はそのまま
+
+version = "1.0"
+group= "com.yourname.modid"
+archivesBaseName = "modid"
+
+minecraft {
+    version = "1.7.10-10.13.4.1614-1.7.10"
+    runDir = "eclipse"
+}
+
+dependencies {
+    // libsフォルダに入れたjarファイルを読み込む
+    compile fileTree(dir: 'libs', include: '*.jar')
+}
+
+processResources
+        {
+            // バージョン変更時にタスクを再実行するための設定
+            inputs.property "version", project.version
+            inputs.property "mcversion", project.minecraft.version
+
+            // mcmod.info 内の変数を置換
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+                expand 'version':project.version, 'mcversion':project.minecraft.version
+            }
+
+            // mcmod.info 以外のリソースをコピー
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+        }
+
