@@ -1,0 +1,16 @@
+# Gradle のキャッシュとビルド成果物
+.gradle/
+build/
+bin/
+
+# IDE の設定ファイル
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# Forge の一時的な実行ファイル (必要に応じて)
+forge-*.jar
+forge-*.zip
