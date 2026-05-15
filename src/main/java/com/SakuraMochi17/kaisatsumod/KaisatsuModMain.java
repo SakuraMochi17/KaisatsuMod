@@ -1,3 +1,5 @@
+package com.SakuraMochi17.kaisatsumod;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -10,15 +12,18 @@ public class KaisatsuModMain {
 
     public static Item icCard;
     public static Block ticketGate;
+    public static Block chargeMachine;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         // インスタンス化
         icCard = new ItemICCard();
         ticketGate = new BlockTicketGate();
+        chargeMachine = new BlockChargeMachine();
 
         // ゲームシステムへ登録
         GameRegistry.registerItem(icCard, "icCard");
         GameRegistry.registerBlock(ticketGate, "ticketGate");
+        GameRegistry.registerBlock(chargeMachine, "chargeMachine");
     }
 }
