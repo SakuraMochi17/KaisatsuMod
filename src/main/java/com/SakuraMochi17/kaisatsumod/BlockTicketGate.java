@@ -78,7 +78,7 @@ public class BlockTicketGate extends BlockContainer {
                         heldItem.stackTagCompound.setString("entryStation", "");
                     }
                     boolean inGate = heldItem.stackTagCompound.getBoolean("inGate");
-                    boolean attemptEntry = (gateTE.gateMode == 1) ? true : (gateTE.gateMode == 2 ? false : !inGate);
+                    boolean attemptEntry = gateTE.gateMode == 1 || (gateTE.gateMode != 2 && !inGate);
 
                     if (attemptEntry) processEntry(world, x, y, z, player, heldItem, gateTE);
                     else processExit(world, x, y, z, player, heldItem, gateTE);
@@ -90,7 +90,7 @@ public class BlockTicketGate extends BlockContainer {
                         return true;
                     }
                     boolean isUsed = heldItem.stackTagCompound.getBoolean("isUsed");
-                    boolean attemptEntry = (gateTE.gateMode == 1) ? true : (gateTE.gateMode == 2 ? false : !isUsed);
+                    boolean attemptEntry = gateTE.gateMode == 1 || (gateTE.gateMode != 2 && !isUsed);
 
                     if (attemptEntry) processTicketEntry(world, x, y, z, player, heldItem, gateTE);
                     else processTicketExit(world, x, y, z, player, heldItem, gateTE);

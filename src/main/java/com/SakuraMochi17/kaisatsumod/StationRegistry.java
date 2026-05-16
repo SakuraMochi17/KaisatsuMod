@@ -6,7 +6,7 @@ import java.util.Map;
 public class StationRegistry {
 
     // キー: "ディメンションID:x:y:z", 値: 駅データ
-    private static Map<String, StationData> registry = new HashMap<>();
+    private static final Map<String, StationData> registry = new HashMap<>();
 
     public static class StationData {
         public String lineID;

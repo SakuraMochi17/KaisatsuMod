@@ -10,7 +10,7 @@ import java.util.*;
 
 public class FareManager {
 
-    private static Map<String, LineConfig> lineConfigs = new HashMap<>();
+    private static final Map<String, LineConfig> lineConfigs = new HashMap<>();
 
     // 路線ごとの設定を保持する構造
     public static class LineConfig {

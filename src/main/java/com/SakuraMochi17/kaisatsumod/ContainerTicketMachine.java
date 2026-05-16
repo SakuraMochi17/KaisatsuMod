@@ -7,7 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 public class ContainerTicketMachine extends Container {
-    private TileEntityTicketMachine tileEntity;
+    private final TileEntityTicketMachine tileEntity;
 
     public ContainerTicketMachine(InventoryPlayer playerInv, TileEntityTicketMachine te) {
         this.tileEntity = te;

@@ -3,13 +3,12 @@ package com.SakuraMochi17.kaisatsumod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class ContainerChargeMachine extends Container {
-    private TileEntityChargeMachine tileEntity;
+    private final TileEntityChargeMachine tileEntity;
 
     public ContainerChargeMachine(InventoryPlayer playerInv, TileEntityChargeMachine te) {
         this.tileEntity = te;

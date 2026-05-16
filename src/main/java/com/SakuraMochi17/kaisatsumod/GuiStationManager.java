@@ -5,7 +5,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import java.util.List;
 
 public class GuiStationManager extends GuiContainer {
-    private TileEntityStationManager tileEntity;
+    private final TileEntityStationManager tileEntity;
 
     private List<String> availableLines;
     private List<String> availableStations;

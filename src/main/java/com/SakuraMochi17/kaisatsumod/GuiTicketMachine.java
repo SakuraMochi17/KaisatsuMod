@@ -9,7 +9,7 @@ import java.util.*;
 
 public class GuiTicketMachine extends GuiContainer {
     private static final ResourceLocation guiTexture = new ResourceLocation("textures/gui/container/dispenser.png");
-    private TileEntityTicketMachine tileEntity;
+    private final TileEntityTicketMachine tileEntity;
     private List<Integer> calculatedFares = new ArrayList<>();
     private String displayStationName = "未設定";
 
