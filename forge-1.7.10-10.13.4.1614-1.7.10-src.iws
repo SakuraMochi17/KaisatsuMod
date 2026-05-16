@@ -4,11 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="アイテムの追加">
+    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="軽微な修正">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockStationManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockTicketMachine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ContainerChargeMachine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ContainerStationManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ContainerTicketMachine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/FareManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/GuiChargeMachine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/GuiStationManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/GuiTicketMachine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ItemLinkWand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ItemTicket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/MessagePurchaseTicket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/MessageStationUpdate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/StationRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/TileEntityChargeMachine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/TileEntityStationManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/TileEntityTicketGate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/TileEntityTicketMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockChargeMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockChargeMachine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockTicketGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockTicketGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ItemICCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ItemICCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/lang/ja_JP.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/lang/ja_JP.lang" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +248,7 @@
       <updated>1778848195211</updated>
       <workItem from="1778848196537" duration="513000" />
       <workItem from="1778916024519" duration="3289000" />
-      <workItem from="1778925362325" duration="1933000" />
+      <workItem from="1778925362325" duration="12660000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -286,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778925986925</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="軽微な修正">
+      <option name="closed" value="true" />
+      <created>1778935980442</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1778935980442</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +325,8 @@
     <MESSAGE value="改札機とICカードを追加" />
     <MESSAGE value="チャージ機を追加&#10;その他軽微な修正" />
     <MESSAGE value="アイテムの追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="アイテムの追加" />
+    <MESSAGE value="軽微な修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="軽微な修正" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

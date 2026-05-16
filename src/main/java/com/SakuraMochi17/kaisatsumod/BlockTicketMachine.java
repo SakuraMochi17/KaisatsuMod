@@ -6,23 +6,24 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockChargeMachine extends BlockContainer {
-    public BlockChargeMachine() {
+public class BlockTicketMachine extends BlockContainer {
+    public BlockTicketMachine() {
         super(Material.iron);
-        this.setBlockName("chargeMachine");
+        this.setBlockName("ticketMachine");
+        this.setBlockTextureName("minecraft:iron_block"); // 仮テクスチャ
         this.setCreativeTab(KaisatsuModMain.tabKaisatsu);
     }
 
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {
-        return new TileEntityChargeMachine();
+        return new TileEntityTicketMachine();
     }
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            // GUI ID 2 を開く
-            player.openGui(KaisatsuModMain.instance, 2, world, x, y, z);
+            // 切符発売機は GUI ID 3 とする
+            player.openGui(KaisatsuModMain.instance, 3, world, x, y, z);
         }
         return true;
     }
