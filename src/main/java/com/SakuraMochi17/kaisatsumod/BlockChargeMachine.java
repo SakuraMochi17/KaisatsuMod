@@ -15,7 +15,7 @@ public class BlockChargeMachine extends Block {
         super(Material.iron);
         this.setBlockName("chargeMachine");
         this.setBlockTextureName("yourmodid:charge_machine");
-        this.setCreativeTab(CreativeTabs.tabTransport);
+        this.setCreativeTab(KaisatsuModMain.tabKaisatsu);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class BlockTicketGate extends Block {
         this.setBlockName("ticketGate");
         this.setBlockTextureName("yourmodid:ticket_gate");
         this.setHardness(3.0F);
-        this.setCreativeTab(CreativeTabs.tabTransport);
+        this.setCreativeTab(KaisatsuModMain.tabKaisatsu);
     }
 
     // 当たり判定の計算（フェンスのように飛び越えられなくする）
