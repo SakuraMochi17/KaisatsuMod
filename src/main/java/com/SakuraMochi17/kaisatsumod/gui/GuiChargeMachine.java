@@ -1,5 +1,6 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.gui;
 
+import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityChargeMachine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;

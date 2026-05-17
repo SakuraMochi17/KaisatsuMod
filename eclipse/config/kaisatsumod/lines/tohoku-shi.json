@@ -1,0 +1,11 @@
+{
+  "lineID": "line_tohoku-shi",
+  "lineName": "東北新幹線",
+  "companyID": "jr_east_shi",
+  "costPerBlock": 10,
+  "stations": [
+    "新青森",
+    "八戸",
+    "盛岡"
+  ]
+}

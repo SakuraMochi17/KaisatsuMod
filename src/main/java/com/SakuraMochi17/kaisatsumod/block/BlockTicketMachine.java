@@ -1,5 +1,7 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.block;
 
+import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
+import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;

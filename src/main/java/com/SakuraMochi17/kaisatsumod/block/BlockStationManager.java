@@ -1,6 +1,8 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.block;
 
-import net.minecraft.block.Block;
+import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
+import com.SakuraMochi17.kaisatsumod.core.StationRegistry;
+import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStationManager;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,8 +13,8 @@ public class BlockStationManager extends BlockContainer {
     public BlockStationManager() {
         super(Material.iron);
         this.setBlockName("stationManager");
-        this.setCreativeTab(KaisatsuModMain.tabKaisatsu);
         this.setHardness(3.0F);
+        this.setCreativeTab(KaisatsuModMain.tabKaisatsu);
     }
 
     @Override
@@ -28,9 +30,13 @@ public class BlockStationManager extends BlockContainer {
         return true;
     }
 
-    // ★追加：ブロックが破壊された時に中のTileEntityのinvalidate（登録解除）を確実に呼ぶ処理
+    // 駅管理ブロックが壊されたら、自動的にレジストリからデータを削除する
     @Override
-    public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+    public void breakBlock(World world, int x, int y, int z, net.minecraft.block.Block block, int meta) {
+        if (!world.isRemote) {
+            String key = world.provider.dimensionId + ":" + x + ":" + y + ":" + z;
+            StationRegistry.registry.remove(key);
+        }
         super.breakBlock(world, x, y, z, block, meta);
     }
 }

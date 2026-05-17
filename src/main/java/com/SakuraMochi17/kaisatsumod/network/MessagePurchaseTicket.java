@@ -1,5 +1,9 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.network;
 
+import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
+import com.SakuraMochi17.kaisatsumod.core.StationRegistry;
+import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
+import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -53,7 +57,6 @@ public class MessagePurchaseTicket implements IMessage {
             if (te instanceof TileEntityTicketMachine) {
                 TileEntityTicketMachine machine = (TileEntityTicketMachine) te;
 
-                // ★修正：周辺検索を廃止し、券売機自体が記憶している連携座標から駅情報をピンポイント取得
                 if (!machine.isLinked) return null;
 
                 int dimID = world.provider.dimensionId;
@@ -61,7 +64,9 @@ public class MessagePurchaseTicket implements IMessage {
 
                 if (currentStation == null) return null;
 
-                // 1. 投入金額の合計を計算
+                int requiredAmount = message.isNyujoken ? 150 : message.fare;
+
+                // 1. 現金の合計を計算 (スロット1〜9)
                 int totalInserted = 0;
                 for (int i = 1; i <= 9; i++) {
                     ItemStack slotItem = machine.getStackInSlot(i);
@@ -70,14 +75,47 @@ public class MessagePurchaseTicket implements IMessage {
                     }
                 }
 
-                int requiredAmount = message.isNyujoken ? 150 : message.fare;
+                // 2. ICカードの残高を確認 (スロット0)
+                ItemStack icCardStack = machine.getStackInSlot(0);
+                boolean hasICCard = icCardStack != null && icCardStack.getItem() instanceof ItemICCard;
+                int icBalance = 0;
+                if (hasICCard) {
+                    if (icCardStack.stackTagCompound == null) {
+                        icCardStack.setTagCompound(new NBTTagCompound());
+                        icCardStack.stackTagCompound.setInteger("balance", 0);
+                    }
+                    icBalance = icCardStack.stackTagCompound.getInteger("balance");
+                }
 
-                if (totalInserted >= requiredAmount && machine.getStackInSlot(10) == null) {
+                // 排出口(スロット10)が空いているかチェック
+                if (machine.getStackInSlot(10) != null) return null;
+
+                boolean paymentSuccess = false;
+
+                // 3. 決済ロジック（現金優先、足りなければICカード）
+                if (totalInserted >= requiredAmount) {
+                    // 現金で決済
+                    // 現金で決済
                     for (int i = 1; i <= 9; i++) {
                         machine.setInventorySlotContents(i, null);
                     }
+                    int change = totalInserted - requiredAmount;
+                    if (change > 0) {
+                        // ★修正：お釣りとして、RTMのお金（未導入なら自作のお金）を返すように変更
+                        if (change >= 1000) { machine.setInventorySlotContents(11, KaisatsuModMain.getMoneyItemStack(1000, change / 1000)); change %= 1000; }
+                        if (change >= 100) { machine.setInventorySlotContents(12, KaisatsuModMain.getMoneyItemStack(100, change / 100)); change %= 100; }
+                        if (change >= 10) { machine.setInventorySlotContents(13, KaisatsuModMain.getMoneyItemStack(10, change / 10)); change %= 10; }
+                        if (change >= 1) { machine.setInventorySlotContents(14, KaisatsuModMain.getMoneyItemStack(1, change)); }
+                    }
+                    paymentSuccess = true;
+                } else if (hasICCard && icBalance >= requiredAmount) {
+                    // ICカードで決済
+                    icCardStack.stackTagCompound.setInteger("balance", icBalance - requiredAmount);
+                    paymentSuccess = true;
+                }
 
-                    // 2. 切符に駅データをスタンプして発券
+                if (paymentSuccess) {
+                    // 発券処理
                     ItemStack ticketStack = new ItemStack(KaisatsuModMain.ticket);
                     ticketStack.setTagCompound(new NBTTagCompound());
                     ticketStack.stackTagCompound.setString("entryLine", currentStation.lineID);
@@ -86,26 +124,6 @@ public class MessagePurchaseTicket implements IMessage {
                     ticketStack.stackTagCompound.setBoolean("isUsed", false);
                     ticketStack.stackTagCompound.setBoolean("isNyujoken", message.isNyujoken);
                     machine.setInventorySlotContents(10, ticketStack);
-
-                    // 3. お釣りの自動払い戻し
-                    int change = totalInserted - requiredAmount;
-                    if (change > 0) {
-                        if (change >= 1000) {
-                            machine.setInventorySlotContents(11, new ItemStack(KaisatsuModMain.bill1000, change / 1000));
-                            change %= 1000;
-                        }
-                        if (change >= 100) {
-                            machine.setInventorySlotContents(12, new ItemStack(KaisatsuModMain.coin100, change / 100));
-                            change %= 100;
-                        }
-                        if (change >= 10) {
-                            machine.setInventorySlotContents(13, new ItemStack(KaisatsuModMain.coin10, change / 10));
-                            change %= 10;
-                        }
-                        if (change >= 1) {
-                            machine.setInventorySlotContents(14, new ItemStack(KaisatsuModMain.coin1, change));
-                        }
-                    }
 
                     world.playSoundEffect(message.x, message.y, message.z, "random.click", 1.0F, 1.2F);
                     machine.markDirty();

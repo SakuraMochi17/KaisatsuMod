@@ -1,5 +1,6 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.tileentity;
 
+import com.SakuraMochi17.kaisatsumod.core.StationRegistry;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;

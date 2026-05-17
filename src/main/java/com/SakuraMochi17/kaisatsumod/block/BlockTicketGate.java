@@ -1,5 +1,11 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.block;
 
+import com.SakuraMochi17.kaisatsumod.*;
+import com.SakuraMochi17.kaisatsumod.core.FareManager;
+import com.SakuraMochi17.kaisatsumod.core.StationRegistry;
+import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
+import com.SakuraMochi17.kaisatsumod.item.ItemTicket;
+import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -59,7 +65,7 @@ public class BlockTicketGate extends BlockContainer {
             return true;
         }
 
-        // 未連携チェック（ICカード・切符共通）
+        // 未連携チェック
         if (heldItem != null && (heldItem.getItem() instanceof ItemICCard || heldItem.getItem() instanceof ItemTicket)) {
             if (!world.isRemote) {
                 if (!gateTE.isLinked) {
@@ -78,6 +84,8 @@ public class BlockTicketGate extends BlockContainer {
                         heldItem.stackTagCompound.setString("entryStation", "");
                     }
                     boolean inGate = heldItem.stackTagCompound.getBoolean("inGate");
+
+                    // ★警告修正：論理式をシンプルな形に最適化
                     boolean attemptEntry = gateTE.gateMode == 1 || (gateTE.gateMode != 2 && !inGate);
 
                     if (attemptEntry) processEntry(world, x, y, z, player, heldItem, gateTE);
@@ -90,6 +98,8 @@ public class BlockTicketGate extends BlockContainer {
                         return true;
                     }
                     boolean isUsed = heldItem.stackTagCompound.getBoolean("isUsed");
+
+                    // ★警告修正：論理式をシンプルな形に最適化
                     boolean attemptEntry = gateTE.gateMode == 1 || (gateTE.gateMode != 2 && !isUsed);
 
                     if (attemptEntry) processTicketEntry(world, x, y, z, player, heldItem, gateTE);
@@ -101,9 +111,6 @@ public class BlockTicketGate extends BlockContainer {
         return false;
     }
 
-    // ==========================================
-    // ICカード処理
-    // ==========================================
     private void processEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack card, TileEntityTicketGate gateTE) {
         if (card.stackTagCompound.getBoolean("inGate")) {
             player.addChatMessage(new ChatComponentText("エラー: 既に入場状態です！"));
@@ -134,6 +141,9 @@ public class BlockTicketGate extends BlockContainer {
         openGate(world, x, y, z);
     }
 
+    // ==========================================
+    // ICカード出場処理 (会社またぎ対応)
+    // ==========================================
     private void processExit(World world, int x, int y, int z, EntityPlayer player, ItemStack card, TileEntityTicketGate gateTE) {
         if (!card.stackTagCompound.getBoolean("inGate")) {
             player.addChatMessage(new ChatComponentText("エラー: 入場記録がありません！"));
@@ -150,13 +160,17 @@ public class BlockTicketGate extends BlockContainer {
         int entryY = card.stackTagCompound.getInteger("entryY");
         int entryZ = card.stackTagCompound.getInteger("entryZ");
 
-        if (!entryLine.equals(station.lineID)) {
-            player.addChatMessage(new ChatComponentText("エラー: 入場した路線と異なります。駅員にお尋ねください。"));
-            world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
-            return;
+        String entryCompany = FareManager.getCompanyID(entryLine);
+        String exitCompany = FareManager.getCompanyID(station.lineID);
+
+        int fare;
+        // ★ 会社が同じなら通常計算、違うなら平均単価で計算！
+        if (entryCompany.equals(exitCompany)) {
+            fare = FareManager.calculateFare(station.lineID, entryX, entryY, entryZ, station.x, station.y, station.z);
+        } else {
+            fare = FareManager.calculateCrossCompanyFare(entryLine, station.lineID, entryX, entryY, entryZ, station.x, station.y, station.z);
         }
 
-        int fare = FareManager.calculateFare(station.lineID, entryX, entryY, entryZ, station.x, station.y, station.z);
         if (fare == -1) return;
 
         int balance = card.stackTagCompound.getInteger("balance");
@@ -169,14 +183,14 @@ public class BlockTicketGate extends BlockContainer {
         card.stackTagCompound.setInteger("balance", balance - fare);
         card.stackTagCompound.setBoolean("inGate", false);
 
-        player.addChatMessage(new ChatComponentText("ピッ！ 出場 (" + FareManager.getLineName(station.lineID) + " " + entryStation + " → " + station.stationName + " / 運賃: " + fare + "円 / 残高: " + (balance - fare) + "円)"));
+        // 他社線の場合はメッセージに特別感を出す
+        String companyText = entryCompany.equals(exitCompany) ? "" : " §e[他社線直通]§r";
+
+        player.addChatMessage(new ChatComponentText("ピッ！ 出場 (" + FareManager.getLineName(station.lineID) + " " + entryStation + " → " + station.stationName + companyText + " / 運賃: " + fare + "円 / 残高: " + (balance - fare) + "円)"));
         world.playSoundAtEntity(player, "random.orb", 1.0F, 1.0F);
         openGate(world, x, y, z);
     }
 
-    // ==========================================
-    // 切符処理
-    // ==========================================
     private void processTicketEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack ticket, TileEntityTicketGate gateTE) {
         if (ticket.stackTagCompound.getBoolean("isUsed")) {
             player.addChatMessage(new ChatComponentText("エラー: 既に入場済みの切符です。"));
@@ -205,6 +219,9 @@ public class BlockTicketGate extends BlockContainer {
         openGate(world, x, y, z);
     }
 
+    // ==========================================
+    // 切符出場処理 (同社線のみに制限)
+    // ==========================================
     private void processTicketExit(World world, int x, int y, int z, EntityPlayer player, ItemStack ticket, TileEntityTicketGate gateTE) {
         if (!ticket.stackTagCompound.getBoolean("isUsed")) {
             player.addChatMessage(new ChatComponentText("エラー: 入場記録がありません！"));
@@ -231,28 +248,39 @@ public class BlockTicketGate extends BlockContainer {
             return;
         }
 
+        String entryLine = ticket.stackTagCompound.getString("entryLine");
+        String entryCompany = FareManager.getCompanyID(entryLine);
+        String exitCompany = FareManager.getCompanyID(station.lineID);
+
+        // ★ 切符は他社線の改札では絶対に降りられないようにブロックする
+        if (!entryCompany.equals(exitCompany)) {
+            player.addChatMessage(new ChatComponentText("エラー: この切符は他社線では精算できません。乗り越し精算機か窓口をご利用ください。"));
+            world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
+            return;
+        }
+
         int entryX = ticket.stackTagCompound.getInteger("entryX");
         int entryY = ticket.stackTagCompound.getInteger("entryY");
         int entryZ = ticket.stackTagCompound.getInteger("entryZ");
-        String entryLine = ticket.stackTagCompound.getString("entryLine");
 
         int requiredFare = FareManager.calculateFare(entryLine, entryX, entryY, entryZ, station.x, station.y, station.z);
+        int roundedRequiredFare = (int) Math.ceil(requiredFare / 10.0) * 10;
         int ticketValue = ticket.stackTagCompound.getInteger("fare");
 
-        if (requiredFare > ticketValue) {
-            player.addChatMessage(new ChatComponentText("運賃が不足しています！のりこし精算をしてください。 (不足: " + (requiredFare - ticketValue) + "円)"));
+        if (roundedRequiredFare > ticketValue) {
+            player.addChatMessage(new ChatComponentText("運賃が不足しています！のりこし精算をしてください。 (不足: " + (roundedRequiredFare - ticketValue) + "円)"));
             world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
-        } else if (requiredFare == ticketValue) {
+        } else if (roundedRequiredFare == ticketValue) {
             player.addChatMessage(new ChatComponentText("§bガチャン！ 出場 (切符が回収されました)"));
             world.playSoundAtEntity(player, "random.click", 1.0F, 1.0F);
             player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
             openGate(world, x, y, z);
         } else {
-            int remainValue = ticketValue - requiredFare;
+            int remainValue = ticketValue - roundedRequiredFare;
             ticket.stackTagCompound.setInteger("fare", remainValue);
             ticket.stackTagCompound.setBoolean("isUsed", false);
             ticket.stackTagCompound.setString("entryStation", station.stationName);
-            player.addChatMessage(new ChatComponentText("§eピッ！ 途中下車 (区間運賃 " + requiredFare + "円を差し引きました。 残高: " + remainValue + "円)"));
+            player.addChatMessage(new ChatComponentText("§eピッ！ 途中下車 (区間運賃 " + roundedRequiredFare + "円を差し引きました。 残高: " + remainValue + "円)"));
             world.playSoundAtEntity(player, "random.orb", 1.0F, 1.0F);
             openGate(world, x, y, z);
         }

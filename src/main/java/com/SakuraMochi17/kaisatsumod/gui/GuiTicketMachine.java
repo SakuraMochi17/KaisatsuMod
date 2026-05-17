@@ -1,5 +1,10 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.gui;
 
+import com.SakuraMochi17.kaisatsumod.core.FareManager;
+import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
+import com.SakuraMochi17.kaisatsumod.network.MessagePurchaseTicket;
+import com.SakuraMochi17.kaisatsumod.core.StationRegistry;
+import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -24,24 +29,30 @@ public class GuiTicketMachine extends GuiContainer {
     public void initGui() {
         super.initGui();
 
-        // ★修正：自動検索ではなく、券売機自身の TileEntity に記録された駅座標へ直接アクセス！
         if (tileEntity.isLinked) {
             int dimID = this.mc.theWorld.provider.dimensionId;
-            // 登録レジストリからピンポイントで駅データを引き出す
-            String key = dimID + ":" + tileEntity.linkedX + ":" + tileEntity.linkedY + ":" + tileEntity.linkedZ;
             StationRegistry.StationData currentStation = StationRegistry.findNearestStation(dimID, tileEntity.linkedX, tileEntity.linkedY, tileEntity.linkedZ, 1.0);
 
             if (currentStation != null) {
                 this.displayStationName = currentStation.stationName;
+                String currentCompany = FareManager.getCompanyID(currentStation.lineID); // 自駅の会社IDを取得
                 TreeSet<Integer> fareSet = new TreeSet<>();
 
-                List<String> stations = FareManager.getStationsForLine(currentStation.lineID);
-                for (String stName : stations) {
-                    StationRegistry.StationData targetStation = StationRegistry.getStationByName(currentStation.lineID, stName);
+                // ★大改修：レジストリ内の全駅をスキャンし、「同じ会社（同社線）」の駅を網羅する
+                for (StationRegistry.StationData targetStation : StationRegistry.registry.values()) {
+                    // 自分自身の駅は除外
+                    if (!targetStation.stationName.equals(currentStation.stationName)) {
+                        String targetCompany = FareManager.getCompanyID(targetStation.lineID);
 
-                    if (targetStation != null && !targetStation.stationName.equals(currentStation.stationName)) {
-                        int f = FareManager.calculateFare(currentStation.lineID, currentStation.x, currentStation.y, currentStation.z, targetStation.x, targetStation.y, targetStation.z);
-                        if (f > 0) fareSet.add(f);
+                        // ★同社線制限：会社IDが一致する場合のみボタン候補にする
+                        if (currentCompany.equals(targetCompany)) {
+                            int f = FareManager.calculateFare(currentStation.lineID, currentStation.x, currentStation.y, currentStation.z, targetStation.x, targetStation.y, targetStation.z);
+                            if (f > 0) {
+                                // ★改善：運賃の1の位を切り上げて10円単位にする処理
+                                int roundedFare = (int) Math.ceil(f / 10.0) * 10;
+                                fareSet.add(roundedFare);
+                            }
+                        }
                     }
                 }
 
@@ -86,11 +97,13 @@ public class GuiTicketMachine extends GuiContainer {
 
         drawSlotBg(k + 152, l + 14); // IC
         drawSlotBg(k + 152, l + 32); // Ticket
-        drawSlotBg(k + 134, l + 50); drawSlotBg(k + 152, l + 50); // Change
-        drawSlotBg(k + 134, l + 68); drawSlotBg(k + 152, l + 68); // Change
-        for(int i=0; i<3; i++) {
-            for(int j=0; j<3; j++) {
-                drawSlotBg(k + 12 + j*18, l + 18 + i*18); // Money
+        drawSlotBg(k + 134, l + 50);
+        drawSlotBg(k + 152, l + 50); // Change
+        drawSlotBg(k + 134, l + 68);
+        drawSlotBg(k + 152, l + 68); // Change
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                drawSlotBg(k + 12 + j * 18, l + 18 + i * 18); // Money
             }
         }
     }
@@ -103,13 +116,14 @@ public class GuiTicketMachine extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        // 設定された駅名を表示
-        this.fontRendererObj.drawString(this.displayStationName + "駅 券売機", 8, 5, 4210752);
+        // ★修正：「 券売機」の文字を削り、駅名が長くても「運賃」とかぶらないようにしました
+        this.fontRendererObj.drawString(this.displayStationName + "駅", 8, 4, 4210752);
 
-        this.fontRendererObj.drawString("現金", 12, 8, 4210752);
-        this.fontRendererObj.drawString("運賃", 68, 8, 4210752);
-        this.fontRendererObj.drawString("IC", 138, 18, 4210752);
+        this.fontRendererObj.drawString("運賃", 68, 6, 4210752);
+        this.fontRendererObj.drawString("IC", 154, 4, 4210752);
         this.fontRendererObj.drawString("切符", 130, 36, 4210752);
         this.fontRendererObj.drawString("お釣", 112, 54, 4210752);
+
+        this.fontRendererObj.drawString("現金", 12, 74, 4210752);
     }
 }

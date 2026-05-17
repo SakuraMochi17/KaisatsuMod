@@ -1,5 +1,6 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.item;
 
+import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

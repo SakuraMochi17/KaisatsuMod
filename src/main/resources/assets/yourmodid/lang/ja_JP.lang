@@ -4,6 +4,7 @@ tile.stationManager.name=駅管理ブロック
 tile.ticketGate.name=自動改札機
 tile.chargeMachine.name=ICカードチャージ機
 tile.ticketMachine.name=自動券売機
+tile.transferGate.name=IC専用 乗り換え改札機
 
 # Items
 item.ingot_aluminum.name=アルミニウムインゴット

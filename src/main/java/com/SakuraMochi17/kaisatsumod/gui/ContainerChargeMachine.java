@@ -1,5 +1,8 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.gui;
 
+import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
+import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
+import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityChargeMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

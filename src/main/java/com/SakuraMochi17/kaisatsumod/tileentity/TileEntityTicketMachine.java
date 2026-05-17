@@ -1,5 +1,7 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.tileentity;
 
+import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
+import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -7,9 +9,25 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityChargeMachine extends TileEntity implements IInventory {
-    // 0: ICカード(入力), 1: お金(入力), 2: チャージ後カード(出力)
-    private ItemStack[] inventory = new ItemStack[3];
+public class TileEntityTicketMachine extends TileEntity implements IInventory {
+    private ItemStack[] inventory = new ItemStack[15];
+
+    // ★追加：ステッキ連携用のデータ構造
+    public boolean isLinked = false;
+    public int linkedX, linkedY, linkedZ;
+
+    // ▼ 既存のものをこれに書き換える
+    public void setLinkedStation(int x, int y, int z) {
+        this.isLinked = true;
+        this.linkedX = x;
+        this.linkedY = y;
+        this.linkedZ = z;
+        this.markDirty();
+        // ★追加：連携された瞬間にクライアント（画面）へデータを同期する
+        if (this.worldObj != null) {
+            this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+        }
+    }
 
     @Override
     public int getSizeInventory() { return inventory.length; }
@@ -56,7 +74,7 @@ public class TileEntityChargeMachine extends TileEntity implements IInventory {
     }
 
     @Override
-    public String getInventoryName() { return "Charge Machine"; }
+    public String getInventoryName() { return "Ticket Machine"; }
 
     @Override
     public boolean hasCustomInventoryName() { return false; }
@@ -71,18 +89,16 @@ public class TileEntityChargeMachine extends TileEntity implements IInventory {
 
     @Override
     public void openInventory() {}
-
     @Override
     public void closeInventory() {}
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
         if (index == 0) return stack.getItem() instanceof ItemICCard;
-        if (index == 1) return KaisatsuModMain.getMoneyValue(stack) > 0;
+        if (index >= 1 && index <= 9) return KaisatsuModMain.getMoneyValue(stack) > 0;
         return false;
     }
 
-    // NBTへの保存・読み込み処理（ワールド終了時にアイテムを落とさないため）
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
@@ -95,6 +111,11 @@ public class TileEntityChargeMachine extends TileEntity implements IInventory {
                 this.inventory[b0] = ItemStack.loadItemStackFromNBT(tag);
             }
         }
+        // ★追加：連携座標の読み込み
+        this.isLinked = nbt.getBoolean("IsLinked");
+        this.linkedX = nbt.getInteger("LinkedX");
+        this.linkedY = nbt.getInteger("LinkedY");
+        this.linkedZ = nbt.getInteger("LinkedZ");
     }
 
     @Override
@@ -110,5 +131,22 @@ public class TileEntityChargeMachine extends TileEntity implements IInventory {
             }
         }
         nbt.setTag("Items", nbttaglist);
+        // ★追加：連携座標の保存
+        nbt.setBoolean("IsLinked", this.isLinked);
+        nbt.setInteger("LinkedX", this.linkedX);
+        nbt.setInteger("LinkedY", this.linkedY);
+        nbt.setInteger("LinkedZ", this.linkedZ);
+    }
+    // ▼ ファイルの一番下（最後の } の手前）にこれを追加する
+    @Override
+    public net.minecraft.network.Packet getDescriptionPacket() {
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        return new net.minecraft.network.play.server.S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, nbt);
+    }
+
+    @Override
+    public void onDataPacket(net.minecraft.network.NetworkManager net, net.minecraft.network.play.server.S35PacketUpdateTileEntity pkt) {
+        this.readFromNBT(pkt.func_148857_g());
     }
 }

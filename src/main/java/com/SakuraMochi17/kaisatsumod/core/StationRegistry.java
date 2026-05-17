@@ -1,4 +1,4 @@
-package com.SakuraMochi17.kaisatsumod;
+package com.SakuraMochi17.kaisatsumod.core;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 public class StationRegistry {
 
     // キー: "ディメンションID:x:y:z", 値: 駅データ
-    private static final Map<String, StationData> registry = new HashMap<>();
+    public static final Map<String, StationData> registry = new HashMap<>();
 
     public static class StationData {
         public String lineID;

@@ -5,7 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="feat: フェーズ1〜4の実装完了（通貨・自動改札・券売機・駅連携システムの構築）&#10;鉄道ネットワークの基幹となる通貨システム、駅の登録・連携、および自動運賃計算を伴う改札機・券売機システムを実装。&#10;TileEntityのNBT保存とメモリ同期、カスタムパケットによるGUI操作を確立。&#10;&#10;■ 1. 通貨・経済システム (Phase 1)&#10;- アルミニウム鉱石・インゴット、硬貨(1円〜500円)、紙幣(1000円〜10000円)の追加&#10;- 作業台でのクラフトを利用した、通貨間の両替・逆両替レシピの実装&#10;&#10;■ 2. 駅管理とネットワーク連携 (Phase 3)&#10;- `BlockStationManager`: GUIから路線名・駅名を設定し、サーバーへ同期する機能&#10;- `StationRegistry`: ワールド内の全駅座標をメモリ上で一元管理するレジストリの実装&#10;- `ItemLinkWand`: ステッキの右クリック操作による、駅・改札・券売機間の座標リンク機能&#10;- TileEntityの `updateEntity` を活用した、ワールド再読み込み時のレジストリ復元（永続化）ロジックの実装&#10;&#10;■ 3. チャージ機・自動券売機 (Phase 3)&#10;- `BlockChargeMachine`: ICカードと現金アイテムを消費し、残高を加算して出力する金床風UIの実装&#10;- `BlockTicketMachine`: 連携された駅座標から他駅への運賃を自動計算・重複排除してボタン生成するGUI（ID:3）の実装&#10;- 現金投入スロット（3x3）、お釣りの自動払い戻し計算、およびNBTデータ付き切符の発券パケット通信を実装&#10;&#10;■ 4. アイテムと自動改札機・検札ロジック (Phase 2 &amp; Phase 4)&#10;- `ItemICCard` / `ItemTicket`: NBTタグによる残高、入場フラグ、乗車駅、運賃のデータ保持機能&#10;- `BlockTicketGate`: スニーク操作による「双方向・入場専用・出場専用」のモード切替機能の実装&#10;- ICカード決済: 入場時の駅記録、出場時の距離運賃（FareManager）自動引き落とし処理&#10;- 切符決済: 入場券（同一駅のみ出場可）および乗車券（乗り越し防止、同額回収、差額を残した途中下車更新）の3パターンの検札ロジックを実装&#10;&#10;■ 5. その他リソース&#10;- `ja_JP.lang` によるアイテム・ブロックの完全日本語化&#10;- 開発用の仮テクスチャとしてバニラアセット（鉄ブロック、名札など）の自動割り当て">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/MessagePurchaseTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/MessagePurchaseTicket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eclipse/config/kaisatsumod/lines/tohoku-shi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTransferGate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/FareManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiStationManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityTransferGate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockChargeMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockChargeMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockStationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockStationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockTicketGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketGate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/BlockTicketMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ContainerChargeMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/ContainerChargeMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ContainerStationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/ContainerStationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ContainerTicketMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/ContainerTicketMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/FareManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/GuiChargeMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiChargeMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/GuiStationManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/GuiTicketMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiTicketMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ItemICCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/item/ItemICCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ItemLinkWand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/item/ItemLinkWand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/ItemTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/item/ItemTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/MessagePurchaseTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessagePurchaseTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/MessageStationUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageStationUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/StationRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/TileEntityChargeMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityChargeMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/TileEntityStationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityStationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/TileEntityTicketGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityTicketGate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/TileEntityTicketMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityTicketMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/lang/ja_JP.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/lang/ja_JP.lang" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +138,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
@@ -225,7 +254,9 @@
       <updated>1778848195211</updated>
       <workItem from="1778848196537" duration="513000" />
       <workItem from="1778916024519" duration="3289000" />
-      <workItem from="1778925362325" duration="12991000" />
+      <workItem from="1778925362325" duration="13363000" />
+      <workItem from="1778984544590" duration="578000" />
+      <workItem from="1778985135126" duration="8824000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -299,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778947162436</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat: フェーズ1〜4の実装完了（通貨・自動改札・券売機・駅連携システムの構築）&#10;鉄道ネットワークの基幹となる通貨システム、駅の登録・連携、および自動運賃計算を伴う改札機・券売機システムを実装。&#10;TileEntityのNBT保存とメモリ同期、カスタムパケットによるGUI操作を確立。&#10;&#10;■ 1. 通貨・経済システム (Phase 1)&#10;- アルミニウム鉱石・インゴット、硬貨(1円〜500円)、紙幣(1000円〜10000円)の追加&#10;- 作業台でのクラフトを利用した、通貨間の両替・逆両替レシピの実装&#10;&#10;■ 2. 駅管理とネットワーク連携 (Phase 3)&#10;- `BlockStationManager`: GUIから路線名・駅名を設定し、サーバーへ同期する機能&#10;- `StationRegistry`: ワールド内の全駅座標をメモリ上で一元管理するレジストリの実装&#10;- `ItemLinkWand`: ステッキの右クリック操作による、駅・改札・券売機間の座標リンク機能&#10;- TileEntityの `updateEntity` を活用した、ワールド再読み込み時のレジストリ復元（永続化）ロジックの実装&#10;&#10;■ 3. チャージ機・自動券売機 (Phase 3)&#10;- `BlockChargeMachine`: ICカードと現金アイテムを消費し、残高を加算して出力する金床風UIの実装&#10;- `BlockTicketMachine`: 連携された駅座標から他駅への運賃を自動計算・重複排除してボタン生成するGUI（ID:3）の実装&#10;- 現金投入スロット（3x3）、お釣りの自動払い戻し計算、およびNBTデータ付き切符の発券パケット通信を実装&#10;&#10;■ 4. アイテムと自動改札機・検札ロジック (Phase 2 &amp; Phase 4)&#10;- `ItemICCard` / `ItemTicket`: NBTタグによる残高、入場フラグ、乗車駅、運賃のデータ保持機能&#10;- `BlockTicketGate`: スニーク操作による「双方向・入場専用・出場専用」のモード切替機能の実装&#10;- ICカード決済: 入場時の駅記録、出場時の距離運賃（FareManager）自動引き落とし処理&#10;- 切符決済: 入場券（同一駅のみ出場可）および乗車券（乗り越し防止、同額回収、差額を残した途中下車更新）の3パターンの検札ロジックを実装&#10;&#10;■ 5. その他リソース&#10;- `ja_JP.lang` によるアイテム・ブロックの完全日本語化&#10;- 開発用の仮テクスチャとしてバニラアセット（鉄ブロック、名札など）の自動割り当て">
+      <option name="closed" value="true" />
+      <created>1778947582756</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1778947582756</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
