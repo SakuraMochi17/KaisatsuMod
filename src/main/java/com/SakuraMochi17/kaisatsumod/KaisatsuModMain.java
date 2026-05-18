@@ -45,7 +45,8 @@ public class KaisatsuModMain {
     public static Item icCard;
     public static Block ticketGate;
     public static Block chargeMachine;
-    public static Block ticketMachine; // これを追ka
+    public static Block ticketMachine;
+    public static Block staffTerminal; // ★これを追加
 
 
     // ★リンクワンド（ステッキ）の変数を追加
@@ -56,6 +57,7 @@ public class KaisatsuModMain {
     public static Item coin1, coin5, coin10, coin50, coin100, coin500;
     public static Item bill1000, bill2000, bill5000, bill10000;
     public static Item ticket;
+
 
     public static final CreativeTabs tabKaisatsu = new CreativeTabs("tabKaisatsu") {
         @Override
@@ -74,6 +76,10 @@ public class KaisatsuModMain {
 
         GameRegistry.registerTileEntity(TileEntityChargeMachine.class, "TileEntityChargeMachine");
 
+        staffTerminal = new com.SakuraMochi17.kaisatsumod.block.BlockStaffTerminal();
+        GameRegistry.registerBlock(staffTerminal, "staffTerminal");
+        GameRegistry.registerTileEntity(com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStaffTerminal.class, "TileEntityStaffTerminal");
+
         // ▼ これを追加・修正
         ticketMachine = new BlockTicketMachine();
         GameRegistry.registerBlock(ticketMachine, "ticketMachine");
@@ -88,6 +94,7 @@ public class KaisatsuModMain {
         network.registerMessage(MessageStationUpdate.Handler.class, MessageStationUpdate.class, 0, Side.SERVER);
         // network.registerMessageのすぐ下あたりに追加
         network.registerMessage(MessagePurchaseTicket.Handler.class, MessagePurchaseTicket.class, 1, Side.SERVER);
+        network.registerMessage(com.SakuraMochi17.kaisatsumod.network.MessageStaffTerminal.Handler.class, com.SakuraMochi17.kaisatsumod.network.MessageStaffTerminal.class, 2, Side.SERVER);
 
         FareManager.loadAllLines(event.getModConfigurationDirectory());
 
@@ -179,6 +186,10 @@ public class KaisatsuModMain {
                     TileEntity te = world.getTileEntity(x, y, z);
                     if (te instanceof TileEntityTicketMachine) return new ContainerTicketMachine(player.inventory, (TileEntityTicketMachine) te);
                 }
+                if (ID == 4) {
+                    TileEntity te = world.getTileEntity(x, y, z);
+                    if (te instanceof com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStaffTerminal) return new com.SakuraMochi17.kaisatsumod.gui.ContainerStaffTerminal(player.inventory, (com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStaffTerminal) te);
+                }
                 return null;
             }
 
@@ -197,9 +208,21 @@ public class KaisatsuModMain {
                     TileEntity te = world.getTileEntity(x, y, z);
                     if (te instanceof TileEntityTicketMachine) return new GuiTicketMachine(player.inventory, (TileEntityTicketMachine) te);
                 }
+                if (ID == 4) {
+                    TileEntity te = world.getTileEntity(x, y, z);
+                    if (te instanceof com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStaffTerminal) return new com.SakuraMochi17.kaisatsumod.gui.GuiStaffTerminal(player.inventory, (com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStaffTerminal) te);
+                }
                 return null;
             }
         });
+
+        // クライアント側でのみモデル描画を登録する
+        if (event.getSide().isClient()) {
+            cpw.mods.fml.client.registry.ClientRegistry.bindTileEntitySpecialRenderer(
+                    com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate.class,
+                    new com.SakuraMochi17.kaisatsumod.client.render.RenderTicketGate()
+            );
+        }
 
 
         GameRegistry.addSmelting(oreAluminum, new ItemStack(ingotAluminum), 0.5F);

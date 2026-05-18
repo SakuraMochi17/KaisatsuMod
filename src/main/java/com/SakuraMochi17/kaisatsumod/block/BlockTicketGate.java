@@ -171,7 +171,12 @@ public class BlockTicketGate extends BlockContainer {
             fare = FareManager.calculateCrossCompanyFare(entryLine, station.lineID, entryX, entryY, entryZ, station.x, station.y, station.z);
         }
 
-        if (fare == -1) return;
+        // ★修正: 計算不能時に無言で終わらず、エラーで知らせる
+        if (fare == -1) {
+            player.addChatMessage(new net.minecraft.util.ChatComponentText("§cシステムエラー: 運賃計算に失敗しました。(路線データ '" + entryLine + "' または '" + station.lineID + "' が存在しません)"));
+            world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
+            return;
+        }
 
         int balance = card.stackTagCompound.getInteger("balance");
         if (balance < fare) {
@@ -298,5 +303,24 @@ public class BlockTicketGate extends BlockContainer {
             int meta = world.getBlockMetadata(x, y, z);
             world.setBlockMetadataWithNotify(x, y, z, meta & ~BIT_OPEN, 3);
         }
+    }
+    // --- 既存のコードの下に以下を追記 ---
+
+    @Override
+    public boolean renderAsNormalBlock() {
+        // 通常の四角いブロックとしての描画を無効化
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        // 光を透過するように設定（これがないと周りのブロックが透けたり影がバグったりします）
+        return false;
+    }
+
+    @Override
+    public int getRenderType() {
+        // -1 を返すことで「TileEntitySpecialRenderer (TESR) を使って描画する」という合図になります
+        return -1;
     }
 }

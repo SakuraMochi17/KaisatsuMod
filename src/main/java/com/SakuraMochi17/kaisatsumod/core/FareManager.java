@@ -13,18 +13,33 @@ public class FareManager {
 
     private static final Map<String, LineConfig> lineConfigs = new HashMap<>();
 
+    // ★修正：会社クラスに「単価 (costPerBlock)」を移動！
+    public static class CompanyConfig {
+        public String companyID;
+        public String companyName;
+        public int costPerBlock; // 会社全体で統一された運賃比率
+        public List<LineConfig> lines;
+
+        public CompanyConfig(String companyID, String companyName, int costPerBlock, List<LineConfig> lines) {
+            this.companyID = companyID;
+            this.companyName = companyName;
+            this.costPerBlock = costPerBlock;
+            this.lines = lines;
+        }
+    }
+
+    // 路線ごとの設定（JSONの中身）
     public static class LineConfig {
         public String lineID;
         public String lineName;
-        public String companyID;
-        public int costPerBlock;
+        public transient String companyID;   // JSONには書かない裏側の記憶用
+        public transient int costPerBlock;   // ★追加：親(会社)から単価を受け継ぐための裏側変数
         public List<String> stations;
 
-        public LineConfig(String id, String name, String companyID, int cost, List<String> stations) {
+        // ★修正：コンストラクタからcostPerBlockを削除
+        public LineConfig(String id, String name, List<String> stations) {
             this.lineID = id;
             this.lineName = name;
-            this.companyID = companyID;
-            this.costPerBlock = cost;
             this.stations = stations;
         }
     }
@@ -38,8 +53,18 @@ public class FareManager {
         File[] files = linesDir.listFiles((dir, name) -> name.endsWith(".json"));
 
         if (files == null || files.length == 0) {
-            createDefaultJson(linesDir, "yamanote", new LineConfig("line_yamanote", "山手線", "jr_east", 2, Arrays.asList("東京", "品川", "新宿")));
-            createDefaultJson(linesDir, "tohoku", new LineConfig("line_tohoku", "東北本線", "jr_east", 5, Arrays.asList("郡山", "福島", "白河")));
+            // ★サンプルの生成：会社側に単価（例：JRは5、メトロは3）を設定する
+            List<LineConfig> jrLines = Arrays.asList(
+                    new LineConfig("line_yamanote", "山手線", Arrays.asList("東京", "品川", "新宿")),
+                    new LineConfig("line_tohoku", "東北本線", Arrays.asList("郡山", "福島", "白河"))
+            );
+            createDefaultJson(linesDir, "jr_east", new CompanyConfig("jr_east", "JR東日本", 5, jrLines));
+
+            List<LineConfig> metroLines = Arrays.asList(
+                    new LineConfig("line_ginza", "銀座線", Arrays.asList("渋谷", "表参道", "浅草"))
+            );
+            createDefaultJson(linesDir, "tokyo_metro", new CompanyConfig("tokyo_metro", "東京メトロ", 3, metroLines));
+
             files = linesDir.listFiles((dir, name) -> name.endsWith(".json"));
         }
 
@@ -47,20 +72,24 @@ public class FareManager {
         if (files != null) {
             Gson gson = new Gson();
             for (File file : files) {
-                // ★修正1: Windows環境等の文字化けエラーを防ぐため、UTF-8で強制読み込みする
                 try (InputStreamReader reader = new InputStreamReader(new FileInputStream(file), "UTF-8")) {
-                    LineConfig config = gson.fromJson(reader, LineConfig.class);
-                    if (config != null) {
-                        // ★修正2: lineIDの重複チェック（被っていたらログに警告を出す）
-                        if (lineConfigs.containsKey(config.lineID)) {
-                            System.err.println("[KaisatsuMod] ⚠️警告: 路線ID '" + config.lineID + "' が重複しています！ (" + file.getName() + " のデータで上書きされます)");
+                    CompanyConfig company = gson.fromJson(reader, CompanyConfig.class);
+
+                    if (company != null && company.lines != null) {
+                        for (LineConfig line : company.lines) {
+                            // ★重要：親（会社）のデータを、所属するすべての路線に自動でコピーして覚えさせる
+                            line.companyID = company.companyID;
+                            line.costPerBlock = company.costPerBlock;
+
+                            if (lineConfigs.containsKey(line.lineID)) {
+                                System.err.println("[KaisatsuMod] ⚠️警告: 路線ID '" + line.lineID + "' が重複しています！ (" + file.getName() + " のデータで上書きされます)");
+                            }
+                            lineConfigs.put(line.lineID, line);
+                            System.out.println("[KaisatsuMod] 路線を読み込みました: " + line.lineName + " (所属: " + company.companyID + ", 単価: " + line.costPerBlock + "円/B)");
                         }
-                        lineConfigs.put(config.lineID, config);
-                        System.out.println("[KaisatsuMod] 路線ファイルを読み込みました: " + config.lineName + " (会社: " + config.companyID + ")");
                     }
                 } catch (Exception e) {
-                    // ★修正3: JSONの書き間違いがあってもクラッシュさせず、エラー原因をログに出して次のファイルへ進む
-                    System.err.println("[KaisatsuMod] ❌エラー: ファイル '" + file.getName() + "' の読み込みに失敗しました！カンマの付け忘れや「\"」の抜けなどの文法ミスがないか確認してください。");
+                    System.err.println("[KaisatsuMod] ❌エラー: ファイル '" + file.getName() + "' の読み込みに失敗しました！文法ミスを確認してください。");
                     e.printStackTrace();
                 }
             }
@@ -74,19 +103,15 @@ public class FareManager {
         int fare = (int) Math.ceil(distance * config.costPerBlock);
         return Math.max(fare, 150);
     }
-    // ▼ 既存の calculateFare メソッドの下にこれを追加します ▼
+
     public static int calculateCrossCompanyFare(String lineID1, String lineID2, int x1, int y1, int z1, int x2, int y2, int z2) {
         LineConfig config1 = lineConfigs.get(lineID1);
         LineConfig config2 = lineConfigs.get(lineID2);
         if (config1 == null || config2 == null) return -1;
-
         double distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2) + Math.pow(z1 - z2, 2));
-
-        // ★ 2つの路線の単価を足して2で割る（平均化）
         double avgCost = (config1.costPerBlock + config2.costPerBlock) / 2.0;
         int fare = (int) Math.ceil(distance * avgCost);
-
-        return Math.max(fare, 150); // 初乗り150円は担保
+        return Math.max(fare, 150);
     }
 
     public static String getLineName(String lineID) {
@@ -111,9 +136,8 @@ public class FareManager {
         return new ArrayList<>();
     }
 
-    private static void createDefaultJson(File dir, String filename, LineConfig defaultConfig) {
+    private static void createDefaultJson(File dir, String filename, CompanyConfig defaultConfig) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        // ★修正4: サンプル出力時もUTF-8を強制し、後から編集しやすくする
         try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(new File(dir, filename + ".json")), "UTF-8")) {
             gson.toJson(defaultConfig, writer);
         } catch (Exception e) {

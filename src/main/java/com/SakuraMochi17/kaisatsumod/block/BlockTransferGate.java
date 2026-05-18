@@ -55,6 +55,12 @@ public class BlockTransferGate extends BlockContainer {
 
         ItemStack heldItem = player.getCurrentEquippedItem();
 
+        // ★修正1：リンクワンドを持っている場合は、ブロック側の処理を完全に無視してワンドに任せる！
+        if (heldItem != null && heldItem.getItem() instanceof com.SakuraMochi17.kaisatsumod.item.ItemLinkWand) {
+            return false;
+        }
+
+        // スニーク＋素手で連携リセット
         if (heldItem == null && player.isSneaking()) {
             if (!world.isRemote) {
                 gateTE.resetLinks();
@@ -63,7 +69,8 @@ public class BlockTransferGate extends BlockContainer {
             return true;
         }
 
-        if (heldItem != null) {
+        // ★修正2：ICカードか切符を持っている場合のみ、ブロックとして反応するように厳格化
+        if (heldItem != null && (heldItem.getItem() instanceof ItemICCard || heldItem.getItem() instanceof ItemTicket)) {
             if (!world.isRemote) {
                 if (!gateTE.isLinked1 || !gateTE.isLinked2) {
                     player.addChatMessage(new ChatComponentText("エラー: 2つの駅が完全に連携されていません。リンクワンドで降車駅と乗車駅を設定してください。"));
@@ -83,6 +90,7 @@ public class BlockTransferGate extends BlockContainer {
             }
             return true;
         }
+
         return false;
     }
 
@@ -120,7 +128,12 @@ public class BlockTransferGate extends BlockContainer {
                 ? FareManager.calculateFare(exitStation.lineID, entryX, entryY, entryZ, exitStation.x, exitStation.y, exitStation.z)
                 : FareManager.calculateCrossCompanyFare(entryLine, exitStation.lineID, entryX, entryY, entryZ, exitStation.x, exitStation.y, exitStation.z);
 
-        if (fare == -1) return;
+        // ★修正: 計算不能時に無言で終わらず、エラーで知らせる
+        if (fare == -1) {
+            player.addChatMessage(new net.minecraft.util.ChatComponentText("§cシステムエラー: 運賃計算に失敗しました。(路線データ '" + entryLine + "' または '" + exitStation.lineID + "' が存在しません)"));
+            world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
+            return;
+        }
 
         int balance = card.stackTagCompound.getInteger("balance");
         if (balance < fare) {
