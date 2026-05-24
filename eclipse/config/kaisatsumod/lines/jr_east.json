@@ -1,0 +1,25 @@
+{
+  "companyID": "jr_east",
+  "companyName": "JR東日本",
+  "costPerBlock": 5,
+  "lines": [
+    {
+      "lineID": "line_yamanote",
+      "lineName": "山手線",
+      "stations": [
+        "東京",
+        "品川",
+        "新宿"
+      ]
+    },
+    {
+      "lineID": "line_tohoku",
+      "lineName": "東北本線",
+      "stations": [
+        "郡山",
+        "福島",
+        "白河"
+      ]
+    }
+  ]
+}

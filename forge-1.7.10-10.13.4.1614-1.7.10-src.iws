@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="フェーズ4.5の実装">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockStaffTerminal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/RenderTicketGate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/ContainerStaffTerminal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiStaffTerminal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageStaffTerminal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityStaffTerminal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/config/kaisatsumod/lines/tohoku-shi.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTransferGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTransferGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/FareManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/FareManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="フェーズ5すすんだ" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -241,6 +228,7 @@
       <workItem from="1778984544590" duration="578000" />
       <workItem from="1778985135126" duration="16290000" />
       <workItem from="1779110868381" duration="30000" />
+      <workItem from="1779110914531" duration="132000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -330,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779001428101</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="フェーズ5すすんだ">
+      <option name="closed" value="true" />
+      <created>1779110956231</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1779110956231</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +340,8 @@
     <MESSAGE value="軽微な修正" />
     <MESSAGE value="feat: フェーズ1〜4の実装完了（通貨・自動改札・券売機・駅連携システムの構築）&#10;鉄道ネットワークの基幹となる通貨システム、駅の登録・連携、および自動運賃計算を伴う改札機・券売機システムを実装。&#10;TileEntityのNBT保存とメモリ同期、カスタムパケットによるGUI操作を確立。&#10;&#10;■ 1. 通貨・経済システム (Phase 1)&#10;- アルミニウム鉱石・インゴット、硬貨(1円〜500円)、紙幣(1000円〜10000円)の追加&#10;- 作業台でのクラフトを利用した、通貨間の両替・逆両替レシピの実装&#10;&#10;■ 2. 駅管理とネットワーク連携 (Phase 3)&#10;- `BlockStationManager`: GUIから路線名・駅名を設定し、サーバーへ同期する機能&#10;- `StationRegistry`: ワールド内の全駅座標をメモリ上で一元管理するレジストリの実装&#10;- `ItemLinkWand`: ステッキの右クリック操作による、駅・改札・券売機間の座標リンク機能&#10;- TileEntityの `updateEntity` を活用した、ワールド再読み込み時のレジストリ復元（永続化）ロジックの実装&#10;&#10;■ 3. チャージ機・自動券売機 (Phase 3)&#10;- `BlockChargeMachine`: ICカードと現金アイテムを消費し、残高を加算して出力する金床風UIの実装&#10;- `BlockTicketMachine`: 連携された駅座標から他駅への運賃を自動計算・重複排除してボタン生成するGUI（ID:3）の実装&#10;- 現金投入スロット（3x3）、お釣りの自動払い戻し計算、およびNBTデータ付き切符の発券パケット通信を実装&#10;&#10;■ 4. アイテムと自動改札機・検札ロジック (Phase 2 &amp; Phase 4)&#10;- `ItemICCard` / `ItemTicket`: NBTタグによる残高、入場フラグ、乗車駅、運賃のデータ保持機能&#10;- `BlockTicketGate`: スニーク操作による「双方向・入場専用・出場専用」のモード切替機能の実装&#10;- ICカード決済: 入場時の駅記録、出場時の距離運賃（FareManager）自動引き落とし処理&#10;- 切符決済: 入場券（同一駅のみ出場可）および乗車券（乗り越し防止、同額回収、差額を残した途中下車更新）の3パターンの検札ロジックを実装&#10;&#10;■ 5. その他リソース&#10;- `ja_JP.lang` によるアイテム・ブロックの完全日本語化&#10;- 開発用の仮テクスチャとしてバニラアセット（鉄ブロック、名札など）の自動割り当て" />
     <MESSAGE value="フェーズ4.5の実装" />
-    <option name="LAST_COMMIT_MESSAGE" value="フェーズ4.5の実装" />
+    <MESSAGE value="フェーズ5すすんだ" />
+    <option name="LAST_COMMIT_MESSAGE" value="フェーズ5すすんだ" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
