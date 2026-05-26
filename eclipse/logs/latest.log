@@ -1,0 +1,27 @@
+[22:17:23] [main/INFO]: Setting user: Player828
+[22:17:24] [Client thread/INFO]: LWJGL Version: 2.9.1
+[22:17:30] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Example Mod, FMLFileResourcePack:yourmodid
+[22:17:30] [Sound Library Loader/INFO]: Sound engine started
+[22:17:31] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[22:17:31] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[22:17:32] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Example Mod, FMLFileResourcePack:yourmodid
+[22:17:32] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[22:17:32] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[22:17:33] [Sound Library Loader/INFO]: Sound engine started
+[22:17:37] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[22:17:37] [Server thread/INFO]: Generating keypair
+[22:17:38] [Server thread/INFO]: Preparing start region for level 0
+[22:17:38] [Server thread/INFO]: Changing view distance to 12, from 10
+[22:17:38] [Server thread/INFO]: Player828[local:E:818f2ac6] logged in with entity id 156 at (568.7283104252391, 4.0, 389.4883577144979)
+[22:17:38] [Server thread/INFO]: Player828 がゲームに参加しました
+[22:17:54] [Server thread/INFO]: Saving and pausing game...
+[22:17:54] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[22:17:54] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[22:17:54] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[22:17:57] [Server thread/INFO]: Stopping server
+[22:17:57] [Server thread/INFO]: Saving players
+[22:17:57] [Server thread/INFO]: Saving worlds
+[22:17:57] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[22:17:57] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[22:17:57] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[22:17:59] [Client thread/INFO]: Stopping!
