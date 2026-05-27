@@ -1,7 +1,8 @@
 {
   "companyID": "tokyo_metro",
   "companyName": "東京メトロ",
-  "costPerBlock": 3,
+  "costPerBlock": 0.12,
+  "baseFare": 180,
   "lines": [
     {
       "lineID": "line_ginza",

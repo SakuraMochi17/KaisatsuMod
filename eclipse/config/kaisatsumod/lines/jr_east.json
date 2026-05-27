@@ -1,7 +1,8 @@
 {
   "companyID": "jr_east",
   "companyName": "JR東日本",
-  "costPerBlock": 5,
+  "costPerBlock": 0.15,
+  "baseFare": 150,
   "lines": [
     {
       "lineID": "line_yamanote",

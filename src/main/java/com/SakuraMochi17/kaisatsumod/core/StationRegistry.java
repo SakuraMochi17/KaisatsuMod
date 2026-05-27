@@ -5,33 +5,36 @@ import java.util.Map;
 
 public class StationRegistry {
 
-    // キー: "ディメンションID:x:y:z", 値: 駅データ
     public static final Map<String, StationData> registry = new HashMap<>();
 
     public static class StationData {
         public String lineID;
         public String stationName;
         public int x, y, z;
+        public String nextStation1; // ★追加: 隣接駅1
+        public String nextStation2; // ★追加: 隣接駅2
 
-        public StationData(String lineID, String name, int x, int y, int z) {
+        public StationData(String lineID, String name, int x, int y, int z, String next1, String next2) {
             this.lineID = lineID;
             this.stationName = name;
             this.x = x;
             this.y = y;
             this.z = z;
+            this.nextStation1 = next1;
+            this.nextStation2 = next2;
         }
     }
 
-    public static void registerStation(int dimID, int x, int y, int z, String lineID, String name) {
+    // ★修正: 隣接駅を受け取るように引数を追加
+    public static void registerStation(int dimID, int x, int y, int z, String lineID, String name, String next1, String next2) {
         String key = dimID + ":" + x + ":" + y + ":" + z;
-        registry.put(key, new StationData(lineID, name, x, y, z));
+        registry.put(key, new StationData(lineID, name, x, y, z, next1, next2));
     }
 
     public static void removeStation(int dimID, int x, int y, int z) {
         registry.remove(dimID + ":" + x + ":" + y + ":" + z);
     }
 
-    // 改札機や券売機の座標から、最も近い（半径20ブロック以内などの）駅を検索する
     public static StationData findNearestStation(int dimID, int srcX, int srcY, int srcZ, double maxRange) {
         StationData nearest = null;
         double minDistance = maxRange;
@@ -47,15 +50,15 @@ public class StationRegistry {
                 nearest = data;
             }
         }
-        return nearest; // 見つからなければnull
+        return nearest;
     }
-    // これを StationRegistry クラスの中（findNearestStation の下あたり）に追記します
+
     public static StationData getStationByName(String lineID, String name) {
         for (StationData data : registry.values()) {
             if (data.lineID.equals(lineID) && data.stationName.equals(name)) {
                 return data;
             }
         }
-        return null; // 見つからなかった場合
+        return null;
     }
 }

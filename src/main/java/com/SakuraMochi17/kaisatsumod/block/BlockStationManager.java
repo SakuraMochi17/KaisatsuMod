@@ -30,12 +30,15 @@ public class BlockStationManager extends BlockContainer {
         return true;
     }
 
-    // 駅管理ブロックが壊されたら、自動的にレジストリからデータを削除する
+    // ==========================================
+    // ★追加：ブロックが破壊されたら駅データを消す
+    // ==========================================
     @Override
     public void breakBlock(World world, int x, int y, int z, net.minecraft.block.Block block, int meta) {
         if (!world.isRemote) {
-            String key = world.provider.dimensionId + ":" + x + ":" + y + ":" + z;
-            StationRegistry.registry.remove(key);
+            int dimID = world.provider.dimensionId;
+            // レジストリからこの座標の駅データを確実に削除
+            com.SakuraMochi17.kaisatsumod.core.StationRegistry.removeStation(dimID, x, y, z);
         }
         super.breakBlock(world, x, y, z, block, meta);
     }
