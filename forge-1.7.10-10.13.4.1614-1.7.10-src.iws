@@ -4,47 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="足りてないファイルの追加">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/ItemRenderGeneric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/ItemRenderModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/RenderTicketMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/config/splash.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/config/splash.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-1.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-2.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-2.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-3.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-3.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-junk-earlystartup.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-junk-earlystartup.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/DIM-1/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/DIM-1/data/villages.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/DIM1/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/DIM1/data/villages.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/data/villages.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat_old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/5f90bf1f-575d-3542-89d7-731859eee6f2.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/5f90bf1f-575d-3542-89d7-731859eee6f2.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/d75ffc85-72b0-3b94-be32-d104d89a3a6a.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/d75ffc85-72b0-3b94-be32-d104d89a3a6a.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/session.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/5f90bf1f-575d-3542-89d7-731859eee6f2.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/5f90bf1f-575d-3542-89d7-731859eee6f2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/d75ffc85-72b0-3b94-be32-d104d89a3a6a.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/d75ffc85-72b0-3b94-be32-d104d89a3a6a.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/usernamecache.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/usernamecache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iml" afterDir="false" />
+    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="3Dもでるの適応化">
       <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/RenderTicketGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/RenderTicketGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/lang/en_US.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/en_US.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/lang/ja_JP.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/ja_JP.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/models/block/ticket_gate.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/models/block/ticket_gate.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/textures/models/ticket_gate.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/textures/blocks/ticket_gate.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +87,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -133,12 +100,12 @@
     &quot;assignee&quot;: &quot;SakuraMochi17&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/SakuraMochi17/KaisatsuMod.git",
-    "accountId": "fc66c06d-075e-4863-974e-9540af03bd98"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SakuraMochi17/KaisatsuMod.git&quot;,
+    &quot;accountId&quot;: &quot;fc66c06d-075e-4863-974e-9540af03bd98&quot;
   }
-}]]></component>
+}</component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
@@ -166,31 +133,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.KaisatsuMod [:GradleStart.main()].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true",
-    "アプリケーション.Minecraft Client.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.KaisatsuMod [:GradleStart.main()].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ノートpc&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;アプリケーション.Minecraft Client.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nitta\IdeaProjects\KaisatsuMod\src\main\resources\assets\kaisatsumod\textures\blocks" />
@@ -316,7 +283,8 @@
       <workItem from="1779110868381" duration="30000" />
       <workItem from="1779110914531" duration="132000" />
       <workItem from="1779628836752" duration="358000" />
-      <workItem from="1779840665909" duration="7449000" />
+      <workItem from="1779840665909" duration="7787000" />
+      <workItem from="1779852984035" duration="1345000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -422,7 +390,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779629102906</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="3Dもでるの適応化">
+      <option name="closed" value="true" />
+      <created>1779851252252</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1779851252252</updated>
+    </task>
+    <task id="LOCAL-00015" summary="3Dもでるの適応化">
+      <option name="closed" value="true" />
+      <created>1779851281556</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1779851281556</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,7 +422,8 @@
     <MESSAGE value="フェーズ4.5の実装" />
     <MESSAGE value="フェーズ5すすんだ" />
     <MESSAGE value="足りてないファイルの追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="足りてないファイルの追加" />
+    <MESSAGE value="3Dもでるの適応化" />
+    <option name="LAST_COMMIT_MESSAGE" value="3Dもでるの適応化" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
