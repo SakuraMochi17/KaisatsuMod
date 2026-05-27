@@ -1,0 +1,52 @@
+package com.SakuraMochi17.kaisatsumod.client.render;
+
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.AdvancedModelLoader;
+import net.minecraftforge.client.model.IModelCustom;
+import org.lwjgl.opengl.GL11;
+
+public class RenderTicketMachine extends TileEntitySpecialRenderer {
+
+    private static final ResourceLocation MODEL_LOC = new ResourceLocation("kaisatsumod", "models/block/ticket_vender_macine.obj");
+    private static final ResourceLocation TEXTURE_LOC = new ResourceLocation("kaisatsumod", "textures/blocks/ticket_machine.png");
+
+    private IModelCustom model;
+
+    public RenderTicketMachine() {
+        this.model = AdvancedModelLoader.loadModel(MODEL_LOC);
+    }
+
+    @Override
+    public void renderTileEntityAt(TileEntity te, double x, double y, double z, float partialTicks) {
+        GL11.glPushMatrix();
+
+        // ブロックの中心へ移動
+        GL11.glTranslated(x + 0.5, y, z + 0.5);
+
+        // ==========================================
+        // ★追加：Y軸（縦の軸）を中心に90度回転させる
+        // （もし自分が思っていたのとは逆の90度だった場合は、
+        // 　90.0F を -90.0F に変更してください）
+        // ==========================================
+        GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
+
+        // ★マイクラの標準的なブロックサイズ（1/16）に縮小します。
+        // もしこれでも大きい/小さい場合は、0.05F や 0.08F などに微調整してください。
+        float scale = 0.005F;
+        GL11.glScalef(scale, scale, scale);
+
+        // テクスチャをバインド
+        this.bindTexture(TEXTURE_LOC);
+
+        // ==========================================
+        // ★修正：OBJファイル内の本当の名前で個別に呼び出す
+        // ==========================================
+
+        // 1. ボディパーツの描画 (obj2以外すべて)
+        this.model.renderAll();
+
+        GL11.glPopMatrix();
+    }
+}

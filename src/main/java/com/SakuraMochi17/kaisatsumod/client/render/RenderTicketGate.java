@@ -9,8 +9,8 @@ import org.lwjgl.opengl.GL11;
 
 public class RenderTicketGate extends TileEntitySpecialRenderer {
 
-    private static final ResourceLocation MODEL_LOC = new ResourceLocation("yourmodid", "models/block/ticket_gate.obj");
-    private static final ResourceLocation TEXTURE_LOC = new ResourceLocation("yourmodid", "textures/models/ticket_gate.png");
+    private static final ResourceLocation MODEL_LOC = new ResourceLocation("kaisatsumod", "models/block/ticket_gate.obj");
+    private static final ResourceLocation TEXTURE_LOC = new ResourceLocation("kaisatsumod", "textures/blocks/ticket_gate.png");
 
     private IModelCustom model;
 

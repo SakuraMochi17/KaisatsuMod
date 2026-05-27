@@ -31,7 +31,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-@Mod(modid = "yourmodid", version = "1.0")
+@Mod(modid = "kaisatsumod", name = "Kaisatsu Mod", version = "1.0")
 public class KaisatsuModMain {
 
     @Mod.Instance("yourmodid")
@@ -218,10 +218,52 @@ public class KaisatsuModMain {
 
         // クライアント側でのみモデル描画を登録する
         if (event.getSide().isClient()) {
+
+            // ----------------------------------------------------
+            // ① ワールド上での描画登録 (TESR)
+            // ----------------------------------------------------
+            // 券売機
+            cpw.mods.fml.client.registry.ClientRegistry.bindTileEntitySpecialRenderer(
+                    com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine.class,
+                    new com.SakuraMochi17.kaisatsumod.client.render.RenderTicketMachine()
+            );
+            // 改札機
             cpw.mods.fml.client.registry.ClientRegistry.bindTileEntitySpecialRenderer(
                     com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate.class,
                     new com.SakuraMochi17.kaisatsumod.client.render.RenderTicketGate()
             );
+
+            // ----------------------------------------------------
+            // ② アイテム状態での描画登録（★万能クラスを使い回す！）
+            // ----------------------------------------------------
+            // 券売機アイテムには、券売機のダミーを渡す
+            net.minecraftforge.client.MinecraftForgeClient.registerItemRenderer(
+                    net.minecraft.item.Item.getItemFromBlock(ticketMachine),
+                    new com.SakuraMochi17.kaisatsumod.client.render.ItemRenderGeneric(new com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine())
+            );
+
+            // 改札機アイテムには、改札機のダミーを渡す
+            net.minecraftforge.client.MinecraftForgeClient.registerItemRenderer(
+                    net.minecraft.item.Item.getItemFromBlock(ticketGate),
+                    new com.SakuraMochi17.kaisatsumod.client.render.ItemRenderGeneric(new com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate())
+            );
+
+            // ====================================================
+            // ★ アイテムの3Dモデル登録
+            // ====================================================
+
+            // 例：リンクワンドを3D化する場合
+            //net.minecraftforge.client.MinecraftForgeClient.registerItemRenderer(
+            //       linkWand,
+            //        new com.SakuraMochi17.kaisatsumod.client.render.ItemRenderModel("models/item/link_wand.obj", "textures/items/link_wand.png")
+            //);
+
+            // 例：ICカードを3D化する場合
+            net.minecraftforge.client.MinecraftForgeClient.registerItemRenderer(
+                 icCard,
+                 new com.SakuraMochi17.kaisatsumod.client.render.ItemRenderModel("models/item/ic_card.obj", "textures/item/ic_card.png")
+             );
+
         }
 
 

@@ -5,7 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="足りてないファイルの追加">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/examplemod/ExampleMod.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/ItemRenderGeneric.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/ItemRenderModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/RenderTicketMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/config/splash.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/config/splash.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-1.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-2.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-3.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-3.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-latest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-junk-earlystartup.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-junk-earlystartup.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/latest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/DIM-1/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/DIM-1/data/villages.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/DIM1/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/DIM1/data/villages.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/data/villages.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat_old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/5f90bf1f-575d-3542-89d7-731859eee6f2.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/5f90bf1f-575d-3542-89d7-731859eee6f2.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/d75ffc85-72b0-3b94-be32-d104d89a3a6a.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/d75ffc85-72b0-3b94-be32-d104d89a3a6a.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/session.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/5f90bf1f-575d-3542-89d7-731859eee6f2.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/5f90bf1f-575d-3542-89d7-731859eee6f2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/d75ffc85-72b0-3b94-be32-d104d89a3a6a.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/d75ffc85-72b0-3b94-be32-d104d89a3a6a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/usernamecache.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/usernamecache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/RenderTicketGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/RenderTicketGate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/lang/en_US.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/en_US.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/lang/ja_JP.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/ja_JP.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/models/block/ticket_gate.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/models/block/ticket_gate.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/yourmodid/textures/models/ticket_gate.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/textures/blocks/ticket_gate.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +95,28 @@
     <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
   </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="KaisatsuMod" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -72,18 +133,18 @@
     &quot;assignee&quot;: &quot;SakuraMochi17&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/SakuraMochi17/KaisatsuMod.git&quot;,
-    &quot;accountId&quot;: &quot;b6b7eaf5-af5d-4976-ac42-3fcb8e275d9d&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/SakuraMochi17/KaisatsuMod.git",
+    "accountId": "fc66c06d-075e-4863-974e-9540af03bd98"
   }
-}</component>
+}]]></component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="セキュリティ解析" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2,
@@ -105,30 +166,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;アプリケーション.Minecraft Client.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.KaisatsuMod [:GradleStart.main()].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true",
+    "アプリケーション.Minecraft Client.executor": "Run"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nitta\IdeaProjects\KaisatsuMod\src\main\resources\assets\kaisatsumod\textures\blocks" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.SakuraMochi17.kaisatsumod.client.render" />
+    </key>
+  </component>
   <component name="RunManager" selected="アプリケーション.Minecraft Client">
     <configuration default="true" factoryName="Applet" type="Applet">
       <module name="" />
@@ -151,8 +221,10 @@
       <Port>5050</Port>
     </configuration>
     <configuration name="Minecraft Client" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="GradleStart" />
-      <module name="forge-1.7.10-10.13.4.1614-1.7.10-src" />
+      <module name="KaisatsuMod.main" />
       <option name="VM_PARAMETERS" value="-Xmx6G -Xms256M -Dfml.ignoreInvalidMinecraftCertificates=true" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/eclipse" />
       <RunnerSettings RunnerId="Run" />
@@ -202,6 +274,18 @@
         <option name="BuildArtifacts" enabled="false" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="アプリケーション.Minecraft Client" />
+      <item itemvalue="アプリケーション.Minecraft Server" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.24374.151" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.24374.151" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500">
     <option name="USER" value="" />
@@ -232,6 +316,7 @@
       <workItem from="1779110868381" duration="30000" />
       <workItem from="1779110914531" duration="132000" />
       <workItem from="1779628836752" duration="358000" />
+      <workItem from="1779840665909" duration="7449000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />

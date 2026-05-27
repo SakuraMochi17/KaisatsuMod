@@ -29,4 +29,23 @@ public class BlockTicketMachine extends BlockContainer {
         }
         return true;
     }
+
+    @Override
+    public boolean renderAsNormalBlock() {
+        // 通常の四角いブロックとしての描画を無効化
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        // 光を透過するように設定（これがないと周りのブロックが透けたり影がバグったりします）
+        return false;
+    }
+
+    @Override
+    public int getRenderType() {
+        // -1 を返すことで「TileEntitySpecialRenderer (TESR) を使って描画する」という合図になります
+        return -1;
+    }
 }
+

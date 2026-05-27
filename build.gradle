@@ -16,8 +16,8 @@ apply plugin: 'forge'
 // これ以降（version = "1.0" など）はそのまま
 
 version = "1.0"
-group= "com.SakuraMochi17.yourmodid"
-archivesBaseName = "yourmodid"
+group= "com.SakuraMochi17.kaisatsumod"
+archivesBaseName = "kaisatsumod"
 
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
@@ -46,4 +46,6 @@ processResources
                 exclude 'mcmod.info'
             }
         }
-
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
