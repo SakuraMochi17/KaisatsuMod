@@ -4,9 +4,58 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="3Dもでるの適応化">
-      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.ipr" afterDir="false" />
+    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="ブランチ切り離し">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/command/CommandResetStations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/config/kaisatsumod/lines/jr_east.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/config/kaisatsumod/lines/tokyo_metro.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/config/splash.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/config/splash.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-27-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-27-1.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-27-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-27-2.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-27-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-27-3.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-27-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-27-4.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-27-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-27-5.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-27-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-27-6.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-27-7.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-27-7.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-1.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-2.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-3.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-3.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-latest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-junk-earlystartup.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-junk-earlystartup.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/logs/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/latest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/DIM-1/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/DIM-1/data/villages.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/DIM1/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/DIM1/data/villages.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/data/villages.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat_old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/04ba6478-628e-32a2-915d-0b45ca8b366b.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/04ba6478-628e-32a2-915d-0b45ca8b366b.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/8c1ef9e6-3632-3ca3-9eee-559f6e0a39df.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/8c1ef9e6-3632-3ca3-9eee-559f6e0a39df.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/dfa57433-6d23-31fd-a282-bdca1175e553.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/dfa57433-6d23-31fd-a282-bdca1175e553.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/session.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/04ba6478-628e-32a2-915d-0b45ca8b366b.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/04ba6478-628e-32a2-915d-0b45ca8b366b.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/8c1ef9e6-3632-3ca3-9eee-559f6e0a39df.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/8c1ef9e6-3632-3ca3-9eee-559f6e0a39df.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/dfa57433-6d23-31fd-a282-bdca1175e553.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/dfa57433-6d23-31fd-a282-bdca1175e553.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockStationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockStationManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/FareManager$CompanyConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/FareManager$CompanyConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/FareManager$LineConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/FareManager$LineConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/FareManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/FareManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/StationRegistry$StationData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/StationRegistry$StationData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/StationRegistry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/StationRegistry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/gui/GuiStationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/gui/GuiStationManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageStationUpdate$Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageStationUpdate$Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageStationUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageStationUpdate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityStationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityStationManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockStationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockStationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/FareManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/FareManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiStationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiStationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageStationUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageStationUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityStationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityStationManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,6 +334,7 @@
       <workItem from="1779628836752" duration="358000" />
       <workItem from="1779840665909" duration="7787000" />
       <workItem from="1779852984035" duration="1345000" />
+      <workItem from="1779854948549" duration="3425000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -406,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779851281556</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="ブランチ切り離し">
+      <option name="closed" value="true" />
+      <created>1779854978025</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1779854978025</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,7 +481,8 @@
     <MESSAGE value="フェーズ5すすんだ" />
     <MESSAGE value="足りてないファイルの追加" />
     <MESSAGE value="3Dもでるの適応化" />
-    <option name="LAST_COMMIT_MESSAGE" value="3Dもでるの適応化" />
+    <MESSAGE value="ブランチ切り離し" />
+    <option name="LAST_COMMIT_MESSAGE" value="ブランチ切り離し" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

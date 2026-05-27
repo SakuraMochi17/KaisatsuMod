@@ -292,6 +292,13 @@ public class KaisatsuModMain {
 
 
     }
+    // init() メソッドなどの下に追加してください
+    @EventHandler
+    public void serverStarting(cpw.mods.fml.common.event.FMLServerStartingEvent event) {
+        // ★コマンドの登録
+        event.registerServerCommand(new com.SakuraMochi17.kaisatsumod.command.CommandResetStations());
+    }
+
     // アイテムがお金かどうか、いくらかを判定するメソッド
     // ====================================================
     // RTM連携用キャッシュと通貨処理メソッド群

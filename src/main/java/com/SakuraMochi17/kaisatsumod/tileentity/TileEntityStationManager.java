@@ -10,8 +10,9 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityStationManager extends TileEntity {
     public String lineID = "line_yamanote";
     public String stationName = "東京";
+    public String nextStation1 = "未設定"; // ★追加
+    public String nextStation2 = "未設定"; // ★追加
 
-    // ★追加：ワールド読み込み後に一度だけレジストリに再登録するためのフラグ
     private boolean isInitialized = false;
 
     @Override
@@ -19,7 +20,9 @@ public class TileEntityStationManager extends TileEntity {
         super.readFromNBT(nbt);
         this.lineID = nbt.getString("LineID");
         this.stationName = nbt.getString("StationName");
-        // ロード時はまだ初期化されていないのでフラグを下げる
+        // ★追加
+        this.nextStation1 = nbt.hasKey("Next1") ? nbt.getString("Next1") : "未設定";
+        this.nextStation2 = nbt.hasKey("Next2") ? nbt.getString("Next2") : "未設定";
         this.isInitialized = false;
     }
 
@@ -28,20 +31,17 @@ public class TileEntityStationManager extends TileEntity {
         super.writeToNBT(nbt);
         nbt.setString("LineID", this.lineID);
         nbt.setString("StationName", this.stationName);
+        nbt.setString("Next1", this.nextStation1); // ★追加
+        nbt.setString("Next2", this.nextStation2); // ★追加
     }
 
-    // ★重要：Minecraft 1.7.10が毎Tick呼び出すアップデート処理
     @Override
     public void updateEntity() {
-        // サーバー側かつ、まだ初期化（再登録）が済んでいない場合
         if (this.worldObj != null && !this.worldObj.isRemote && !this.isInitialized) {
             int dimID = this.worldObj.provider.dimensionId;
-            // メモリ上のレジストリに、ディスクから読み込んだ自分の情報を復活させる
-            StationRegistry.registerStation(dimID, this.xCoord, this.yCoord, this.zCoord, this.lineID, this.stationName);
-
-            // フラグを立てて、次回以降のTickでは処理をスキップさせる（負荷対策）
+            // ★修正: レジストリ登録時に隣接駅も渡す
+            StationRegistry.registerStation(dimID, this.xCoord, this.yCoord, this.zCoord, this.lineID, this.stationName, this.nextStation1, this.nextStation2);
             this.isInitialized = true;
-            System.out.println("[KaisatsuMod] 駅をレジストリに復元しました: " + this.stationName + " (" + this.xCoord + "," + this.zCoord + ")");
         }
     }
 
@@ -57,24 +57,26 @@ public class TileEntityStationManager extends TileEntity {
         this.readFromNBT(pkt.func_148857_g());
     }
 
-    public void updateStationInfo(String lineID, String stationName) {
+    // ★修正: パケットから情報を受け取るメソッドを拡張
+    public void updateStationInfo(String lineID, String stationName, String next1, String next2) {
         this.lineID = lineID;
         this.stationName = stationName;
+        this.nextStation1 = next1;
+        this.nextStation2 = next2;
         this.markDirty();
 
         if (this.worldObj != null && !this.worldObj.isRemote) {
             int dimID = this.worldObj.provider.dimensionId;
-            StationRegistry.registerStation(dimID, this.xCoord, this.yCoord, this.zCoord, lineID, stationName);
+            StationRegistry.registerStation(dimID, this.xCoord, this.yCoord, this.zCoord, lineID, stationName, next1, next2);
             this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
         }
     }
 
     @Override
     public void invalidate() {
-        if (this.worldObj != null && !this.worldObj.isRemote) {
-            int dimID = this.worldObj.provider.dimensionId;
-            StationRegistry.removeStation(dimID, this.xCoord, this.yCoord, this.zCoord);
-        }
+        // ★ここにあった removeStation の処理を削除！
+        // チャンクがアンロードされただけで消えてしまうのを防ぐため、
+        // 削除処理は BlockStationManager の breakBlock に任せます。
         super.invalidate();
     }
 }

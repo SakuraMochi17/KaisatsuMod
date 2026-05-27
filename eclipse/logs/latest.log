@@ -1,29 +1,34 @@
-[12:05:13] [main/INFO]: Setting user: Player15
-[12:05:14] [Client thread/INFO]: LWJGL Version: 2.9.1
-[12:05:21] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Kaisatsu Mod
-[12:05:22] [Sound Library Loader/INFO]: Sound engine started
-[12:05:23] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
-[12:05:23] [Client thread/INFO]: Created: 16x16 textures/items-atlas
-[12:05:23] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Kaisatsu Mod
-[12:05:24] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[12:05:24] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[12:05:25] [Sound Library Loader/INFO]: Sound engine started
-[12:05:58] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
-[12:05:58] [Server thread/INFO]: Generating keypair
-[12:05:58] [Server thread/INFO]: Preparing start region for level 0
-[12:05:59] [Server thread/INFO]: Changing view distance to 12, from 10
-[12:05:59] [Server thread/INFO]: Player15[local:E:1c8f89c1] logged in with entity id 152 at (572.1763937187947, 4.0, 379.63443342881396)
-[12:05:59] [Server thread/INFO]: Player15 がゲームに参加しました
-[12:06:02] [Server thread/INFO]: Player15 は [所持品の確認] の実績を取得した
-[12:06:02] [Client thread/INFO]: [CHAT] Player15 は [所持品の確認] の実績を取得した
-[12:06:16] [Server thread/INFO]: Saving and pausing game...
-[12:06:16] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
-[12:06:16] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
-[12:06:16] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
-[12:06:18] [Server thread/INFO]: Stopping server
-[12:06:18] [Server thread/INFO]: Saving players
-[12:06:18] [Server thread/INFO]: Saving worlds
-[12:06:18] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
-[12:06:18] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
-[12:06:18] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
-[12:06:20] [Client thread/INFO]: Stopping!
+[14:32:33] [main/INFO]: Setting user: Player93
+[14:32:35] [Client thread/INFO]: LWJGL Version: 2.9.1
+[14:32:42] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Kaisatsu Mod
+[14:32:43] [Sound Library Loader/INFO]: Sound engine started
+[14:32:44] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[14:32:44] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[14:32:45] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Kaisatsu Mod
+[14:32:45] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[14:32:45] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[14:32:46] [Sound Library Loader/INFO]: Sound engine started
+[14:32:54] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[14:32:54] [Server thread/INFO]: Generating keypair
+[14:32:54] [Server thread/INFO]: Preparing start region for level 0
+[14:32:55] [Server thread/INFO]: Changing view distance to 12, from 10
+[14:32:56] [Server thread/INFO]: Player93[local:E:29ccdb92] logged in with entity id 153 at (572.344046814324, 4.0, 383.2575482723879)
+[14:32:56] [Server thread/INFO]: Player93 がゲームに参加しました
+[14:33:06] [Client thread/INFO]: [CHAT] §a[KaisatsuMod] 4件の駅データをすべて初期化しました。
+[14:33:06] [Client thread/INFO]: [CHAT] §7現在設置されている駅ブロックは、ワールドに入り直すかブロックを更新すると再登録されます。
+[14:33:17] [Client thread/INFO]: [CHAT] §a駅を更新しました: 東京 (隣接: 未設定 / 未設定)
+[14:33:22] [Client thread/INFO]: [CHAT] §a駅を更新しました: 品川 (隣接: 未設定 / 未設定)
+[14:33:34] [Client thread/INFO]: [CHAT] §a駅を更新しました: 品川 (隣接: 東京 / 未設定)
+[14:33:49] [Client thread/INFO]: [CHAT] §a駅を更新しました: 東京 (隣接: 品川 / 未設定)
+[14:33:53] [Client thread/INFO]: [CHAT] §a駅を更新しました: 品川 (隣接: 東京 / 未設定)
+[14:33:57] [Server thread/INFO]: Saving and pausing game...
+[14:33:57] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[14:33:57] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[14:33:57] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[14:33:58] [Server thread/INFO]: Stopping server
+[14:33:58] [Server thread/INFO]: Saving players
+[14:33:58] [Server thread/INFO]: Saving worlds
+[14:33:58] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[14:33:58] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[14:33:58] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[14:34:00] [Client thread/INFO]: Stopping!
