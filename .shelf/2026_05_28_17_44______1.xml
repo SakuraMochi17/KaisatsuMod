@@ -1,0 +1,39 @@
+<changelist name="2026_05_28_17_44_の_チェックアウト_前の未コミットの変更_[変更]1" date="1779957865582" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.shelf/2026_05_28_17_44_の_チェックアウト_前の未コミットの変更_[変更]1/shelved.patch" />
+  <option name="DESCRIPTION" value="2026/05/28 17:44 の チェックアウト 前の未コミットの変更 [変更]" />
+  <binary>
+    <option name="BEFORE_PATH" value="eclipse/logs/2026-05-27-4.log.gz" />
+    <option name="AFTER_PATH" value="eclipse/logs/2026-05-27-4.log.gz" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.shelf/2026_05_28_17_44_の_チェックアウト_前の未コミットの変更_[変更]1/2026-05-27-4.log.gz" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="eclipse/logs/2026-05-27-7.log.gz" />
+    <option name="AFTER_PATH" value="eclipse/logs/2026-05-27-7.log.gz" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.shelf/2026_05_28_17_44_の_チェックアウト_前の未コミットの変更_[変更]1/2026-05-27-7.log.gz" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="eclipse/logs/2026-05-27-3.log.gz" />
+    <option name="AFTER_PATH" value="eclipse/logs/2026-05-27-3.log.gz" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.shelf/2026_05_28_17_44_の_チェックアウト_前の未コミットの変更_[変更]1/2026-05-27-3.log.gz" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="eclipse/logs/2026-05-27-2.log.gz" />
+    <option name="AFTER_PATH" value="eclipse/logs/2026-05-27-2.log.gz" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.shelf/2026_05_28_17_44_の_チェックアウト_前の未コミットの変更_[変更]1/2026-05-27-2.log.gz" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="eclipse/logs/2026-05-27-5.log.gz" />
+    <option name="AFTER_PATH" value="eclipse/logs/2026-05-27-5.log.gz" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.shelf/2026_05_28_17_44_の_チェックアウト_前の未コミットの変更_[変更]1/2026-05-27-5.log.gz" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="eclipse/logs/2026-05-27-6.log.gz" />
+    <option name="AFTER_PATH" value="eclipse/logs/2026-05-27-6.log.gz" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.shelf/2026_05_28_17_44_の_チェックアウト_前の未コミットの変更_[変更]1/2026-05-27-6.log.gz" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="eclipse/logs/2026-05-27-1.log.gz" />
+    <option name="AFTER_PATH" value="eclipse/logs/2026-05-27-1.log.gz" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.shelf/2026_05_28_17_44_の_チェックアウト_前の未コミットの変更_[変更]1/2026-05-27-1.log.gz" />
+  </binary>
+</changelist>
