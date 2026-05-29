@@ -1,8 +1,6 @@
 package com.SakuraMochi17.kaisatsumod.network;
 
-import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
-import com.SakuraMochi17.kaisatsumod.core.StationRegistry;
-import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
+import com.SakuraMochi17.kaisatsumod.item.ItemTicket;
 import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -12,21 +10,23 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
+import net.minecraft.util.ChatComponentText;
+
+import java.nio.charset.StandardCharsets;
 
 public class MessagePurchaseTicket implements IMessage {
-    private int x, y, z;
-    private int fare;
-    private boolean isNyujoken;
+    public int x, y, z;
+    public int fare;
+    public String stationName;
 
     public MessagePurchaseTicket() {}
 
-    public MessagePurchaseTicket(int x, int y, int z, int fare, boolean isNyujoken) {
+    public MessagePurchaseTicket(int x, int y, int z, int fare, String stationName) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.fare = fare;
-        this.isNyujoken = isNyujoken;
+        this.stationName = stationName;
     }
 
     @Override
@@ -35,7 +35,10 @@ public class MessagePurchaseTicket implements IMessage {
         this.y = buf.readInt();
         this.z = buf.readInt();
         this.fare = buf.readInt();
-        this.isNyujoken = buf.readBoolean();
+        int length = buf.readInt();
+        byte[] bytes = new byte[length];
+        buf.readBytes(bytes);
+        this.stationName = new String(bytes, StandardCharsets.UTF_8);
     }
 
     @Override
@@ -44,92 +47,39 @@ public class MessagePurchaseTicket implements IMessage {
         buf.writeInt(this.y);
         buf.writeInt(this.z);
         buf.writeInt(this.fare);
-        buf.writeBoolean(this.isNyujoken);
+        byte[] bytes = this.stationName.getBytes(StandardCharsets.UTF_8);
+        buf.writeInt(bytes.length);
+        buf.writeBytes(bytes);
     }
 
     public static class Handler implements IMessageHandler<MessagePurchaseTicket, IMessage> {
         @Override
         public IMessage onMessage(MessagePurchaseTicket message, MessageContext ctx) {
+            // ★修正：1.7.10の仕様に合わせて直接処理を書く
             EntityPlayerMP player = ctx.getServerHandler().playerEntity;
-            World world = player.worldObj;
-            TileEntity te = world.getTileEntity(message.x, message.y, message.z);
+            TileEntity te = player.worldObj.getTileEntity(message.x, message.y, message.z);
 
             if (te instanceof TileEntityTicketMachine) {
                 TileEntityTicketMachine machine = (TileEntityTicketMachine) te;
 
-                if (!machine.isLinked) return null;
+                // TODO: お金の消費処理は後でここに書きます
 
-                int dimID = world.provider.dimensionId;
-                StationRegistry.StationData currentStation = StationRegistry.findNearestStation(dimID, machine.linkedX, machine.linkedY, machine.linkedZ, 1.0);
+                // お金が足りていると仮定して、切符を生成
+                ItemStack ticketStack = new ItemStack(com.SakuraMochi17.kaisatsumod.KaisatsuModMain.ticket);
+                ticketStack.setTagCompound(new NBTTagCompound());
+                ticketStack.stackTagCompound.setInteger("fare", message.fare);
+                ticketStack.stackTagCompound.setString("buyStation", message.stationName);
+                ticketStack.stackTagCompound.setBoolean("used", false);
 
-                if (currentStation == null) return null;
-
-                int requiredAmount = message.isNyujoken ? 150 : message.fare;
-
-                // 1. 現金の合計を計算 (スロット1〜9)
-                int totalInserted = 0;
-                for (int i = 1; i <= 9; i++) {
-                    ItemStack slotItem = machine.getStackInSlot(i);
-                    if (slotItem != null) {
-                        totalInserted += KaisatsuModMain.getMoneyValue(slotItem) * slotItem.stackSize;
-                    }
+                // プレイヤーのインベントリに直接突っ込む（一杯なら足元にドロップ）
+                if (!player.inventory.addItemStackToInventory(ticketStack)) {
+                    player.dropPlayerItemWithRandomChoice(ticketStack, false);
                 }
 
-                // 2. ICカードの残高を確認 (スロット0)
-                ItemStack icCardStack = machine.getStackInSlot(0);
-                boolean hasICCard = icCardStack != null && icCardStack.getItem() instanceof ItemICCard;
-                int icBalance = 0;
-                if (hasICCard) {
-                    if (icCardStack.stackTagCompound == null) {
-                        icCardStack.setTagCompound(new NBTTagCompound());
-                        icCardStack.stackTagCompound.setInteger("balance", 0);
-                    }
-                    icBalance = icCardStack.stackTagCompound.getInteger("balance");
-                }
-
-                // 排出口(スロット10)が空いているかチェック
-                if (machine.getStackInSlot(10) != null) return null;
-
-                boolean paymentSuccess = false;
-
-                // 3. 決済ロジック（現金優先、足りなければICカード）
-                if (totalInserted >= requiredAmount) {
-                    // 現金で決済
-                    // 現金で決済
-                    for (int i = 1; i <= 9; i++) {
-                        machine.setInventorySlotContents(i, null);
-                    }
-                    int change = totalInserted - requiredAmount;
-                    if (change > 0) {
-                        // ★修正：お釣りとして、RTMのお金（未導入なら自作のお金）を返すように変更
-                        if (change >= 1000) { machine.setInventorySlotContents(11, KaisatsuModMain.getMoneyItemStack(1000, change / 1000)); change %= 1000; }
-                        if (change >= 100) { machine.setInventorySlotContents(12, KaisatsuModMain.getMoneyItemStack(100, change / 100)); change %= 100; }
-                        if (change >= 10) { machine.setInventorySlotContents(13, KaisatsuModMain.getMoneyItemStack(10, change / 10)); change %= 10; }
-                        if (change >= 1) { machine.setInventorySlotContents(14, KaisatsuModMain.getMoneyItemStack(1, change)); }
-                    }
-                    paymentSuccess = true;
-                } else if (hasICCard && icBalance >= requiredAmount) {
-                    // ICカードで決済
-                    icCardStack.stackTagCompound.setInteger("balance", icBalance - requiredAmount);
-                    paymentSuccess = true;
-                }
-
-                if (paymentSuccess) {
-                    // 発券処理
-                    ItemStack ticketStack = new ItemStack(KaisatsuModMain.ticket);
-                    ticketStack.setTagCompound(new NBTTagCompound());
-                    ticketStack.stackTagCompound.setString("entryLine", currentStation.lineID);
-                    ticketStack.stackTagCompound.setString("entryStation", currentStation.stationName);
-                    ticketStack.stackTagCompound.setInteger("fare", requiredAmount);
-                    ticketStack.stackTagCompound.setBoolean("isUsed", false);
-                    ticketStack.stackTagCompound.setBoolean("isNyujoken", message.isNyujoken);
-                    machine.setInventorySlotContents(10, ticketStack);
-
-                    world.playSoundEffect(message.x, message.y, message.z, "random.click", 1.0F, 1.2F);
-                    machine.markDirty();
-                }
+                player.addChatMessage(new ChatComponentText("§a券売機: " + message.stationName + "からの " + message.fare + "円区間きっぷを発行しました。§r"));
+                player.worldObj.playSoundAtEntity(player, "random.orb", 1.0F, 1.0F);
             }
-            return null;
+            return null; // 必ずnullを返す
         }
     }
 }

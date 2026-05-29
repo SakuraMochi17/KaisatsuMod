@@ -13,6 +13,12 @@ public class TileEntityChargeMachine extends TileEntity implements IInventory {
     // 0: ICカード(入力), 1: お金(入力), 2: チャージ後カード(出力)
     private ItemStack[] inventory = new ItemStack[3];
 
+    // --- 連携用の変数 ---
+    public boolean isLinked = false;
+    public int linkedX;
+    public int linkedY;
+    public int linkedZ;
+
     @Override
     public int getSizeInventory() { return inventory.length; }
 
@@ -84,10 +90,18 @@ public class TileEntityChargeMachine extends TileEntity implements IInventory {
         return false;
     }
 
-    // NBTへの保存・読み込み処理（ワールド終了時にアイテムを落とさないため）
+    // NBTへの保存・読み込み処理（ワールド終了時にアイテムと連携データを落とさないため）
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
+
+        // ★連携データの読み込み
+        this.isLinked = nbt.getBoolean("isLinked");
+        this.linkedX = nbt.getInteger("linkedX");
+        this.linkedY = nbt.getInteger("linkedY");
+        this.linkedZ = nbt.getInteger("linkedZ");
+
+        // インベントリの読み込み
         NBTTagList nbttaglist = nbt.getTagList("Items", 10);
         this.inventory = new ItemStack[this.getSizeInventory()];
         for (int i = 0; i < nbttaglist.tagCount(); ++i) {
@@ -102,6 +116,14 @@ public class TileEntityChargeMachine extends TileEntity implements IInventory {
     @Override
     public void writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
+
+        // ★連携データの書き込み
+        nbt.setBoolean("isLinked", this.isLinked);
+        nbt.setInteger("linkedX", this.linkedX);
+        nbt.setInteger("linkedY", this.linkedY);
+        nbt.setInteger("linkedZ", this.linkedZ);
+
+        // インベントリの書き込み
         NBTTagList nbttaglist = new NBTTagList();
         for (int i = 0; i < this.inventory.length; ++i) {
             if (this.inventory[i] != null) {

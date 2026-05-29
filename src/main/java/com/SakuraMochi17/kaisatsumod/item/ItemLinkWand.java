@@ -1,14 +1,7 @@
 package com.SakuraMochi17.kaisatsumod.item;
 
 import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
-import com.SakuraMochi17.kaisatsumod.block.BlockStationManager;
-import com.SakuraMochi17.kaisatsumod.block.BlockTicketGate;
-import com.SakuraMochi17.kaisatsumod.block.BlockTicketMachine;
-import com.SakuraMochi17.kaisatsumod.block.BlockTransferGate;
-import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate;
-import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine;
-import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTransferGate;
-import net.minecraft.block.Block;
+import com.SakuraMochi17.kaisatsumod.tileentity.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -28,75 +21,129 @@ public class ItemLinkWand extends Item {
     }
 
     @Override
-    public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-        Block clickedBlock = world.getBlock(x, y, z);
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+        if (world.isRemote) return true; // サーバー側でのみ処理
 
-        if (!(clickedBlock instanceof BlockStationManager || clickedBlock instanceof BlockTicketGate ||
-                clickedBlock instanceof BlockTicketMachine || clickedBlock instanceof BlockTransferGate)) {
-            return false;
-        }
+        TileEntity te = world.getTileEntity(x, y, z);
+        if (te == null) return false;
 
-        if (world.isRemote) {
-            return false;
-        }
-
-        if (!stack.hasTagCompound()) {
+        // ワンドのNBT（記憶領域）を準備
+        if (stack.stackTagCompound == null) {
             stack.setTagCompound(new NBTTagCompound());
         }
 
-        if (clickedBlock instanceof BlockStationManager) {
-            stack.getTagCompound().setBoolean("hasData", true);
-            stack.getTagCompound().setInteger("savedX", x);
-            stack.getTagCompound().setInteger("savedY", y);
-            stack.getTagCompound().setInteger("savedZ", z);
-            player.addChatMessage(new ChatComponentText("§a[リンクワンド] 駅管理ブロックの座標を記憶しました！ (" + x + ", " + y + ", " + z + ")"));
-            world.playSoundAtEntity(player, "random.levelup", 1.0F, 2.0F);
-            return true;
-        }
+        // ====================================================
+        // ① 駅管理ブロックをスニーク(Shift)＋右クリックで「座標を記憶」
+        // ====================================================
+        if (player.isSneaking() && te instanceof TileEntityStationManager) {
+            TileEntityStationManager stationTE = (TileEntityStationManager) te;
 
-        boolean hasData = stack.getTagCompound().getBoolean("hasData");
-        if (!hasData) {
-            player.addChatMessage(new ChatComponentText("§c[リンクワンド] 先に駅管理ブロックを右クリックして座標を記憶させてください。"));
-            return true;
-        }
-
-        int savedX = stack.getTagCompound().getInteger("savedX");
-        int savedY = stack.getTagCompound().getInteger("savedY");
-        int savedZ = stack.getTagCompound().getInteger("savedZ");
-        TileEntity te = world.getTileEntity(x, y, z);
-
-        if (clickedBlock instanceof BlockTicketGate && te instanceof TileEntityTicketGate) {
-            ((TileEntityTicketGate) te).setLinkedStation(savedX, savedY, savedZ);
-            player.addChatMessage(new ChatComponentText("§b[リンクワンド] 改札機を駅と連携させました！"));
-            world.playSoundAtEntity(player, "random.orb", 1.0F, 1.0F);
-            return true;
-        }
-
-        if (clickedBlock instanceof BlockTicketMachine && te instanceof TileEntityTicketMachine) {
-            ((TileEntityTicketMachine) te).setLinkedStation(savedX, savedY, savedZ);
-            player.addChatMessage(new ChatComponentText("§b[リンクワンド] 自動券売機を駅と連携させました！"));
-            world.playSoundAtEntity(player, "random.orb", 1.0F, 1.0F);
-            return true;
-        }
-
-        if (clickedBlock instanceof BlockTransferGate && te instanceof TileEntityTransferGate) {
-            TileEntityTransferGate transferTE = (TileEntityTransferGate) te;
-            if (!transferTE.isLinked1) {
-                transferTE.setLink1(savedX, savedY, savedZ);
-                // ★修正：メッセージを2行に分割して表示崩れを防止
-                player.addChatMessage(new ChatComponentText("§d[リンクワンド] 1/2: 乗り換え元（降車駅）を設定しました。"));
-                player.addChatMessage(new ChatComponentText("§d続けて別の駅を記憶し、再度タッチしてください。"));
-                world.playSoundAtEntity(player, "random.orb", 1.0F, 1.0F);
-            } else if (!transferTE.isLinked2) {
-                transferTE.setLink2(savedX, savedY, savedZ);
-                player.addChatMessage(new ChatComponentText("§d[リンクワンド] 2/2: 乗り換え先（乗車駅）を設定しました。セットアップ完了！"));
-                world.playSoundAtEntity(player, "random.levelup", 1.0F, 1.0F);
-            } else {
-                player.addChatMessage(new ChatComponentText("§c[リンクワンド] すでに2つの駅が設定されています。リセットする場合はスニーク＋素手で右クリックしてください。"));
+            // ★追加：駅名がまだ保存されておらずnullだった場合の安全装置
+            String sName = stationTE.stationName;
+            if (sName == null || sName.isEmpty()) {
+                sName = "未設定";
             }
+
+            stack.stackTagCompound.setInteger("storedX", x);
+            stack.stackTagCompound.setInteger("storedY", y);
+            stack.stackTagCompound.setInteger("storedZ", z);
+            stack.stackTagCompound.setString("storedName", sName); // ★安全な変数を書き込む
+
+            player.addChatMessage(new ChatComponentText("§a[リンクワンド] 駅「" + sName + "」の座標データを記憶しました。§r"));
+            world.playSoundAtEntity(player, "random.orb", 1.0F, 1.0F);
             return true;
         }
 
-        return true;
+        // ====================================================
+        // ② 改札機や券売機を右クリックで「座標をペースト（連携）」
+        // ====================================================
+        if (!player.isSneaking() && stack.stackTagCompound.hasKey("storedX")) {
+            int storedX = stack.stackTagCompound.getInteger("storedX");
+            int storedY = stack.stackTagCompound.getInteger("storedY");
+            int storedZ = stack.stackTagCompound.getInteger("storedZ");
+            String storedName = stack.stackTagCompound.getString("storedName");
+
+            // --- 自動改札機への連携 ---
+            if (te instanceof TileEntityTicketGate) {
+                TileEntityTicketGate gateTE = (TileEntityTicketGate) te;
+                gateTE.linkedX = storedX;
+                gateTE.linkedY = storedY;
+                gateTE.linkedZ = storedZ;
+                gateTE.isLinked = true;
+                gateTE.markDirty();
+                world.markBlockForUpdate(x, y, z);
+
+                player.addChatMessage(new ChatComponentText("§b[リンクワンド] 自動改札機を「" + storedName + "」駅として設定しました！§r"));
+                world.playSoundAtEntity(player, "random.levelup", 1.0F, 1.0F);
+                return true;
+            }
+            // --- 自動改札機への連携 ---
+            // (既存のコード)
+
+            // ★追加・修正：乗り換え改札機への二重連携 ---
+            else if (te instanceof TileEntityTransferGate) {
+                TileEntityTransferGate gateTE = (TileEntityTransferGate) te;
+
+                // スニーク(Shift)しながら叩いた場合は「入場駅」として設定
+                if (player.isSneaking()) {
+                    gateTE.linked2X = storedX;
+                    gateTE.linked2Y = storedY;
+                    gateTE.linked2Z = storedZ;
+                    gateTE.isLinked2 = true;
+                    player.addChatMessage(new ChatComponentText("§b[リンクワンド] 乗り換え改札機の【入場駅(これから乗る駅)】を「" + storedName + "」駅として設定しました！§r"));
+                }
+                // 普通に叩いた場合は「出場駅」として設定
+                else {
+                    gateTE.linked1X = storedX;
+                    gateTE.linked1Y = storedY;
+                    gateTE.linked1Z = storedZ;
+                    gateTE.isLinked1 = true;
+                    player.addChatMessage(new ChatComponentText("§b[リンクワンド] 乗り換え改札機の【出場駅(ここまで乗ってきた駅)】を「" + storedName + "」駅として設定しました！§r"));
+                }
+
+                gateTE.markDirty();
+                world.markBlockForUpdate(x, y, z);
+                world.playSoundAtEntity(player, "random.levelup", 1.0F, 1.0F);
+                return true;
+            }
+
+            // --- 券売機への連携 ---
+            // (既存のコード)
+            // --- 券売機への連携 ---
+            else if (te instanceof TileEntityTicketMachine) {
+                TileEntityTicketMachine machineTE = (TileEntityTicketMachine) te;
+                machineTE.linkedX = storedX;
+                machineTE.linkedY = storedY;
+                machineTE.linkedZ = storedZ;
+                // ★追加：駅名を確実にセットする
+                machineTE.stationName = storedName;
+
+                machineTE.isLinked = true;
+                machineTE.markDirty();
+
+                // ★追加：この1行で、修正1の「getDescriptionPacket」が呼び出され、画面に品川駅が同期されます！
+                world.markBlockForUpdate(x, y, z);
+
+                player.addChatMessage(new ChatComponentText("§b[リンクワンド] 券売機を「" + storedName + "」駅として設定しました！§r"));
+                world.playSoundAtEntity(player, "random.levelup", 1.0F, 1.0F);
+                return true;
+            }
+            // --- チャージ機への連携 ---
+            else if (te instanceof TileEntityChargeMachine) {
+                TileEntityChargeMachine chargeTE = (TileEntityChargeMachine) te;
+                chargeTE.linkedX = storedX;
+                chargeTE.linkedY = storedY;
+                chargeTE.linkedZ = storedZ;
+                chargeTE.isLinked = true;
+                chargeTE.markDirty();
+                world.markBlockForUpdate(x, y, z);
+
+                player.addChatMessage(new ChatComponentText("§b[リンクワンド] 精算機・チャージ機を「" + storedName + "」駅として設定しました！§r"));
+                world.playSoundAtEntity(player, "random.levelup", 1.0F, 1.0F);
+                return true;
+            }
+        }
+
+        return false;
     }
 }

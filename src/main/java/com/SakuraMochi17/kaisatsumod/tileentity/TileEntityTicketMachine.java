@@ -16,6 +16,9 @@ public class TileEntityTicketMachine extends TileEntity implements IInventory {
     public boolean isLinked = false;
     public int linkedX, linkedY, linkedZ;
 
+    // ★追加：この券売機が所属している駅の名前
+    public String stationName = "未設定";
+
     // ▼ 既存のものをこれに書き換える
     public void setLinkedStation(int x, int y, int z) {
         this.isLinked = true;
@@ -99,9 +102,13 @@ public class TileEntityTicketMachine extends TileEntity implements IInventory {
         return false;
     }
 
+    // ★NBTの読み書きにstationNameを追加（ワールド終了時に駅名を忘れないため）
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
+        if (nbt.hasKey("stationName")) {
+            this.stationName = nbt.getString("stationName");
+        }
         NBTTagList nbttaglist = nbt.getTagList("Items", 10);
         this.inventory = new ItemStack[this.getSizeInventory()];
         for (int i = 0; i < nbttaglist.tagCount(); ++i) {
@@ -121,6 +128,7 @@ public class TileEntityTicketMachine extends TileEntity implements IInventory {
     @Override
     public void writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
+        nbt.setString("stationName", this.stationName);
         NBTTagList nbttaglist = new NBTTagList();
         for (int i = 0; i < this.inventory.length; ++i) {
             if (this.inventory[i] != null) {

@@ -5,6 +5,7 @@ import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -23,6 +24,14 @@ public class BlockTicketMachine extends BlockContainer {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+
+        // ★追加：リンクワンドを持っている場合はGUIを開かず、ワンド側の処理（ItemLinkWand）に任せる！
+        ItemStack heldItem = player.getCurrentEquippedItem();
+        if (heldItem != null && heldItem.getItem() instanceof com.SakuraMochi17.kaisatsumod.item.ItemLinkWand) {
+            return false;
+        }
+
+        // ... 以下、既存のGUIを開く処理 ...
         if (!world.isRemote) {
             // 切符発売機は GUI ID 3 とする
             player.openGui(KaisatsuModMain.instance, 3, world, x, y, z);
