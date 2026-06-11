@@ -14,7 +14,7 @@ public class ItemLinkWand extends Item {
 
     public ItemLinkWand() {
         super();
-        this.setUnlocalizedName("linkWand");
+        this.setUnlocalizedName("settingTool");
         this.setTextureName("minecraft:blaze_rod");
         this.setCreativeTab(KaisatsuModMain.tabKaisatsu);
         this.setMaxStackSize(1);

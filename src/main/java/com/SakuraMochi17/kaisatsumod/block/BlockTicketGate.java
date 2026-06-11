@@ -3,10 +3,7 @@ package com.SakuraMochi17.kaisatsumod.block;
 import com.SakuraMochi17.kaisatsumod.*;
 import com.SakuraMochi17.kaisatsumod.core.FareManager;
 import com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData;
-import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
 import com.SakuraMochi17.kaisatsumod.item.ItemMagicICCard;
-import com.SakuraMochi17.kaisatsumod.item.ItemTicket;
-import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStationManager;
 import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -48,49 +45,73 @@ public class BlockTicketGate extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-        TileEntity te = world.getTileEntity(x, y, z);
-        if (!(te instanceof TileEntityTicketGate)) return false;
-        TileEntityTicketGate gateTE = (TileEntityTicketGate) te;
+    public boolean onBlockActivated(net.minecraft.world.World world, int x, int y, int z, net.minecraft.entity.player.EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+        net.minecraft.tileentity.TileEntity te = world.getTileEntity(x, y, z);
+        if (!(te instanceof com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate)) return false;
+        com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate gateTE = (com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate) te;
 
-        ItemStack heldItem = player.getCurrentEquippedItem();
+        net.minecraft.item.ItemStack heldItem = player.getCurrentEquippedItem();
 
+        // =========================================================
+        // ★新規追加：設定ツールを持っている場合は駅選択GUIを開く
+        // =========================================================
+        if (heldItem != null && heldItem.getItem() == KaisatsuModMain.settingTool) {
+            // ★修正：この1行を追加！ サーバー側でのみパケット処理を実行させ、クラッシュを防ぎます
+            if (!world.isRemote) {
+                com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData data = com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData.get(world);
+                java.util.List<String> stationList = new java.util.ArrayList<>();
+                if (data != null && data.globalStations != null) {
+                    stationList.addAll(data.globalStations.keySet());
+                }
+
+                // ★修正：新しく te を定義せず、一番上で定義済みの gateTE を使って駅名を取得する
+                String currentStation = gateTE.stationName;
+                if (currentStation == null || currentStation.isEmpty()) {
+                    currentStation = "未設定";
+                }
+
+                KaisatsuModMain.network.sendTo(
+                        new com.SakuraMochi17.kaisatsumod.network.MessageOpenStationSelectGui(x, y, z, currentStation, stationList),
+                        (net.minecraft.entity.player.EntityPlayerMP) player
+                );
+            }
+            return true; // クライアント側はここで処理を終了する（腕を振るアニメーションだけ出る）
+        }
+
+        // =========================================================
+        // 既存：スニーク＋素手でモード変更
+        // =========================================================
         if (heldItem == null && player.isSneaking()) {
             if (!world.isRemote) {
                 gateTE.gateMode = (gateTE.gateMode + 1) % 3;
                 gateTE.markDirty();
                 String[] modes = {"双方向", "入場専用", "出場専用"};
-                player.addChatMessage(new ChatComponentText("改札モード: " + modes[gateTE.gateMode]));
+                player.addChatMessage(new net.minecraft.util.ChatComponentText("改札モード: " + modes[gateTE.gateMode]));
             }
             return true;
         }
 
-        if (heldItem != null && (heldItem.getItem() instanceof ItemICCard || heldItem.getItem() instanceof ItemTicket)) {
+        // =========================================================
+        // 既存：ICカードや切符を持っていた場合の処理
+        // =========================================================
+        if (heldItem != null && (heldItem.getItem() instanceof com.SakuraMochi17.kaisatsumod.item.ItemICCard || heldItem.getItem() instanceof com.SakuraMochi17.kaisatsumod.item.ItemTicket)) {
             if (!world.isRemote) {
-                // 【安全装置0】そもそも駅と連携（リンク）していない場合は最優先で弾く
-                if (!gateTE.isLinked) {
-                    player.addChatMessage(new ChatComponentText("エラー: 駅と連携されていません。リンクワンドを使用してください。"));
+
+                // ★修正：新システム（設定ツール）の駅名のみを取得（リンクワンド処理を除外）
+                String currentStationName = gateTE.stationName;
+
+                // 駅名が設定されていない場合はエラー
+                if (currentStationName == null || currentStationName.equals("未設定")) {
+                    player.addChatMessage(new net.minecraft.util.ChatComponentText("エラー: 駅が設定されていません。設定ツールを使用してください。"));
                     world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
                     return true;
                 }
 
-                // 連携先の駅が実在するか、およびその駅名を取得
-                TileEntity targetTe = world.getTileEntity(gateTE.linkedX, gateTE.linkedY, gateTE.linkedZ);
-                if (!(targetTe instanceof TileEntityStationManager)) {
-                    player.addChatMessage(new ChatComponentText("エラー: 連携先の駅ブロックが見つかりません。再連携してください。"));
-                    world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
-                    return true;
-                }
-
-                // ★追加：駅名がNullだった場合の安全装置
-                String currentStationName = ((TileEntityStationManager) targetTe).stationName;
-                if (currentStationName == null) currentStationName = "未設定";
-
-                // ★修正：会社データ自体がまだ存在しない（Null）場合のクラッシュを防ぐ鉄壁ガード
-                KaisatsuNetworkData data = KaisatsuNetworkData.get(world);
+                // 会社データ自体がまだ存在しない（Null）場合のクラッシュを防ぐ鉄壁ガード
+                com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData data = com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData.get(world);
                 boolean isRegistered = false;
-                if (data != null && data.companyLines != null) { // ← ここが超重要！
-                    for (KaisatsuNetworkData.LineData line : data.companyLines.values()) {
+                if (data != null && data.companyLines != null) {
+                    for (com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData.LineData line : data.companyLines.values()) {
                         if (line != null && line.stationOrder != null && line.stationOrder.contains(currentStationName)) {
                             isRegistered = true;
                             break;
@@ -100,8 +121,8 @@ public class BlockTicketGate extends BlockContainer {
 
                 // 路線管理ブロックにこの駅名が登録されていない場合は弾く
                 if (!isRegistered) {
-                    ChatComponentText errorMsg = new ChatComponentText("§cピンポーン♪ エラー: この駅(");
-                    errorMsg.appendText("§c" +currentStationName);
+                    net.minecraft.util.ChatComponentText errorMsg = new net.minecraft.util.ChatComponentText("§cピンポーン♪ エラー: この駅(");
+                    errorMsg.appendText("§c" + currentStationName);
                     errorMsg.appendText("§c)はまだどの路線にも登録されていません！§r");
 
                     player.addChatMessage(errorMsg);
@@ -110,9 +131,9 @@ public class BlockTicketGate extends BlockContainer {
                 }
 
                 // --- ここを通過できた＝いつでもリンクOKかつ路線登録も完了している安全な状態 ---
-                if (heldItem.getItem() instanceof ItemICCard) {
+                if (heldItem.getItem() instanceof com.SakuraMochi17.kaisatsumod.item.ItemICCard) {
                     if (heldItem.stackTagCompound == null) {
-                        heldItem.setTagCompound(new NBTTagCompound());
+                        heldItem.setTagCompound(new net.minecraft.nbt.NBTTagCompound());
                         heldItem.stackTagCompound.setInteger("balance", 1000);
                         heldItem.stackTagCompound.setBoolean("inGate", false);
                         heldItem.stackTagCompound.setString("entryLine", "");
@@ -124,9 +145,9 @@ public class BlockTicketGate extends BlockContainer {
                     if (attemptEntry) processEntry(world, x, y, z, player, heldItem, currentStationName);
                     else processExit(world, x, y, z, player, heldItem, currentStationName);
                 }
-                else if (heldItem.getItem() instanceof ItemTicket) {
+                else if (heldItem.getItem() instanceof com.SakuraMochi17.kaisatsumod.item.ItemTicket) {
                     if (heldItem.stackTagCompound == null) {
-                        player.addChatMessage(new ChatComponentText("エラー: 不正な切符です。"));
+                        player.addChatMessage(new net.minecraft.util.ChatComponentText("エラー: 不正な切符です。"));
                         return true;
                     }
                     boolean isUsed = heldItem.stackTagCompound.getBoolean("isUsed");
@@ -162,24 +183,14 @@ public class BlockTicketGate extends BlockContainer {
         // ... (以降の処理はそのまま)
 
         // 駅の属する路線IDと名前を引き出す
-        KaisatsuNetworkData data = KaisatsuNetworkData.get(world);
-        String currentLineID = "";
-        String currentLineName = "不明な路線";
-        if (data != null) {
-            for (KaisatsuNetworkData.LineData line : data.companyLines.values()) {
-                if (line.stationOrder.contains(currentStationName)) {
-                    currentLineID = line.lineID;
-                    currentLineName = line.lineName;
-                    break;
-                }
-            }
-        }
+        // --- 修正前（削除またはコメントアウトしてください） ---
+        // --------------------------------------------------
 
         card.stackTagCompound.setBoolean("inGate", true);
-        card.stackTagCompound.setString("entryLine", currentLineID);
         card.stackTagCompound.setString("entryStation", currentStationName);
 
-        player.addChatMessage(new ChatComponentText("ピッ！ 入場 [" + currentLineName + " : " + currentStationName + "]"));
+        // ★修正：チャットのメッセージから路線名を消し、駅名だけにします
+        player.addChatMessage(new ChatComponentText("ピッ！ 入場 [" + currentStationName + "]"));
         world.playSoundAtEntity(player, "random.orb", 1.0F, 1.0F);
         openGate(world, x, y, z);
     }

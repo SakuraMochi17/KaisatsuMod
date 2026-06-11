@@ -6,7 +6,6 @@ import com.SakuraMochi17.kaisatsumod.gui.*;
 import com.SakuraMochi17.kaisatsumod.item.*;
 import com.SakuraMochi17.kaisatsumod.network.*;
 import com.SakuraMochi17.kaisatsumod.tileentity.*;
-import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -17,7 +16,6 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +23,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
 import com.SakuraMochi17.kaisatsumod.proxy.CommonProxy;
 import cpw.mods.fml.common.SidedProxy;
 
@@ -55,13 +52,16 @@ public class KaisatsuModMain {
     public static Block stationManager;
     public static Block lineManager;
     public static Block oreAluminum;
+    public static Block certificateMachine;
+
 
     // === アイテム ===
     public static Item icCard;
     public static Item ticket;
-    public static Item linkWand;
+    public static Item settingTool;
     public static Item ingotAluminum;
     public static Item magicIcCard;
+    public static Item certificate;
 
     // === 通貨アイテム ===
     public static Item coin1, coin5, coin10, coin50, coin100, coin500;
@@ -92,13 +92,15 @@ public class KaisatsuModMain {
         chargeMachine  = new BlockChargeMachine();
         oreAluminum    = new BlockAluminumOre();
         lineManager  = new BlockLineManager();
+        certificateMachine = new BlockCertificateMachine();
 
         // 2. インスタンスの生成（アイテム）
         ticket         = new ItemTicket();
         icCard         = new ItemICCard();
-        linkWand       = new ItemLinkWand();
+        settingTool    = new ItemSettingTool();
         ingotAluminum  = new ItemBasic("ingot_aluminum");
         magicIcCard    = new ItemMagicICCard();
+        certificate      = new ItemCertificate();
 
         coin1          = new ItemBasic("coin_1");
         coin5          = new ItemBasic("coin_5");
@@ -120,6 +122,7 @@ public class KaisatsuModMain {
         GameRegistry.registerBlock(chargeMachine, "chargeMachine");
         GameRegistry.registerBlock(lineManager, "lineManager");
         GameRegistry.registerBlock(oreAluminum, "oreAluminum");
+        GameRegistry.registerBlock(certificateMachine, "certificateMachine");
 
         // 4. TileEntityの登録
         GameRegistry.registerTileEntity(TileEntityTransferGate.class, "TileEntityTransferGate");
@@ -129,13 +132,15 @@ public class KaisatsuModMain {
         GameRegistry.registerTileEntity(TileEntityStationManager.class, "TileEntityStationManager");
         GameRegistry.registerTileEntity(TileEntityTicketGate.class, "TileEntityTicketGate");
         GameRegistry.registerTileEntity(TileEntityLineManager.class, "TileEntityLineManager");
+        GameRegistry.registerTileEntity(TileEntityCertificateMachine.class, "TileEntityCertificateMachine");
 
         // 5. アイテムの登録
-        GameRegistry.registerItem(linkWand, "linkWand");
+        GameRegistry.registerItem(settingTool, "settingTool");
         GameRegistry.registerItem(icCard, "icCard");
         GameRegistry.registerItem(ticket, "ticket");
         GameRegistry.registerItem(ingotAluminum, "ingotAluminum");
         GameRegistry.registerItem(magicIcCard, "magicIcCard");
+        GameRegistry.registerItem(certificate, "certificate");
         GameRegistry.registerItem(coin1, "coin1");
         GameRegistry.registerItem(coin5, "coin5");
         GameRegistry.registerItem(coin10, "coin10");
@@ -155,6 +160,12 @@ public class KaisatsuModMain {
         // ★新設した「路線管理ブロック用」の通信パケットを追記
         network.registerMessage(MessageOpenLineGui.Handler.class, MessageOpenLineGui.class, 3, Side.CLIENT);
         network.registerMessage(MessageLineUpdate.Handler.class, MessageLineUpdate.class, 4, Side.SERVER);
+        network.registerMessage(MessageOpenTicketMachine.Handler.class, MessageOpenTicketMachine.class, 5, Side.CLIENT);
+        network.registerMessage(MessageOpenStationSelectGui.Handler.class, MessageOpenStationSelectGui.class, 6, Side.CLIENT);
+        network.registerMessage(MessageSaveBlockStation.Handler.class, MessageSaveBlockStation.class, 7, Side.SERVER);
+        network.registerMessage(MessageOpenTransferSelectGui.Handler.class, MessageOpenTransferSelectGui.class, 8, Side.CLIENT);
+        network.registerMessage(MessageSaveTransferStation.Handler.class, MessageSaveTransferStation.class, 9, Side.SERVER);
+        network.registerMessage(MessageStaffTerminalAdjust.Handler.class, MessageStaffTerminalAdjust.class, 10, Side.SERVER);
 
         // 7. 仮テクスチャ・アセットの一括流用
         ticketMachine.setBlockTextureName("minecraft:jukebox");
@@ -166,7 +177,7 @@ public class KaisatsuModMain {
         ingotAluminum.setTextureName("minecraft:iron_ingot");
         icCard.setTextureName("minecraft:name_tag");
         ticket.setTextureName("minecraft:paper");
-        linkWand.setTextureName("minecraft:blaze_rod");
+        settingTool.setTextureName("minecraft:blaze_rod");
 
         coin1.setTextureName("minecraft:gold_nugget");
         coin5.setTextureName("minecraft:gold_nugget");

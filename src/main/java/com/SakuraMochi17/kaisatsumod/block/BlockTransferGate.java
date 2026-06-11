@@ -5,8 +5,6 @@ import com.SakuraMochi17.kaisatsumod.core.FareManager;
 import com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData;
 import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
 import com.SakuraMochi17.kaisatsumod.item.ItemMagicICCard;
-import com.SakuraMochi17.kaisatsumod.item.ItemTicket;
-import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStationManager;
 import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTransferGate;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -23,7 +21,6 @@ import java.util.Random;
 
 public class BlockTransferGate extends BlockContainer {
     private static final int BIT_OPEN = 4;
-    private long lastClickTime = 0; // 連打ガード
 
     public BlockTransferGate() {
         super(Material.iron);
@@ -52,8 +49,6 @@ public class BlockTransferGate extends BlockContainer {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-        if (System.currentTimeMillis() - lastClickTime < 500) return true;
-        lastClickTime = System.currentTimeMillis();
 
         TileEntity te = world.getTileEntity(x, y, z);
         if (!(te instanceof TileEntityTransferGate)) return false;
@@ -61,46 +56,44 @@ public class BlockTransferGate extends BlockContainer {
 
         ItemStack heldItem = player.getCurrentEquippedItem();
 
-        // リンクワンドを持っている場合はブロック側の処理を無視
-        if (heldItem != null && heldItem.getItem() instanceof com.SakuraMochi17.kaisatsumod.item.ItemLinkWand) {
-            return false;
-        }
-
-        // スニーク＋素手で連携リセット
-        if (heldItem == null && player.isSneaking()) {
+        // =========================================================
+        // ★設定ツールを持っている場合は 乗り換え設定GUI を開く
+        // =========================================================
+        if (heldItem != null && heldItem.getItem() == KaisatsuModMain.settingTool) {
             if (!world.isRemote) {
-                gateTE.resetLinks();
-                player.addChatMessage(new ChatComponentText("§e[乗り換え改札] 連携設定をリセットしました。§r"));
+                KaisatsuNetworkData data = KaisatsuNetworkData.get(world);
+                java.util.List<String> stationList = new java.util.ArrayList<>();
+                if (data != null && data.globalStations != null) {
+                    stationList.addAll(data.globalStations.keySet());
+                }
+
+                String curExit = gateTE.exitStationName;
+                String curEntry = gateTE.entryStationName;
+
+                KaisatsuModMain.network.sendTo(
+                        new com.SakuraMochi17.kaisatsumod.network.MessageOpenTransferSelectGui(x, y, z, curExit, curEntry, stationList),
+                        (net.minecraft.entity.player.EntityPlayerMP) player
+                );
             }
             return true;
         }
 
-        if (heldItem != null && (heldItem.getItem() instanceof ItemICCard || heldItem.getItem() instanceof ItemTicket)) {
+        // =========================================================
+        // ICカードを持っていた場合の処理（リンクワンド処理は完全排除）
+        // =========================================================
+        if (heldItem != null && heldItem.getItem() instanceof ItemICCard) {
             if (!world.isRemote) {
-                if (!gateTE.isLinked1 || !gateTE.isLinked2) {
-                    player.addChatMessage(new ChatComponentText("エラー: 出場駅と入場駅の2つが連携されていません。リンクワンドで設定してください。"));
+                String exitStationName = gateTE.exitStationName;
+                String entryStationName = gateTE.entryStationName;
+
+                // エラー判定
+                if (exitStationName == null || exitStationName.equals("未設定") || entryStationName == null || entryStationName.equals("未設定")) {
+                    player.addChatMessage(new ChatComponentText("エラー: 出場駅と入場駅の2つが設定されていません。設定ツールを使用してください。"));
                     world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
                     return true;
                 }
 
-                if (heldItem.getItem() instanceof ItemTicket) {
-                    player.addChatMessage(new ChatComponentText("エラー: この乗り換え改札機は『ICカード専用』です。"));
-                    world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
-                    return true;
-                }
-
-                // 2つの駅名を取得
-                TileEntity te1 = world.getTileEntity(gateTE.linked1X, gateTE.linked1Y, gateTE.linked1Z);
-                TileEntity te2 = world.getTileEntity(gateTE.linked2X, gateTE.linked2Y, gateTE.linked2Z);
-                if (!(te1 instanceof TileEntityStationManager) || !(te2 instanceof TileEntityStationManager)) {
-                    player.addChatMessage(new ChatComponentText("エラー: 連携先の駅ブロックが見つかりません。"));
-                    return true;
-                }
-
-                String exitStationName = ((TileEntityStationManager) te1).stationName;
-                String entryStationName = ((TileEntityStationManager) te2).stationName;
-
-                // 路線登録チェック（2つの駅が両方とも路線に登録されているか）
+                // 路線登録チェック
                 KaisatsuNetworkData data = KaisatsuNetworkData.get(world);
                 boolean exitRegistered = false;
                 boolean entryRegistered = false;
@@ -117,9 +110,7 @@ public class BlockTransferGate extends BlockContainer {
                     return true;
                 }
 
-                if (heldItem.getItem() instanceof ItemICCard) {
-                    processTransfer(world, x, y, z, player, heldItem, exitStationName, entryStationName);
-                }
+                processTransfer(world, x, y, z, player, heldItem, exitStationName, entryStationName);
             }
             return true;
         }
@@ -128,15 +119,28 @@ public class BlockTransferGate extends BlockContainer {
     }
 
     private void processTransfer(World world, int x, int y, int z, EntityPlayer player, ItemStack card, String exitStationName, String entryStationName) {
+
+        // =========================================================
+        // ★追加：新品のICカード（NBTデータが空）だった場合のクラッシュ防止
+        // =========================================================
+        if (card.stackTagCompound == null) {
+            card.setTagCompound(new net.minecraft.nbt.NBTTagCompound());
+            card.stackTagCompound.setInteger("balance", 1000); // 初期残高
+            card.stackTagCompound.setBoolean("inGate", false);
+            card.stackTagCompound.setString("entryLine", "");
+            card.stackTagCompound.setString("entryStation", "");
+        }
+
+        // 入場記録がない（通常改札を通っていない）場合はエラーを出して弾く
         if (!card.stackTagCompound.getBoolean("inGate")) {
-            player.addChatMessage(new ChatComponentText("エラー: 入場記録がありません！"));
+            player.addChatMessage(new ChatComponentText("エラー: 入場記録がありません！まずは普通の改札機から入場してください。"));
             world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
             return;
         }
 
         String oldEntryStation = card.stackTagCompound.getString("entryStation");
 
-        // ★既に乗換先に入場済みの場合は弾く（ループ防止）
+        // 既に乗換先に入場済みの場合は弾く（ループ防止）
         if (oldEntryStation.equals(entryStationName)) {
             player.addChatMessage(new ChatComponentText("エラー: 既に乗り換え処理は完了しています。このまま目的地へお向かいください。"));
             world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
@@ -145,19 +149,19 @@ public class BlockTransferGate extends BlockContainer {
 
         // 1. 出場処理（A線の運賃計算）
         int fare = FareManager.calculateFare(world, oldEntryStation, exitStationName);
-
         if (fare == -1) {
-            // (経路エラー処理)
+            player.addChatMessage(new ChatComponentText("§cエラー: 経路が見つかりません。§r"));
+            world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
             return;
         }
 
-        // ★修正: 魔法のカード判定と引き落としスキップ
         boolean isMagic = card.getItem() instanceof ItemMagicICCard;
         int balance = card.stackTagCompound.getInteger("balance");
 
+        // 通常ICカードの残高確認と引き落とし
         if (!isMagic) {
             if (balance < fare) {
-                player.addChatMessage(new ChatComponentText("残高不足です！精算機をご利用ください。(運賃: " + fare + "円)"));
+                player.addChatMessage(new ChatComponentText("残高不足です！精算機をご利用ください。(運賃: " + fare + "円 / 残高: " + balance + "円)"));
                 world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);
                 return;
             }
@@ -178,17 +182,20 @@ public class BlockTransferGate extends BlockContainer {
             }
         }
 
-        card.stackTagCompound.setInteger("balance", balance - fare);
         card.stackTagCompound.setString("entryLine", newLineID);
         card.stackTagCompound.setString("entryStation", entryStationName);
-        // ※inGateはtrueのまま維持される
+        // ※inGate は true のまま維持されます
 
+        // 3. 処理完了のメッセージと音
         player.addChatMessage(new ChatComponentText("§aピピッ！ 乗り換え完了§r"));
-        player.addChatMessage(new ChatComponentText("精算: " + fare + "円 (残高: " + (balance - fare) + "円)"));
+        if (!isMagic) {
+            player.addChatMessage(new ChatComponentText("精算: " + fare + "円 (残高: " + (balance - fare) + "円)"));
+        }
         player.addChatMessage(new ChatComponentText("入場: [" + newLineName + " : " + entryStationName + "]"));
 
         world.playSoundAtEntity(player, "random.orb", 1.0F, 1.0F);
 
+        // ゲートを開ける処理
         int meta = world.getBlockMetadata(x, y, z);
         world.setBlockMetadataWithNotify(x, y, z, meta | BIT_OPEN, 3);
         world.scheduleBlockUpdate(x, y, z, this, 60);

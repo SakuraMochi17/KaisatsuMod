@@ -10,14 +10,16 @@ public class TileEntityTicketGate extends TileEntity {
     public boolean isLinked = false;
     public int linkedX, linkedY, linkedZ;
 
-    // ▼ 既存のものをこれに書き換える
+    // ★追加：設定ツールで登録された所属駅名
+    public String stationName = "未設定";
+
     public void setLinkedStation(int x, int y, int z) {
         this.isLinked = true;
         this.linkedX = x;
         this.linkedY = y;
         this.linkedZ = z;
         this.markDirty();
-        // ★追加：連携された瞬間にクライアント（画面）へデータを同期する
+        // 連携された瞬間にクライアント（画面）へデータを同期する
         if (this.worldObj != null) {
             this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
         }
@@ -31,6 +33,11 @@ public class TileEntityTicketGate extends TileEntity {
         this.linkedX = nbt.getInteger("LinkedX");
         this.linkedY = nbt.getInteger("LinkedY");
         this.linkedZ = nbt.getInteger("LinkedZ");
+
+        // ★追加：駅名の読み出し
+        if (nbt.hasKey("stationName")) {
+            this.stationName = nbt.getString("stationName");
+        }
     }
 
     @Override
@@ -41,8 +48,11 @@ public class TileEntityTicketGate extends TileEntity {
         nbt.setInteger("LinkedX", this.linkedX);
         nbt.setInteger("LinkedY", this.linkedY);
         nbt.setInteger("LinkedZ", this.linkedZ);
+
+        // ★追加：駅名の保存
+        nbt.setString("stationName", this.stationName);
     }
-    // ▼ ファイルの一番下（最後の } の手前）にこれを追加する
+
     @Override
     public net.minecraft.network.Packet getDescriptionPacket() {
         NBTTagCompound nbt = new NBTTagCompound();
