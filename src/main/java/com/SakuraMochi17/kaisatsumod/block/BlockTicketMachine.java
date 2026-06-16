@@ -1,6 +1,7 @@
 package com.SakuraMochi17.kaisatsumod.block;
 
 import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
+import com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkManager;
 import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -61,7 +62,7 @@ public class BlockTicketMachine extends BlockContainer {
                     for (com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData.LineData line : data.companyLines.values()) {
                         if (line.stationOrder != null) {
                             for (String targetStation : line.stationOrder) {
-                                int fare = com.SakuraMochi17.kaisatsumod.core.FareManager.calculateFare(world, currentStationName, targetStation);
+                                int fare = KaisatsuNetworkManager.calculateFare(world, currentStationName, targetStation);
                                 if (fare > 0) {
                                     fareSet.add((int) Math.ceil(fare / 10.0) * 10); // 10円単位切り上げ
                                 }

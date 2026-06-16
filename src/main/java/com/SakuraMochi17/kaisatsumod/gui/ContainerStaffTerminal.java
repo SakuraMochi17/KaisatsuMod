@@ -1,6 +1,6 @@
 package com.SakuraMochi17.kaisatsumod.gui;
 
-import com.SakuraMochi17.kaisatsumod.core.FareManager;
+import com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkManager;
 import com.SakuraMochi17.kaisatsumod.item.ItemCertificate;
 import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
 import com.SakuraMochi17.kaisatsumod.item.ItemTicket;
@@ -77,7 +77,7 @@ public class ContainerStaffTerminal extends Container {
 
             if (!entryStation.equals(this.lastEntryStation)) {
                 if (!entryStation.isEmpty() && terminal.stationName != null && !terminal.stationName.equals("未設定")) {
-                    int rawFare = FareManager.calculateFare(terminal.getWorldObj(), entryStation, terminal.stationName);
+                    int rawFare = KaisatsuNetworkManager.calculateFare(terminal.getWorldObj(), entryStation, terminal.stationName);
                     // ★修正：運賃を10円単位に切り上げる (経路エラーの -1 はそのまま通す)
                     if (rawFare > 0) {
                         currentCalculatedFare = (int) Math.ceil(rawFare / 10.0) * 10;

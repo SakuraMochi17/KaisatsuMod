@@ -1,7 +1,6 @@
 package com.SakuraMochi17.kaisatsumod;
 
 import com.SakuraMochi17.kaisatsumod.block.*;
-import com.SakuraMochi17.kaisatsumod.core.FareManager;
 import com.SakuraMochi17.kaisatsumod.gui.*;
 import com.SakuraMochi17.kaisatsumod.item.*;
 import com.SakuraMochi17.kaisatsumod.network.*;
@@ -53,6 +52,7 @@ public class KaisatsuModMain {
     public static Block lineManager;
     public static Block oreAluminum;
     public static Block certificateMachine;
+    public static Block fareChart;
 
 
     // === アイテム ===
@@ -93,6 +93,7 @@ public class KaisatsuModMain {
         oreAluminum    = new BlockAluminumOre();
         lineManager  = new BlockLineManager();
         certificateMachine = new BlockCertificateMachine();
+        fareChart = new BlockFareChart();
 
         // 2. インスタンスの生成（アイテム）
         ticket         = new ItemTicket();
@@ -123,6 +124,7 @@ public class KaisatsuModMain {
         GameRegistry.registerBlock(lineManager, "lineManager");
         GameRegistry.registerBlock(oreAluminum, "oreAluminum");
         GameRegistry.registerBlock(certificateMachine, "certificateMachine");
+        GameRegistry.registerBlock(fareChart, "fareChart");
 
         // 4. TileEntityの登録
         GameRegistry.registerTileEntity(TileEntityTransferGate.class, "TileEntityTransferGate");
@@ -133,6 +135,7 @@ public class KaisatsuModMain {
         GameRegistry.registerTileEntity(TileEntityTicketGate.class, "TileEntityTicketGate");
         GameRegistry.registerTileEntity(TileEntityLineManager.class, "TileEntityLineManager");
         GameRegistry.registerTileEntity(TileEntityCertificateMachine.class, "TileEntityCertificateMachine");
+        GameRegistry.registerTileEntity(TileEntityFareChart.class, "TileEntityFareChart");
 
         // 5. アイテムの登録
         GameRegistry.registerItem(settingTool, "settingTool");
@@ -191,7 +194,7 @@ public class KaisatsuModMain {
         bill10000.setTextureName("minecraft:map_empty");
 
         // 8. レガシー設定の読み込み
-        FareManager.loadAllLines(event.getModConfigurationDirectory());
+        //KaisatsuNetworkManager.loadAllLines(event.getModConfigurationDirectory());
     }
 
     @EventHandler

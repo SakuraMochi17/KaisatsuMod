@@ -1,0 +1,35 @@
+# Blocks
+tile.oreAluminum.name=알루미늄 광석
+tile.stationManager.name=역 관리 블록
+tile.lineManager.name=노선 관리 블록
+tile.ticketGate.name=자동 개찰구
+tile.chargeMachine.name=IC카드 충전기
+tile.ticketMachine.name=자동 발매기
+tile.transferGate.name=환승 개찰구
+tile.staffTerminal.name=정산소 단말기
+tile.certificateMachine.name=승차역 증명서 발행기
+tile.fareChart.name=근거리 운임표
+
+# Items
+item.ingot_aluminum.name=알루미늄 주괴
+item.icCard.name=교통 IC카드
+item.magicICCard.name=마법의 IC카드
+item.ticket.name=승차권
+item.linkWand.name=링크 완드
+item.settingTool.name=설정 도구
+item.certificate.name=승차역 증명서
+
+# Money
+item.coin_1.name=1엔 동전
+item.coin_5.name=5엔 동전
+item.coin_10.name=10엔 동전
+item.coin_50.name=50엔 동전
+item.coin_100.name=100엔 동전
+item.coin_500.name=500엔 동전
+item.bill_1000.name=1000엔 지폐
+item.bill_2000.name=2000엔 지폐
+item.bill_5000.name=5000엔 지폐
+item.bill_10000.name=10000엔 지폐
+
+# Creative Tab
+itemGroup.tabKaisatsu=자동 개찰구 모드

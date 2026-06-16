@@ -1,16 +1,23 @@
 # Blocks
 tile.oreAluminum.name=アルミニウム鉱石
 tile.stationManager.name=駅管理ブロック
+tile.lineManager.name=路線管理ブロック
 tile.ticketGate.name=自動改札機
 tile.chargeMachine.name=ICカードチャージ機
 tile.ticketMachine.name=自動券売機
 tile.transferGate.name=IC専用 乗り換え改札機
+tile.staffTerminal.name=窓口精算機
+tile.certificateMachine.name=乗車駅証明書発行機
+tile.fareChart.name=近距離運賃表
 
 # Items
 item.ingot_aluminum.name=アルミニウムインゴット
 item.icCard.name=交通系ICカード
+item.magicICCard.name=魔法のICカード
 item.ticket.name=きっぷ
 item.linkWand.name=リンクワンド
+item.settingTool.name=設定ツール
+item.certificate.name=乗車駅証明書
 
 # Money
 item.coin_1.name=1円玉

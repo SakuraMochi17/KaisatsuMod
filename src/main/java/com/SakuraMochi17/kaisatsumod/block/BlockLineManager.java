@@ -13,50 +13,46 @@ import net.minecraft.world.World;
 public class BlockLineManager extends BlockContainer {
     public BlockLineManager() {
         super(Material.iron);
-        this.setBlockName("lineManager"); // ★修正: stationManagerと被らない名前に変更
+        this.setBlockName("lineManager");
         this.setHardness(3.0F);
         this.setCreativeTab(KaisatsuModMain.tabKaisatsu);
     }
 
-    // ★追加: ブロック設置時にTileEntity（セーブデータ）を生成する必須メソッド
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {
         return new TileEntityLineManager();
     }
 
-    // BlockLineManager.java の onBlockActivated 内
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-        if (!world.isRemote) { // サーバー側でのみ処理
+        if (!world.isRemote) {
             TileEntity te = world.getTileEntity(x, y, z);
             if (te instanceof TileEntityLineManager) {
-                String lineID = ((TileEntityLineManager) te).lineID;
+                String compName = ((TileEntityLineManager) te).companyName;
                 KaisatsuNetworkData data = KaisatsuNetworkData.get(world);
 
                 MessageOpenLineGui msg = new MessageOpenLineGui();
                 msg.x = x; msg.y = y; msg.z = z;
+                msg.companyName = compName;
 
-                // ★修正: data が null ではなく、かつ globalStations が初期化されているか確認
                 if (data != null && data.globalStations != null) {
                     msg.globalStations.addAll(data.globalStations.keySet()); // 全駅リスト
 
-                    // ★修正: lineID が null や空文字ではないかを必ずチェックする
-                    if (lineID != null && !lineID.isEmpty() && data.companyLines != null) {
-                        if (data.companyLines.containsKey(lineID)) {
-                            KaisatsuNetworkData.LineData ld = data.companyLines.get(lineID);
-                            msg.lineID = ld.lineID;
-                            msg.lineName = ld.lineName;
-                            msg.companyName = ld.companyName;
-                            msg.baseFare = ld.baseFare;
-                            msg.costPerBlock = ld.costPerBlock;
-                            if (ld.stationOrder != null) {
-                                msg.lineStations.addAll(ld.stationOrder);
+                    if (data.companyLines != null) {
+                        for (KaisatsuNetworkData.LineData ld : data.companyLines.values()) {
+                            // ★この会社に所属している路線だけを抽出
+                            if (compName != null && !compName.isEmpty() && compName.equals(ld.companyName)) {
+                                MessageOpenLineGui.LineInfo info = new MessageOpenLineGui.LineInfo();
+                                info.lineID = ld.lineID;
+                                info.lineName = ld.lineName;
+                                info.baseFare = ld.baseFare;
+                                info.costPerBlock = ld.costPerBlock;
+                                if (ld.stationOrder != null) info.stations.addAll(ld.stationOrder);
+                                msg.companyLines.add(info);
                             }
                         }
                     }
                 }
-
-                // パケットをGUIを開くプレイヤーに送信
                 KaisatsuModMain.network.sendTo(msg, (net.minecraft.entity.player.EntityPlayerMP) player);
             }
         }

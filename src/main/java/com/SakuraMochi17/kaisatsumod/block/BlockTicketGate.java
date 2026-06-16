@@ -1,8 +1,7 @@
 package com.SakuraMochi17.kaisatsumod.block;
 
 import com.SakuraMochi17.kaisatsumod.*;
-import com.SakuraMochi17.kaisatsumod.core.FareManager;
-import com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData;
+import com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkManager;
 import com.SakuraMochi17.kaisatsumod.item.ItemMagicICCard;
 import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate;
 import net.minecraft.block.BlockContainer;
@@ -206,7 +205,7 @@ public class BlockTicketGate extends BlockContainer {
         String entryStation = card.stackTagCompound.getString("entryStation");
 
         // 新FareManagerによる距離連動運賃計算
-        int fare = FareManager.calculateFare(world, entryStation, currentStationName);
+        int fare = KaisatsuNetworkManager.calculateFare(world, entryStation, currentStationName);
 
         if (fare == -1) {
             // ★修正：システムエラーではなく、正規の「経路（直通）エラー」として弾く
@@ -291,7 +290,7 @@ public class BlockTicketGate extends BlockContainer {
         }
 
         // 新FareManagerによる運賃計算
-        int requiredFare = FareManager.calculateFare(world, buyStation, currentStationName);
+        int requiredFare = KaisatsuNetworkManager.calculateFare(world, buyStation, currentStationName);
 
         // ★追加：切符でも直通していない駅で降りようとしたら弾くガード
         if (requiredFare == -1) {

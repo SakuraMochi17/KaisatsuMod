@@ -1,11 +1,101 @@
-[23:23:53] [main/INFO]: Setting user: Player406
-[23:23:55] [Client thread/INFO]: LWJGL Version: 2.9.1
-[23:24:08] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Kaisatsu Mod
-[23:24:09] [Sound Library Loader/INFO]: Sound engine started
-[23:24:10] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
-[23:24:10] [Client thread/INFO]: Created: 16x16 textures/items-atlas
-[23:24:11] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Kaisatsu Mod
-[23:24:11] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[23:24:11] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[23:24:12] [Sound Library Loader/INFO]: Sound engine started
-[23:25:00] [Client thread/INFO]: Stopping!
+[12:37:11] [main/INFO]: Setting user: Player515
+[12:37:13] [Client thread/INFO]: LWJGL Version: 2.9.1
+[12:37:19] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Kaisatsu Mod
+[12:37:20] [Sound Library Loader/INFO]: Sound engine started
+[12:37:20] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[12:37:20] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[12:37:20] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Kaisatsu Mod
+[12:37:21] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[12:37:21] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[12:37:22] [Sound Library Loader/INFO]: Sound engine started
+[12:37:35] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[12:37:35] [Server thread/INFO]: Generating keypair
+[12:37:35] [Server thread/INFO]: Preparing start region for level 0
+[12:37:36] [Server thread/INFO]: Changing view distance to 12, from 10
+[12:37:36] [Server thread/INFO]: Player515[local:E:d69d5731] logged in with entity id 144 at (569.4710801630926, 4.0, 378.56119194833366)
+[12:37:36] [Server thread/INFO]: Player515 がゲームに参加しました
+[12:37:44] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「tokyo」に設定しました。§r
+[12:37:46] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:37:48] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「HOKKAIDO」に設定しました。§r
+[12:37:50] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「SAKURADA」に設定しました。§r
+[12:37:58] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:38:10] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「HOKKAIDO」に設定しました。§r
+[12:38:24] [Server thread/INFO]: Saving and pausing game...
+[12:38:24] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[12:38:24] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[12:38:24] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[12:38:41] [Server thread/INFO]: [Player515: 天気を晴れに変更します]
+[12:38:41] [Client thread/INFO]: [CHAT] 天気を晴れに変更します
+[12:38:48] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:38:52] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「SHIRAZAWA」に設定しました。§r
+[12:39:15] [Server thread/INFO]: Saving and pausing game...
+[12:39:15] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[12:39:15] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[12:39:15] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[12:39:34] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「tokyo」に設定しました。§r
+[12:39:48] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「tokyo」に設定しました。§r
+[12:39:50] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:39:57] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「kooriyama」に設定しました。§r
+[12:40:05] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「品川」に設定しました。§r
+[12:40:10] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「hukushima」に設定しました。§r
+[12:40:17] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:41:54] [Server thread/INFO]: Saving and pausing game...
+[12:41:54] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[12:41:55] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[12:41:55] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[12:45:55] [Client thread/INFO]: [CHAT] §a路線データ「SAKURADALINE」をネットワークに保存しました。
+[12:46:04] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「tokyo」に設定しました。§r
+[12:46:11] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「HOKKAIDO」に設定しました。§r
+[12:46:19] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「SHIRAZAWA」に設定しました。§r
+[12:46:30] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「tokyo」に設定しました。§r
+[12:46:51] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「tokyo」に設定しました。§r
+[12:46:54] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:47:00] [Server thread/INFO]: Saving and pausing game...
+[12:47:00] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[12:47:00] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[12:47:00] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[12:47:25] [Server thread/INFO]: Saving and pausing game...
+[12:47:25] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[12:47:25] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[12:47:25] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[12:47:49] [Client thread/INFO]: [CHAT] §a路線データ「SAKURADALINE」をネットワークに保存しました。
+[12:47:55] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「HOKKAIDO」に設定しました。§r
+[12:47:59] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:48:16] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「SHIRAZAWA」に設定しました。§r
+[12:48:36] [Client thread/INFO]: [CHAT] §a路線データ「SAKURADALINE」をネットワークに保存しました。
+[12:48:40] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「tokyo」に設定しました。§r
+[12:48:45] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「HOKKAIDO」に設定しました。§r
+[12:48:49] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「SHIRAZAWA」に設定しました。§r
+[12:49:04] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「SAKURADA」に設定しました。§r
+[12:49:26] [Client thread/INFO]: [CHAT] §a路線データ「SAKURADASUB」をネットワークに保存しました。
+[12:49:35] [Client thread/INFO]: [CHAT] §a路線データ「SAKURADALINE」をネットワークに保存しました。
+[12:49:40] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「tokyo」に設定しました。§r
+[12:49:44] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:49:46] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「SAKURADA」に設定しました。§r
+[12:49:48] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「SHIRAZAWA」に設定しました。§r
+[12:50:07] [Client thread/INFO]: [CHAT] §a路線データ「SAKURADASUB」をネットワークに保存しました。
+[12:50:15] [Client thread/INFO]: [CHAT] §a路線データ「SAKURADALINE」をネットワークに保存しました。
+[12:50:19] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「HOKKAIDO」に設定しました。§r
+[12:50:21] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:50:23] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「tokyo」に設定しました。§r
+[12:50:25] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「SHIRAZAWA」に設定しました。§r
+[12:50:28] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「hukushima」に設定しました。§r
+[12:50:34] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「品川」に設定しました。§r
+[12:50:43] [Client thread/INFO]: [CHAT] §a路線データ「SAKURADASUB」をネットワークに保存しました。
+[12:50:51] [Client thread/INFO]: [CHAT] §a路線データ「SAKURADALINE」をネットワークに保存しました。
+[12:50:54] [Client thread/INFO]: [CHAT] §a[設定ツール] ブロックの所属駅を「DOKKAIKO」に設定しました。§r
+[12:51:14] [Server thread/INFO]: Saving and pausing game...
+[12:51:14] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[12:51:14] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[12:51:14] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[12:51:38] [Server thread/INFO]: Saving and pausing game...
+[12:51:38] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[12:51:38] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[12:51:38] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[12:51:38] [Server thread/INFO]: Stopping server
+[12:51:38] [Server thread/INFO]: Saving players
+[12:51:38] [Server thread/INFO]: Saving worlds
+[12:51:38] [Server thread/INFO]: Saving chunks for level 'TEST'/Overworld
+[12:51:38] [Server thread/INFO]: Saving chunks for level 'TEST'/Nether
+[12:51:39] [Server thread/INFO]: Saving chunks for level 'TEST'/The End
+[12:51:41] [Client thread/INFO]: Stopping!

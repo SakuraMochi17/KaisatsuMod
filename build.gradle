@@ -7,6 +7,8 @@ buildscript {
     dependencies {
         // 現在も1.7.10を支え続けているGTNHチームの最強の修正版
         classpath 'com.github.GTNewHorizons:ForgeGradle:1.2.11'
+        // Kotlinプラグインの依存関係を追加（バージョンは 1.4.32 あたりが安定します）
+        //classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
 
     }
 }

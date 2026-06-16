@@ -1,9 +1,7 @@
 package com.SakuraMochi17.kaisatsumod.network;
 
-import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityCertificateMachine;
-import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketMachine;
-import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityTicketGate; // ★ご自身の環境の改札機TE
-// import com.SakuraMochi17.kaisatsumod.tileentity.TileEntityCertificateMachine; // ★今後作る証明書発行機TE
+import com.SakuraMochi17.kaisatsumod.tileentity.*; // ★追加
+import com.SakuraMochi17.kaisatsumod.core.*; // ★追加
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -13,6 +11,9 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.List; // ★追加
 
 public class MessageSaveBlockStation implements IMessage {
     public int x, y, z;
@@ -53,20 +54,52 @@ public class MessageSaveBlockStation implements IMessage {
                 ((TileEntityTicketMachine) te).stationName = message.stationName;
                 success = true;
             }
-            // ② 自動改札機の場合 (クラス名は環境に合わせて調整してください)
+            // ② 自動改札機の場合
             else if (te instanceof TileEntityTicketGate) {
-                ((TileEntityTicketGate) te).stationName = message.stationName; // ※もし変数名が違えば調整
+                ((TileEntityTicketGate) te).stationName = message.stationName;
                 success = true;
             }
-            // ③ 今後作る乗車駅証明書発行機の場合も、ここへ追加するだけで共通処理可能！
+            // ③ 乗車駅証明書発行機の場合
             else if (te instanceof TileEntityCertificateMachine) {
                 ((TileEntityCertificateMachine) te).stationName = message.stationName;
                 success = true;
             }
-
             // ④ 駅員端末（窓口精算機）の場合
             else if (te instanceof com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStaffTerminal) {
                 ((com.SakuraMochi17.kaisatsumod.tileentity.TileEntityStaffTerminal) te).stationName = message.stationName;
+                success = true;
+            }
+            // ★⑤ 追加：運賃表（路線図モニター）の場合
+            // ⑤ 運賃表（路線図モニター）の場合
+            else if (te instanceof TileEntityFareChart) {
+                TileEntityFareChart chartTE = (TileEntityFareChart) te;
+                chartTE.stationName = message.stationName;
+
+                int maxDepth = 10;
+                List<TileEntityFareChart.NodeData> rawNodes = KaisatsuNetworkManager.buildRouteTree(world, message.stationName, maxDepth);
+
+                chartTE.nodeList.clear();
+                List<String> visibleStations = new ArrayList<>();
+
+                // ★1. まず2000円以下の表示対象駅をすべてリストアップして登録
+                for (TileEntityFareChart.NodeData node : rawNodes) {
+                    if (node.fare <= 2000) {
+                        visibleStations.add(node.name);
+                        chartTE.nodeList.add(new TileEntityFareChart.NodeData(
+                                node.name, node.fare, node.parent, node.depth, node.lineName, node.isLoop, false
+                        ));
+                    }
+                }
+
+                // ★2. 2000円を超えた駅で、親が表示されている場合は「線の先（Cutoff）」として登録
+                // （※その先で路線が終わっている場合はそもそも探索されないため、自然と線は引かれません）
+                for (TileEntityFareChart.NodeData node : rawNodes) {
+                    if (node.fare > 2000 && visibleStations.contains(node.parent)) {
+                        chartTE.nodeList.add(new TileEntityFareChart.NodeData(
+                                node.name, node.fare, node.parent, node.depth, node.lineName, node.isLoop, true
+                        ));
+                    }
+                }
                 success = true;
             }
 

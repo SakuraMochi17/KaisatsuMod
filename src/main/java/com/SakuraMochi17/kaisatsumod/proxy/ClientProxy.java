@@ -27,5 +27,11 @@ public class ClientProxy extends CommonProxy {
 
         // ★追加：魔法のICカードにも全く同じ3Dモデルを登録！
         MinecraftForgeClient.registerItemRenderer(KaisatsuModMain.magicIcCard, new com.SakuraMochi17.kaisatsumod.client.render.ItemRenderModel("models/item/ic_card.obj", "textures/item/ic_card.png"));
+
+        //TESRの登録
+        cpw.mods.fml.client.registry.ClientRegistry.bindTileEntitySpecialRenderer(
+                com.SakuraMochi17.kaisatsumod.tileentity.TileEntityFareChart.class,
+                new com.SakuraMochi17.kaisatsumod.client.render.RenderFareChart()
+        );
     }
 }

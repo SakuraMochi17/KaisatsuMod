@@ -1,7 +1,7 @@
 package com.SakuraMochi17.kaisatsumod.block;
 
 import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
-import com.SakuraMochi17.kaisatsumod.core.FareManager;
+import com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkManager;
 import com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkData;
 import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
 import com.SakuraMochi17.kaisatsumod.item.ItemMagicICCard;
@@ -148,7 +148,7 @@ public class BlockTransferGate extends BlockContainer {
         }
 
         // 1. 出場処理（A線の運賃計算）
-        int fare = FareManager.calculateFare(world, oldEntryStation, exitStationName);
+        int fare = KaisatsuNetworkManager.calculateFare(world, oldEntryStation, exitStationName);
         if (fare == -1) {
             player.addChatMessage(new ChatComponentText("§cエラー: 経路が見つかりません。§r"));
             world.playSoundAtEntity(player, "note.bassattack", 1.0F, 0.5F);

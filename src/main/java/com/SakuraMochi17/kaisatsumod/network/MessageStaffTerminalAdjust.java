@@ -1,7 +1,7 @@
 package com.SakuraMochi17.kaisatsumod.network;
 
 import com.SakuraMochi17.kaisatsumod.KaisatsuModMain;
-import com.SakuraMochi17.kaisatsumod.core.FareManager;
+import com.SakuraMochi17.kaisatsumod.core.KaisatsuNetworkManager;
 import com.SakuraMochi17.kaisatsumod.item.ItemCertificate;
 import com.SakuraMochi17.kaisatsumod.item.ItemICCard;
 import com.SakuraMochi17.kaisatsumod.item.ItemMagicICCard;
@@ -38,7 +38,7 @@ public class MessageStaffTerminalAdjust implements IMessage {
             if (target == null || !(target.getItem() instanceof ItemCertificate) || target.stackTagCompound == null) return null;
 
             String entryStation = target.stackTagCompound.getString("issueStation");
-            int rawFare = FareManager.calculateFare(player.worldObj, entryStation, terminal.stationName);
+            int rawFare = KaisatsuNetworkManager.calculateFare(player.worldObj, entryStation, terminal.stationName);
 
             // 経路エラーの場合は弾く
             if (rawFare < 0) return null;
