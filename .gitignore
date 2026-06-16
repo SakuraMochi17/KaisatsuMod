@@ -2,6 +2,7 @@
 .gradle/
 build/
 bin/
+out/
 
 # IDE の設定ファイル
 .idea/
@@ -11,6 +12,23 @@ bin/
 .project
 .settings/
 
-# Forge の一時的な実行ファイル (必要に応じて)
+# Forge の一時的な実行ファイルや成果物
 forge-*.jar
 forge-*.zip
+
+# Minecraft のテスト実行環境・セーブデータ・ログ
+/eclipse/logs/
+/eclipse/crash-reports/
+/eclipse/saves/
+/eclipse/usercache.json
+/eclipse/usernamecache.json
+*.log
+*.log.gz
+/run/
+
+# OS・ツールの一時ファイル
+*.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp

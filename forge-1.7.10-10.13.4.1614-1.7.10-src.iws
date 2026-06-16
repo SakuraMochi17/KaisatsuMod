@@ -5,122 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="とりあえずせーぶ2">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockFareChart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/client/render/RenderFareChart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityFareChart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/ko_KR.lang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/zh_CN.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/config/splash.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/config/splash.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-29-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-29-1.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-29-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-29-2.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-29-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-29-3.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-29-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-29-4.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-29-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-29-5.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-29-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-29-6.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/2026-05-29-7.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/2026-05-29-7.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-1.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-2.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-2.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-3.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-3.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-client-latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-client-latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/fml-junk-earlystartup.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/fml-junk-earlystartup.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/logs/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/logs/latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/DIM-1/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/DIM-1/data/villages.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/DIM1/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/DIM1/data/villages.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/data/KaisatsuNetworkData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/data/KaisatsuNetworkData.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/data/villages.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/level.dat_old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/2659329e-1c65-3850-9659-d27fc655aa3c.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/2659329e-1c65-3850-9659-d27fc655aa3c.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/34692304-57b2-31f8-a84c-d22c6ff753f7.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/34692304-57b2-31f8-a84c-d22c6ff753f7.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/37815b4b-a277-3e88-89c9-687629f7c447.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/37815b4b-a277-3e88-89c9-687629f7c447.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/3c098a03-04cc-31fd-856f-be4ccab4daf7.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/3c098a03-04cc-31fd-856f-be4ccab4daf7.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/3c604947-c962-3363-b382-8bb20e72179d.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/3c604947-c962-3363-b382-8bb20e72179d.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/3f66a67c-db6c-36b7-b762-d7a40c17883b.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/3f66a67c-db6c-36b7-b762-d7a40c17883b.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/45c2c1e2-9dd4-3d62-8e53-82e2b4b32b4a.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/45c2c1e2-9dd4-3d62-8e53-82e2b4b32b4a.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/4bf8ac1c-047f-3d7f-9946-705bc571459f.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/4bf8ac1c-047f-3d7f-9946-705bc571459f.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/68723020-3c7d-332b-9007-b1f8c7a00304.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/68723020-3c7d-332b-9007-b1f8c7a00304.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/bf0c47d3-02b6-3463-8e38-457226b1407c.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/bf0c47d3-02b6-3463-8e38-457226b1407c.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/c98187a9-e17b-3f48-8a33-882e62d18d19.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/c98187a9-e17b-3f48-8a33-882e62d18d19.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/d75ffc85-72b0-3b94-be32-d104d89a3a6a.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/d75ffc85-72b0-3b94-be32-d104d89a3a6a.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/f79c4f00-774e-3daf-ac9c-aebcbcc29c64.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/f79c4f00-774e-3daf-ac9c-aebcbcc29c64.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/fd2b0ed7-411b-3fc7-aa79-261670dbe34f.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/fd2b0ed7-411b-3fc7-aa79-261670dbe34f.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/fe207da4-45aa-3a2a-bf67-72a700290388.dat" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/playerdata/fe207da4-45aa-3a2a-bf67-72a700290388.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.0.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/region/r.1.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/session.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/2659329e-1c65-3850-9659-d27fc655aa3c.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/2659329e-1c65-3850-9659-d27fc655aa3c.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/34692304-57b2-31f8-a84c-d22c6ff753f7.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/34692304-57b2-31f8-a84c-d22c6ff753f7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/37815b4b-a277-3e88-89c9-687629f7c447.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/37815b4b-a277-3e88-89c9-687629f7c447.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/3c098a03-04cc-31fd-856f-be4ccab4daf7.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/3c098a03-04cc-31fd-856f-be4ccab4daf7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/3c604947-c962-3363-b382-8bb20e72179d.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/3c604947-c962-3363-b382-8bb20e72179d.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/3f66a67c-db6c-36b7-b762-d7a40c17883b.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/3f66a67c-db6c-36b7-b762-d7a40c17883b.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/45c2c1e2-9dd4-3d62-8e53-82e2b4b32b4a.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/45c2c1e2-9dd4-3d62-8e53-82e2b4b32b4a.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/4bf8ac1c-047f-3d7f-9946-705bc571459f.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/4bf8ac1c-047f-3d7f-9946-705bc571459f.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/68723020-3c7d-332b-9007-b1f8c7a00304.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/68723020-3c7d-332b-9007-b1f8c7a00304.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/ad4a30d4-53bd-30c6-b482-5d77fb42b2d7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/bf0c47d3-02b6-3463-8e38-457226b1407c.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/bf0c47d3-02b6-3463-8e38-457226b1407c.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/c98187a9-e17b-3f48-8a33-882e62d18d19.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/c98187a9-e17b-3f48-8a33-882e62d18d19.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/d75ffc85-72b0-3b94-be32-d104d89a3a6a.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/d75ffc85-72b0-3b94-be32-d104d89a3a6a.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/f2ba1573-0c0d-3978-bb86-e2dc9c0eb9a4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/f79c4f00-774e-3daf-ac9c-aebcbcc29c64.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/f79c4f00-774e-3daf-ac9c-aebcbcc29c64.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/fd2b0ed7-411b-3fc7-aa79-261670dbe34f.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/fd2b0ed7-411b-3fc7-aa79-261670dbe34f.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/saves/TEST/stats/fe207da4-45aa-3a2a-bf67-72a700290388.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/saves/TEST/stats/fe207da4-45aa-3a2a-bf67-72a700290388.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/usernamecache.json" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/usernamecache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/assets/kaisatsumod/lang/en_US.lang" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/assets/kaisatsumod/lang/en_US.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/assets/kaisatsumod/lang/ja_JP.lang" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/assets/kaisatsumod/lang/ja_JP.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/KaisatsuModMain$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/KaisatsuModMain$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/KaisatsuModMain$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/KaisatsuModMain$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockLineManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockLineManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockStationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockStationManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockTicketGate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockTicketGate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockTicketMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockTicketMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockTransferGate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/block/BlockTransferGate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/command/CommandResetStations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/command/CommandResetStations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/FareManager$Edge.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/FareManager$State.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/FareManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/gui/ContainerStaffTerminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/gui/ContainerStaffTerminal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/gui/GuiLineManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/gui/GuiLineManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/item/ItemSettingTool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/item/ItemSettingTool.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/item/ItemTicket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/item/ItemTicket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageLineUpdate$Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageLineUpdate$Handler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageLineUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageLineUpdate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageOpenLineGui$Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageOpenLineGui$Handler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageOpenLineGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageOpenLineGui.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageSaveBlockStation$Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageSaveBlockStation$Handler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageSaveBlockStation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageSaveBlockStation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageStaffTerminalAdjust$Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/network/MessageStaffTerminalAdjust$Handler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/proxy/ClientProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/proxy/ClientProxy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityLineManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KaisatsuMod.main/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityLineManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockLineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockLineManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockStationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockStationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTicketMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTransferGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/block/BlockTransferGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/command/CommandResetStations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/command/CommandResetStations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/FareManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/ContainerStaffTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/ContainerStaffTerminal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiLineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiLineManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/item/ItemSettingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/item/ItemSettingTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageLineUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageLineUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageOpenLineGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageOpenLineGui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageSaveBlockStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageSaveBlockStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageStaffTerminalAdjust.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/network/MessageStaffTerminalAdjust.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/proxy/ClientProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/proxy/ClientProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityLineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/tileentity/TileEntityLineManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/en_US.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/en_US.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/ja_JP.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/ja_JP.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -533,6 +418,7 @@
       <workItem from="1781272449089" duration="7474000" />
       <workItem from="1781483188850" duration="7819000" />
       <workItem from="1781568653386" duration="2765000" />
+      <workItem from="1781593339776" duration="330000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -662,7 +548,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781140676630</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="とりあえずせーぶ2">
+      <option name="closed" value="true" />
+      <created>1781593505228</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1781593505228</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
