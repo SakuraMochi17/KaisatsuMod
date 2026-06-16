@@ -85,11 +85,3 @@ gradlew setupDecompWorkspace idea
 
 ---
 
----
-
-### 改訂のポイント
-
-1. **実態に即した機能説明**:
-ソースコード内に存在する `KaisatsuNetworkManager` や `Dijkstra` に関連するロジック、`jr_east.json` などの設定ファイルの存在、`.obj` や `.mqo` による3Dモデルの描画クラス（`RenderTicketGate`等）の存在を明記し、ただのブロック追加Modではなく「本格的な駅務システムMod」であることをアピールできるようにしました。
-2. **古い環境特有のセットアップ手順**:
-1.7.10環境特有の `setupDecompWorkspace` コマンドや Java 8 前提である旨を記載し、開発者が迷わないように配属された際に迷わない記述に整然としない記述に迷わないように配慮しています。
