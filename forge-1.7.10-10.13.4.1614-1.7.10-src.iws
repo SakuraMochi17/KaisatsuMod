@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="とりあえずせーぶ2">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="いらんもんを秘匿" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +102,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -139,23 +136,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0138881668932276" />
-      <entry key="MS500" value="1.425137080032098" />
-      <entry key="S2" value="1.8074808775626083" />
-      <entry key="S5" value="1.9180215973795964" />
-      <entry key="S10" value="1.958134435963762" />
-      <entry key="S30" value="1.9858454047236518" />
-      <entry key="S60" value="1.9928974794628354" />
-      <entry key="M2" value="1.996442411513498" />
-      <entry key="M5" value="1.9985754429447287" />
-      <entry key="M10" value="1.999287467621169" />
-      <entry key="M15" value="1.999524921984864" />
-      <entry key="M30" value="1.9997624327733385" />
-      <entry key="H1" value="1.9998812093310576" />
-      <entry key="H2" value="1.9999406029015212" />
-      <entry key="H4" value="1.9999703010097456" />
-      <entry key="D1" value="1.9999950501070378" />
-      <entry key="W1" value="1.999999292870934" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000039377703" />
+      <entry key="S2" value="1.01747848519151" />
+      <entry key="S5" value="1.3819841466227998" />
+      <entry key="S10" value="2.069981674959274" />
+      <entry key="S30" value="3.1272905092256424" />
+      <entry key="S60" value="3.5262030285336365" />
+      <entry key="M2" value="3.752918207525066" />
+      <entry key="M5" value="3.898609620165609" />
+      <entry key="M10" value="3.9488686890442737" />
+      <entry key="M15" value="3.96581480072035" />
+      <entry key="M30" value="3.9828583839883773" />
+      <entry key="H1" value="3.9914169027031696" />
+      <entry key="H2" value="3.9957053746180033" />
+      <entry key="H4" value="3.9978519175735596" />
+      <entry key="D1" value="3.999641879307672" />
+      <entry key="W1" value="3.999948837281188" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -177,23 +174,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.01400049448729808" />
-      <entry key="MS500" value="0.5873544258994958" />
-      <entry key="S2" value="1.4421163205725107" />
-      <entry key="S5" value="1.7517214584740495" />
-      <entry key="S10" value="1.8712060985918677" />
-      <entry key="S30" value="1.9559866186662884" />
-      <entry key="S60" value="1.9778549475509943" />
-      <entry key="M2" value="1.9888926460785161" />
-      <entry key="M5" value="1.9955486692188276" />
-      <entry key="M10" value="1.9977729338519494" />
-      <entry key="M15" value="1.9985149777656144" />
-      <entry key="M30" value="1.999257333100874" />
-      <entry key="H1" value="1.999628627596059" />
-      <entry key="H2" value="1.9998143040583232" />
-      <entry key="H4" value="1.9999071495940959" />
-      <entry key="D1" value="1.999984524594134" />
-      <entry key="W1" value="1.9999977892194507" />
+      <entry key="MS100" value="0.7526233737055336" />
+      <entry key="MS500" value="0.9447470428606575" />
+      <entry key="S2" value="1.0001857384562318" />
+      <entry key="S5" value="1.34635356918132" />
+      <entry key="S10" value="2.024105689638347" />
+      <entry key="S30" value="3.0973319802440726" />
+      <entry key="S60" value="3.508429671736668" />
+      <entry key="M2" value="3.7432350026340195" />
+      <entry key="M5" value="3.894531240599474" />
+      <entry key="M10" value="3.9467940926101313" />
+      <entry key="M15" value="3.9644237753079707" />
+      <entry key="M30" value="3.982158867247199" />
+      <entry key="H1" value="3.991066138900911" />
+      <entry key="H2" value="3.9955297408041903" />
+      <entry key="H4" value="3.9977640376190173" />
+      <entry key="D1" value="3.9996272238860637" />
+      <entry key="W1" value="3.999946743434861" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -418,7 +415,7 @@
       <workItem from="1781272449089" duration="7474000" />
       <workItem from="1781483188850" duration="7819000" />
       <workItem from="1781568653386" duration="2765000" />
-      <workItem from="1781593339776" duration="330000" />
+      <workItem from="1781593339776" duration="781000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -556,7 +553,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781593505228</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="いらんもんを秘匿">
+      <option name="closed" value="true" />
+      <created>1781593705825</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1781593705826</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +580,8 @@
     <MESSAGE value="動く構成" />
     <MESSAGE value="とりあえずせーぶ" />
     <MESSAGE value="とりあえずせーぶ2" />
-    <option name="LAST_COMMIT_MESSAGE" value="とりあえずせーぶ2" />
+    <MESSAGE value="いらんもんを秘匿" />
+    <option name="LAST_COMMIT_MESSAGE" value="いらんもんを秘匿" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
