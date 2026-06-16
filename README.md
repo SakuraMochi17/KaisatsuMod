@@ -52,7 +52,7 @@ gradlew setupDecompWorkspace eclipse
 # もしくは IntelliJ IDEA の場合
 gradlew setupDecompWorkspace idea
 
----
+```
 
 
 3. **IDEへのインポート**
