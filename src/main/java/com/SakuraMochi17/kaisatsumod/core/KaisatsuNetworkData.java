@@ -27,22 +27,29 @@ public class KaisatsuNetworkData extends WorldSavedData {
     }
 
     // 路線データ保持用の内部クラス
+    // KaisatsuNetworkData.java 内の LineData クラスを修正
     public static class LineData {
         public String lineID;
         public String lineName;
         public String companyName;
         public int baseFare;
         public double costPerBlock;
-        public final List<String> stationOrder = new ArrayList<>(); // ★ここに駅順が並ぶ！
+        public boolean isExpress; // ★追加: 特急フラグ
+        public int expressFare;   // ★追加: 特急料金
+        public final List<String> stationOrder = new ArrayList<>();
 
-        public LineData(String lineID, String lineName, String companyName, int baseFare, double costPerBlock) {
+        public LineData(String lineID, String lineName, String companyName, int baseFare, double costPerBlock, boolean isExpress, int expressFare) {
             this.lineID = lineID;
             this.lineName = lineName;
             this.companyName = companyName;
             this.baseFare = baseFare;
             this.costPerBlock = costPerBlock;
+            this.isExpress = isExpress;
+            this.expressFare = expressFare;
         }
     }
+
+
 
     public KaisatsuNetworkData(String name) {
         super(name);
@@ -88,7 +95,10 @@ public class KaisatsuNetworkData extends WorldSavedData {
             int base = lNbt.getInteger("BaseFare");
             double cost = lNbt.getDouble("CostPerBlock");
 
-            LineData line = new LineData(id, name, comp, base, cost);
+            // readFromNBT メソッド内の路線読み込み部分に追加:
+            boolean isExpress = lNbt.getBoolean("IsExpress");
+            int expressFare = lNbt.getInteger("ExpressFare");
+            LineData line = new LineData(id, name, comp, base, cost, isExpress, expressFare);
 
             // 駅順リストの読み込み
             NBTTagList orderList = lNbt.getTagList("StationOrder", Constants.NBT.TAG_STRING);
@@ -97,6 +107,8 @@ public class KaisatsuNetworkData extends WorldSavedData {
             }
             companyLines.put(id, line);
         }
+
+
     }
 
     // ==========================================
@@ -116,6 +128,8 @@ public class KaisatsuNetworkData extends WorldSavedData {
         }
         nbt.setTag("GlobalStations", stationList);
 
+
+
         // ② 路線データの保存
         NBTTagList lineList = new NBTTagList();
         for (LineData line : companyLines.values()) {
@@ -132,9 +146,13 @@ public class KaisatsuNetworkData extends WorldSavedData {
                 orderList.appendTag(new NBTTagString(stName));
             }
             lNbt.setTag("StationOrder", orderList);
+            // writeToNBT メソッド内の路線保存部分に追加:
+            lNbt.setBoolean("IsExpress", line.isExpress);
+            lNbt.setInteger("ExpressFare", line.expressFare);
             lineList.appendTag(lNbt);
         }
         nbt.setTag("CompanyLines", lineList);
+
     }
     // ★追加：指定した駅が所属する路線IDのリストを取得するメソッド
     public java.util.List<String> getLinesForStation(String stationName) {

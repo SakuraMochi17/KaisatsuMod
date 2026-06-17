@@ -4,13 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="いらんもんを秘匿" />
+    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="いらんもんを秘匿">
+      <change beforePath="$PROJECT_DIR$/eclipse/config/kaisatsumod/lines/jr_east.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eclipse/config/kaisatsumod/lines/tokyo_metro.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiTicketMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiTicketMachine.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/nitta/IdeaProjects/KaisatsuMod" value="3DlEKiVQ8llmGGJpUHk1E3bkHVY" />
+    </persistenceIdMap>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
     <option name="REVERSE_PATCH" value="false" />
@@ -55,7 +68,7 @@
     <ui_properties converted="true" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="363" />
+    <option name="cachedIndexableFilesCount" value="114" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -136,23 +149,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000039377703" />
-      <entry key="S2" value="1.01747848519151" />
-      <entry key="S5" value="1.3819841466227998" />
-      <entry key="S10" value="2.069981674959274" />
-      <entry key="S30" value="3.1272905092256424" />
-      <entry key="S60" value="3.5262030285336365" />
-      <entry key="M2" value="3.752918207525066" />
-      <entry key="M5" value="3.898609620165609" />
-      <entry key="M10" value="3.9488686890442737" />
-      <entry key="M15" value="3.96581480072035" />
-      <entry key="M30" value="3.9828583839883773" />
-      <entry key="H1" value="3.9914169027031696" />
-      <entry key="H2" value="3.9957053746180033" />
-      <entry key="H4" value="3.9978519175735596" />
-      <entry key="D1" value="3.999641879307672" />
-      <entry key="W1" value="3.999948837281188" />
+      <entry key="MS100" value="1.2483728723592136" />
+      <entry key="MS500" value="2.20123835269797" />
+      <entry key="S2" value="2.7510037861230967" />
+      <entry key="S5" value="2.895566902264358" />
+      <entry key="S10" value="2.946961524648251" />
+      <entry key="S30" value="3.2692518226570964" />
+      <entry key="S60" value="7.525107840714794" />
+      <entry key="M2" value="25.338274101640337" />
+      <entry key="M5" value="68.92197999179648" />
+      <entry key="M10" value="100.75389706125868" />
+      <entry key="M15" value="115.08791671007006" />
+      <entry key="M30" value="131.96954731590796" />
+      <entry key="H1" value="141.5466140446753" />
+      <entry key="H2" value="146.6574594575597" />
+      <entry key="H4" value="149.2989267029768" />
+      <entry key="D1" value="151.5456077854913" />
+      <entry key="W1" value="151.93498265926794" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -174,23 +187,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.7526233737055336" />
-      <entry key="MS500" value="0.9447470428606575" />
-      <entry key="S2" value="1.0001857384562318" />
-      <entry key="S5" value="1.34635356918132" />
-      <entry key="S10" value="2.024105689638347" />
-      <entry key="S30" value="3.0973319802440726" />
-      <entry key="S60" value="3.508429671736668" />
-      <entry key="M2" value="3.7432350026340195" />
-      <entry key="M5" value="3.894531240599474" />
-      <entry key="M10" value="3.9467940926101313" />
-      <entry key="M15" value="3.9644237753079707" />
-      <entry key="M30" value="3.982158867247199" />
-      <entry key="H1" value="3.991066138900911" />
-      <entry key="H2" value="3.9955297408041903" />
-      <entry key="H4" value="3.9977640376190173" />
-      <entry key="D1" value="3.9996272238860637" />
-      <entry key="W1" value="3.999946743434861" />
+      <entry key="MS100" value="1.0323400836101675" />
+      <entry key="MS500" value="2.115361895679461" />
+      <entry key="S2" value="2.722896077860755" />
+      <entry key="S5" value="2.883609626685409" />
+      <entry key="S10" value="2.9408525543327393" />
+      <entry key="S30" value="3.2633031095911886" />
+      <entry key="S60" value="7.507866944682" />
+      <entry key="M2" value="25.313469358470535" />
+      <entry key="M5" value="68.90207734674834" />
+      <entry key="M10" value="100.74088232544696" />
+      <entry key="M15" value="115.07832119525274" />
+      <entry key="M30" value="131.96419278965854" />
+      <entry key="H1" value="141.54377331206297" />
+      <entry key="H2" value="146.65599448337534" />
+      <entry key="H4" value="149.29818254250898" />
+      <entry key="D1" value="151.54548209040524" />
+      <entry key="W1" value="151.93496466133644" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -415,7 +428,9 @@
       <workItem from="1781272449089" duration="7474000" />
       <workItem from="1781483188850" duration="7819000" />
       <workItem from="1781568653386" duration="2765000" />
-      <workItem from="1781593339776" duration="781000" />
+      <workItem from="1781593339776" duration="3438000" />
+      <workItem from="1781659392302" duration="246000" />
+      <workItem from="1781659686976" duration="331000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -566,6 +581,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitignoreを効くように設定" />

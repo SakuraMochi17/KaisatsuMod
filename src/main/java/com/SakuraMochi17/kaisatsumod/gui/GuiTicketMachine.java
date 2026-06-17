@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GuiTicketMachine extends GuiContainer {
@@ -30,24 +31,35 @@ public class GuiTicketMachine extends GuiContainer {
         this.ySize = 222;
     }
 
-    @SuppressWarnings("unchecked")
+    // src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiTicketMachine.java の initGui を修正
+    @SuppressWarnings({"unchecked", "unchecked"})
     @Override
     public void initGui() {
-        // ★サーバーから送られてきた最新の運賃リストをここで読み込む！
         this.availableFares = MessageOpenTicketMachine.latestFares;
         if (this.availableFares == null) this.availableFares = new ArrayList<Integer>();
+
+        // ★運賃リストを昇順にソートし、重複を排除
+        List<Integer> sortedUniqueFares = new ArrayList<>();
+        for (Integer f : this.availableFares) {
+            if (!sortedUniqueFares.contains(f) && f > 0) {
+                sortedUniqueFares.add(f);
+            }
+        }
+        Collections.sort(sortedUniqueFares);
 
         super.initGui();
         this.buttonList.clear();
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
 
-        // 最大9個まで運賃ボタンを表示 (中央のスペースに2列で配置)
-        int maxBtn = Math.min(9, availableFares.size());
+        // 最大9個まで運賃ボタンを表示（高額運賃が多い場合は上位を優先するか、UI拡張が必要）
+        int maxBtn = Math.min(9, sortedUniqueFares.size());
         for (int i = 0; i < maxBtn; i++) {
             int col = i % 2;
             int row = i / 2;
-            this.buttonList.add(new GuiButton(i, x + 72 + (col * 35), y + 20 + (row * 21), 34, 20, availableFares.get(i) + ""));
+            // 運賃が1000円を超える場合は文字サイズや表記を調整する等の工夫が可能
+            String fareStr = sortedUniqueFares.get(i) + "";
+            this.buttonList.add(new GuiButton(i, x + 72 + (col * 35), y + 20 + (row * 21), 34, 20, fareStr));
         }
 
         // 入場券ボタンを最後に追加 (ボタンID 100)
@@ -55,6 +67,9 @@ public class GuiTicketMachine extends GuiContainer {
         int nCol = nIdx % 2;
         int nRow = nIdx / 2;
         this.buttonList.add(new GuiButton(100, x + 72 + (nCol * 35), y + 20 + (nRow * 21), 34, 20, "入場券"));
+
+        // 置き換えたリストを保持
+        this.availableFares = sortedUniqueFares;
     }
 
     @Override

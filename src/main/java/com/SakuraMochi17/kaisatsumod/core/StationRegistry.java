@@ -1,3 +1,4 @@
+// src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java
 package com.SakuraMochi17.kaisatsumod.core;
 
 import java.util.HashMap;
@@ -11,24 +12,21 @@ public class StationRegistry {
         public String lineID;
         public String stationName;
         public int x, y, z;
-        public String nextStation1; // ★追加: 隣接駅1
-        public String nextStation2; // ★追加: 隣接駅2
+        // ★削除: nextStation1, nextStation2 は KaisatsuNetworkData に一本化したため廃止
 
-        public StationData(String lineID, String name, int x, int y, int z, String next1, String next2) {
+        public StationData(String lineID, String name, int x, int y, int z) {
             this.lineID = lineID;
             this.stationName = name;
             this.x = x;
             this.y = y;
             this.z = z;
-            this.nextStation1 = next1;
-            this.nextStation2 = next2;
         }
     }
 
-    // ★修正: 隣接駅を受け取るように引数を追加
-    public static void registerStation(int dimID, int x, int y, int z, String lineID, String name, String next1, String next2) {
+    // ★修正: 隣接駅の引数を削除
+    public static void registerStation(int dimID, int x, int y, int z, String lineID, String name) {
         String key = dimID + ":" + x + ":" + y + ":" + z;
-        registry.put(key, new StationData(lineID, name, x, y, z, next1, next2));
+        registry.put(key, new StationData(lineID, name, x, y, z));
     }
 
     public static void removeStation(int dimID, int x, int y, int z) {
