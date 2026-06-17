@@ -23,40 +23,4 @@ public class StationRegistry {
         }
     }
 
-    // ★修正: 隣接駅の引数を削除
-    public static void registerStation(int dimID, int x, int y, int z, String lineID, String name) {
-        String key = dimID + ":" + x + ":" + y + ":" + z;
-        registry.put(key, new StationData(lineID, name, x, y, z));
-    }
-
-    public static void removeStation(int dimID, int x, int y, int z) {
-        registry.remove(dimID + ":" + x + ":" + y + ":" + z);
-    }
-
-    public static StationData findNearestStation(int dimID, int srcX, int srcY, int srcZ, double maxRange) {
-        StationData nearest = null;
-        double minDistance = maxRange;
-
-        for (String key : registry.keySet()) {
-            if (!key.startsWith(dimID + ":")) continue;
-
-            StationData data = registry.get(key);
-            double dist = Math.sqrt(Math.pow(srcX - data.x, 2) + Math.pow(srcY - data.y, 2) + Math.pow(srcZ - data.z, 2));
-
-            if (dist < minDistance) {
-                minDistance = dist;
-                nearest = data;
-            }
-        }
-        return nearest;
-    }
-
-    public static StationData getStationByName(String lineID, String name) {
-        for (StationData data : registry.values()) {
-            if (data.lineID.equals(lineID) && data.stationName.equals(name)) {
-                return data;
-            }
-        }
-        return null;
-    }
 }

@@ -37,12 +37,12 @@ public class KaisatsuNetworkManager {
         if (startStation.equals(endStation)) return 0;
 
         KaisatsuNetworkData data = KaisatsuNetworkData.get(world);
-        if (data == null || data.companyLines == null || data.globalStations == null) return -1;
+        if (data == null) return -1;
 
         Map<String, List<Edge>> graph = new HashMap<>();
 
         for (KaisatsuNetworkData.LineData line : data.companyLines.values()) {
-            if (line == null || line.stationOrder == null || line.stationOrder.isEmpty()) continue;
+            if (line == null || line.stationOrder.isEmpty()) continue;
             for (int i = 0; i < line.stationOrder.size() - 1; i++) {
                 String st1 = line.stationOrder.get(i);
                 String st2 = line.stationOrder.get(i + 1);
@@ -51,8 +51,8 @@ public class KaisatsuNetworkManager {
                 double dist = getDistance(st1, st2, data);
                 if (dist < 0) continue;
 
-                graph.putIfAbsent(st1, new ArrayList<Edge>());
-                graph.putIfAbsent(st2, new ArrayList<Edge>());
+                graph.putIfAbsent(st1, new ArrayList<>());
+                graph.putIfAbsent(st2, new ArrayList<>());
                 graph.get(st1).add(new Edge(st2, line.lineID, dist));
                 graph.get(st2).add(new Edge(st1, line.lineID, dist));
             }
@@ -107,7 +107,7 @@ public class KaisatsuNetworkManager {
         List<TileEntityFareChart.NodeData> treeData = new ArrayList<>();
         KaisatsuNetworkData data = KaisatsuNetworkData.get(world);
 
-        if (data == null || data.companyLines == null || data.companyLines.isEmpty()) {
+        if (data == null || data.companyLines.isEmpty()) {
             treeData.add(new TileEntityFareChart.NodeData(startStation, 0, "", 0, "", false, false));
             return treeData;
         }
@@ -124,17 +124,13 @@ public class KaisatsuNetworkManager {
         visited.add(startStation);
 
         List<Map.Entry<String, KaisatsuNetworkData.LineData>> sortedLines = new ArrayList<>(data.companyLines.entrySet());
-        Collections.sort(sortedLines, new Comparator<Map.Entry<String, KaisatsuNetworkData.LineData>>() {
-            @Override
-            public int compare(Map.Entry<String, KaisatsuNetworkData.LineData> e1, Map.Entry<String, KaisatsuNetworkData.LineData> e2) {
-                return e1.getKey().compareTo(e2.getKey());
-            }
-        });
+        sortedLines.sort(Map.Entry.comparingByKey());
 
         while (!qName.isEmpty()) {
             String current = qName.poll(); String parent = qParent.poll();
-            int depth = qDepth.poll(); String lineName = qLine.poll();
-            boolean isLoopNode = qIsLoop.poll();
+            Integer depthObj = qDepth.poll(); int depth = depthObj != null ? depthObj : 0;
+            String lineName = qLine.poll();
+            Boolean isLoopObj = qIsLoop.poll(); boolean isLoopNode = isLoopObj != null ? isLoopObj : false;
 
             int fare = (depth == 0) ? 0 : calculateFare(world, startStation, current);
             int adjFare = fare > 0 ? (int) Math.ceil(fare / 10.0) * 10 : (depth == 0 ? 0 : -1);
@@ -147,7 +143,7 @@ public class KaisatsuNetworkManager {
                     String lineId = entry.getKey();
                     KaisatsuNetworkData.LineData line = entry.getValue();
 
-                    if (line.stationOrder != null && line.stationOrder.contains(current)) {
+                    if (line.stationOrder.contains(current)) {
                         int idx = line.stationOrder.indexOf(current);
                         int size = line.stationOrder.size();
                         boolean isLoop = size > 1 && line.stationOrder.get(0).equals(line.stationOrder.get(size - 1));

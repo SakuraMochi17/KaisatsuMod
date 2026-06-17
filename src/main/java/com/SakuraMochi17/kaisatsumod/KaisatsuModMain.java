@@ -274,11 +274,13 @@ public class KaisatsuModMain {
         if (searchedRtm) return cachedRtmMoney;
         searchedRtm = true;
         for (Object obj : Item.itemRegistry) {
-            Item item = (Item) obj;
-            if (item != null && item.getUnlocalizedName() != null && item.getUnlocalizedName().startsWith("item.rtm:money")) {
-                cachedRtmMoney = item;
-                System.out.println("[KaisatsuMod] RTMの通貨アイテムを検出しました！完全連携モードを有効化します。");
-                break;
+            if (obj instanceof Item) {
+                Item item = (Item) obj;
+                if (item.getUnlocalizedName() != null && item.getUnlocalizedName().startsWith("item.rtm:money")) {
+                    cachedRtmMoney = item;
+                    System.out.println("[KaisatsuMod] RTMの通貨アイテムを検出しました！完全連携モードを有効化します。");
+                    break;
+                }
             }
         }
         return cachedRtmMoney;
