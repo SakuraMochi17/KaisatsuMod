@@ -22,7 +22,17 @@ public class KaisatsuNetworkManager {
         public int compareTo(State other) { return Double.compare(this.cost, other.cost); }
     }
 
+    // ==========================================
+    // ① 追加: 他の古いブロックからの3引数の呼び出しをエラーにしないための受け皿（強制的に現金扱い）
+    // ==========================================
     public static int calculateFare(World world, String startStation, String endStation) {
+        return calculateFare(world, startStation, endStation, false);
+    }
+
+    // ==========================================
+    // ② 変更: ICカードの真偽値(boolean isICCard)を受け取るメインの運賃計算メソッド
+    // ==========================================
+    public static int calculateFare(World world, String startStation, String endStation, boolean isICCard) {
         if (world == null || startStation == null || endStation == null) return -1;
         if (startStation.equals(endStation)) return 0;
 
@@ -55,15 +65,16 @@ public class KaisatsuNetworkManager {
 
         for (KaisatsuNetworkData.LineData line : data.companyLines.values()) {
             if (line.stationOrder.contains(startStation)) {
-                double initialCost = line.baseFare + (line.isExpress ? line.expressFare : 0);
-                pq.add(new State(startStation, line.lineID, line.baseFare));
-                minCost.put(startStation + ":" + line.lineID, (double) line.baseFare);
+                // ※将来的にLineDataに特急料金を追加した場合はここで baseFare + expressFare に変更する
+                double initialCost = line.baseFare;
+                pq.add(new State(startStation, line.lineID, initialCost));
+                minCost.put(startStation + ":" + line.lineID, initialCost);
             }
         }
 
         while (!pq.isEmpty()) {
             State curr = pq.poll();
-            if (curr.station.equals(endStation)){
+            if (curr.station.equals(endStation)) {
                 // ★決済方法による端数処理
                 if (isICCard) {
                     return (int) Math.ceil(curr.cost); // 1円単位（切り上げ）
@@ -79,11 +90,8 @@ public class KaisatsuNetworkManager {
             for (Edge edge : edges) {
                 KaisatsuNetworkData.LineData nextLine = data.companyLines.get(edge.lineID);
                 if (nextLine == null) continue;
+
                 double nextCost = curr.cost + (edge.distance * nextLine.costPerBlock);
-                // ★路線をまたぐ際、乗り継ぎ先が特急路線の場合は特急料金を加算
-                if (!curr.lineID.equals(nextLine.lineID) && nextLine.isExpress) {
-                    nextCost += nextLine.expressFare;
-                }
                 String stateKey = edge.toStation + ":" + edge.lineID;
 
                 if (nextCost < minCost.getOrDefault(stateKey, Double.MAX_VALUE)) {

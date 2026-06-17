@@ -28,16 +28,27 @@ public class KaisatsuNetworkData extends WorldSavedData {
 
     // 路線データ保持用の内部クラス
     // KaisatsuNetworkData.java 内の LineData クラスを修正
+    // 路線データ保持用の内部クラス
     public static class LineData {
         public String lineID;
         public String lineName;
         public String companyName;
         public int baseFare;
         public double costPerBlock;
-        public boolean isExpress; // ★追加: 特急フラグ
-        public int expressFare;   // ★追加: 特急料金
+        public boolean isExpress;
+        public int expressFare;
         public final List<String> stationOrder = new ArrayList<>();
 
+        // ==========================================
+        // ① 追加: 古いコードからの呼び出しに対応するための5引数コンストラクタ（特急なし扱い）
+        // ==========================================
+        public LineData(String lineID, String lineName, String companyName, int baseFare, double costPerBlock) {
+            this(lineID, lineName, companyName, baseFare, costPerBlock, false, 0); // 特急フラグをfalse、料金を0としてメインコンストラクタへ渡す
+        }
+
+        // ==========================================
+        // ② 既存: 特急機能に対応した7引数のメインコンストラクタ
+        // ==========================================
         public LineData(String lineID, String lineName, String companyName, int baseFare, double costPerBlock, boolean isExpress, int expressFare) {
             this.lineID = lineID;
             this.lineName = lineName;

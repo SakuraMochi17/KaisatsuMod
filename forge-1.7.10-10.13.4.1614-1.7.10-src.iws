@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="いらんもんを秘匿">
-      <change beforePath="$PROJECT_DIR$/eclipse/config/kaisatsumod/lines/jr_east.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/config/kaisatsumod/lines/tokyo_metro.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkData.java" afterDir="false" />
+    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="feat: Enhance fare management and station data structure">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiTicketMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/gui/GuiTicketMachine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -430,7 +424,7 @@
       <workItem from="1781568653386" duration="2765000" />
       <workItem from="1781593339776" duration="3438000" />
       <workItem from="1781659392302" duration="246000" />
-      <workItem from="1781659686976" duration="331000" />
+      <workItem from="1781659686976" duration="680000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -576,7 +570,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781593705826</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat: Enhance fare management and station data structure">
+      <option name="closed" value="true" />
+      <created>1781660041548</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1781660041548</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +609,8 @@
     <MESSAGE value="とりあえずせーぶ" />
     <MESSAGE value="とりあえずせーぶ2" />
     <MESSAGE value="いらんもんを秘匿" />
-    <option name="LAST_COMMIT_MESSAGE" value="いらんもんを秘匿" />
+    <MESSAGE value="feat: Enhance fare management and station data structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Enhance fare management and station data structure" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
