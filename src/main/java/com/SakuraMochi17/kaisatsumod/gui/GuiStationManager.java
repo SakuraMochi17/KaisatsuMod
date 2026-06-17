@@ -8,10 +8,11 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import org.lwjgl.input.Keyboard;
 
+@SuppressWarnings("unchecked")
 public class GuiStationManager extends GuiScreen {
     private final TileEntityStationManager tileEntity;
     private GuiTextField nameField;
-    private String originalName;
+    private final String originalName;
 
     public GuiStationManager(TileEntityStationManager te) {
         this.tileEntity = te;

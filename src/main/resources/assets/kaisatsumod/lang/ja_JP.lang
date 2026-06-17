@@ -18,6 +18,7 @@ item.ticket.name=きっぷ
 item.linkWand.name=リンクワンド
 item.settingTool.name=設定ツール
 item.certificate.name=乗車駅証明書
+item.boardingCertificate.name=乗車駅証明書
 
 # Money
 item.coin_1.name=1円玉

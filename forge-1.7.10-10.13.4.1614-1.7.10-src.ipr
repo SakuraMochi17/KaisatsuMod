@@ -18,6 +18,11 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8" />
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="cpw.mods.fml.common.Mod.EventHandler" />
+    </list>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
@@ -73,6 +78,10 @@
     <dictionary name="project">
       <words>
         <w>Kaisatsu</w>
+        <w>iccard</w>
+        <w>kaisatsumod</w>
+        <w>minecraft</w>
+        <w>unloc</w>
       </words>
     </dictionary>
   </component>

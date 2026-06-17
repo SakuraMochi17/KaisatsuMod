@@ -18,6 +18,7 @@ item.ticket.name=승차권
 item.linkWand.name=링크 완드
 item.settingTool.name=설정 도구
 item.certificate.name=승차역 증명서
+item.boardingCertificate.name=승차역 증명서
 
 # Money
 item.coin_1.name=1엔 동전

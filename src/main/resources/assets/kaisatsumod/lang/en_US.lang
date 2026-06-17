@@ -18,6 +18,7 @@ item.ticket.name=Ticket
 item.linkWand.name=Link Wand
 item.settingTool.name=Setting Tool
 item.certificate.name=Boarding Station Certificate
+item.boardingCertificate.name=Boarding Station Certificate
 
 # Money
 item.coin_1.name=1 Yen Coin

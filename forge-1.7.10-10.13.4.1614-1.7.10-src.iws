@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="feat: Update fare calculation logic and enhance LineData structure">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eclipse/config/splash.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eclipse/config/splash.properties" afterDir="false" />
+    <list default="true" id="3d0355cb-b600-4e5b-84ed-b39a2676def8" name="変更" comment="feat: Add project dictionary and improve fare calculation logic">
       <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" beforeDir="false" afterPath="$PROJECT_DIR$/forge-1.7.10-10.13.4.1614-1.7.10-src.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/KaisatsuModMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/KaisatsuNetworkManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SakuraMochi17/kaisatsumod/core/StationRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/en_US.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/en_US.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/ja_JP.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/ja_JP.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/ko_KR.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/ko_KR.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/zh_CN.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/kaisatsumod/lang/zh_CN.lang" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,23 +148,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.2483728723592136" />
-      <entry key="MS500" value="2.20123835269797" />
-      <entry key="S2" value="2.7510037861230967" />
-      <entry key="S5" value="2.895566902264358" />
-      <entry key="S10" value="2.946961524648251" />
-      <entry key="S30" value="3.2692518226570964" />
-      <entry key="S60" value="7.525107840714794" />
-      <entry key="M2" value="25.338274101640337" />
-      <entry key="M5" value="68.92197999179648" />
-      <entry key="M10" value="100.75389706125868" />
-      <entry key="M15" value="115.08791671007006" />
-      <entry key="M30" value="131.96954731590796" />
-      <entry key="H1" value="141.5466140446753" />
-      <entry key="H2" value="146.6574594575597" />
-      <entry key="H4" value="149.2989267029768" />
-      <entry key="D1" value="151.5456077854913" />
-      <entry key="W1" value="151.93498265926794" />
+      <entry key="MS100" value="1.0000000000001597" />
+      <entry key="MS500" value="1.002758309383564" />
+      <entry key="S2" value="1.2291754067624057" />
+      <entry key="S5" value="1.5703419444351252" />
+      <entry key="S10" value="1.9947990370412936" />
+      <entry key="S30" value="3.6080259523439207" />
+      <entry key="S60" value="7.331800168936633" />
+      <entry key="M2" value="22.89533242534297" />
+      <entry key="M5" value="65.75669807527437" />
+      <entry key="M10" value="99.16677036275546" />
+      <entry key="M15" value="114.57276976628718" />
+      <entry key="M30" value="132.94115830724172" />
+      <entry key="H1" value="143.45525530196542" />
+      <entry key="H2" value="149.09114442414653" />
+      <entry key="H4" value="152.0104306110082" />
+      <entry key="D1" value="154.49676780668676" />
+      <entry key="W1" value="154.92798676295416" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -187,23 +186,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.0323400836101675" />
-      <entry key="MS500" value="2.115361895679461" />
-      <entry key="S2" value="2.722896077860755" />
-      <entry key="S5" value="2.883609626685409" />
-      <entry key="S10" value="2.9408525543327393" />
-      <entry key="S30" value="3.2633031095911886" />
-      <entry key="S60" value="7.507866944682" />
-      <entry key="M2" value="25.313469358470535" />
-      <entry key="M5" value="68.90207734674834" />
-      <entry key="M10" value="100.74088232544696" />
-      <entry key="M15" value="115.07832119525274" />
-      <entry key="M30" value="131.96419278965854" />
-      <entry key="H1" value="141.54377331206297" />
-      <entry key="H2" value="146.65599448337534" />
-      <entry key="H4" value="149.29818254250898" />
-      <entry key="D1" value="151.54548209040524" />
-      <entry key="W1" value="151.93496466133644" />
+      <entry key="MS100" value="0.8705505632962504" />
+      <entry key="MS500" value="0.9752862629921014" />
+      <entry key="S2" value="1.2195831616710717" />
+      <entry key="S5" value="1.5647362696886693" />
+      <entry key="S10" value="1.9898542324320192" />
+      <entry key="S30" value="3.601514253868115" />
+      <entry key="S60" value="7.317969479489958" />
+      <entry key="M2" value="22.87384657291262" />
+      <entry key="M5" value="65.7377450094301" />
+      <entry key="M10" value="99.15392426591144" />
+      <entry key="M15" value="114.56318253126241" />
+      <entry key="M30" value="132.93574251417883" />
+      <entry key="H1" value="143.452364385803" />
+      <entry key="H2" value="149.08964898686202" />
+      <entry key="H4" value="152.0096698091119" />
+      <entry key="D1" value="154.4966391361768" />
+      <entry key="W1" value="154.9279683349376" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -430,7 +429,7 @@
       <workItem from="1781568653386" duration="2765000" />
       <workItem from="1781593339776" duration="3438000" />
       <workItem from="1781659392302" duration="246000" />
-      <workItem from="1781659686976" duration="3931000" />
+      <workItem from="1781659686976" duration="5117000" />
     </task>
     <task id="LOCAL-00001" summary="gitignoreを効くように設定">
       <option name="closed" value="true" />
@@ -592,7 +591,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781660420706</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feat: Add project dictionary and improve fare calculation logic">
+      <option name="closed" value="true" />
+      <created>1781665570350</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1781665570350</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +632,8 @@
     <MESSAGE value="いらんもんを秘匿" />
     <MESSAGE value="feat: Enhance fare management and station data structure" />
     <MESSAGE value="feat: Update fare calculation logic and enhance LineData structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Update fare calculation logic and enhance LineData structure" />
+    <MESSAGE value="feat: Add project dictionary and improve fare calculation logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add project dictionary and improve fare calculation logic" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

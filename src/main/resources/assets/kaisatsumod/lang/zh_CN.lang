@@ -18,6 +18,7 @@ item.ticket.name=车票
 item.linkWand.name=链接魔杖
 item.settingTool.name=设置工具
 item.certificate.name=乘车站证明
+item.boardingCertificate.name=乘车站证明
 
 # Money
 item.coin_1.name=1日元硬币
