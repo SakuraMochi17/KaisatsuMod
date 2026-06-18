@@ -34,12 +34,17 @@ public class ItemICCard extends Item {
         }
     }
 
+    @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean advanced) {
         if (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("balance")) {
             int balance = stack.stackTagCompound.getInteger("balance");
-            list.add("残高: " + balance + "円");
+            @SuppressWarnings("unchecked")
+            java.util.List<String> info = (java.util.List<String>) list;
+            info.add("残高: " + balance + "円");
         } else {
-            list.add("残高: 未設定");
+            @SuppressWarnings("unchecked")
+            java.util.List<String> info = (java.util.List<String>) list;
+            info.add("残高: 未設定");
         }
     }
 } // <--- クラスの最後は必ずこの閉じ括弧で終わります

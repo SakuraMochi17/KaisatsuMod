@@ -15,7 +15,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerStaffTerminal extends Container {
-    private TileEntityStaffTerminal terminal;
+    private final TileEntityStaffTerminal terminal;
 
     public int clientFare = 0;
     private int lastFare = 0;
@@ -61,7 +61,7 @@ public class ContainerStaffTerminal extends Container {
         super.detectAndSendChanges();
 
         if (!this.terminal.getWorldObj().isRemote) {
-            int currentCalculatedFare = 0;
+            int currentCalculatedFare;
             String entryStation = "";
 
             ItemStack target = this.terminal.getStackInSlot(0);
@@ -92,8 +92,8 @@ public class ContainerStaffTerminal extends Container {
                 currentCalculatedFare = this.lastFare;
             }
 
-            for (int i = 0; i < this.crafters.size(); ++i) {
-                ICrafting icrafting = (ICrafting) this.crafters.get(i);
+            for (Object crafter : this.crafters) {
+                ICrafting icrafting = (ICrafting) crafter;
                 if (this.lastFare != currentCalculatedFare) {
                     icrafting.sendProgressBarUpdate(this, 0, currentCalculatedFare);
                 }

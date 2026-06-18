@@ -16,8 +16,10 @@ import java.util.List;
 
 public class GuiTicketMachine extends GuiContainer {
     private static final ResourceLocation texture = new ResourceLocation("textures/gui/container/generic_54.png");
-    private TileEntityTicketMachine terminal;
-    private int targetX, targetY, targetZ;
+    private final TileEntityTicketMachine terminal;
+    private final int targetX;
+    private final int targetY;
+    private final int targetZ;
     public List<Integer> availableFares;
 
     public GuiTicketMachine(InventoryPlayer playerInv, TileEntityTicketMachine te) {
@@ -26,7 +28,7 @@ public class GuiTicketMachine extends GuiContainer {
         this.targetX = te.xCoord;
         this.targetY = te.yCoord;
         this.targetZ = te.zCoord;
-        this.availableFares = new ArrayList<Integer>();
+        this.availableFares = new ArrayList<>();
         this.xSize = 176;
         this.ySize = 222;
     }
@@ -36,7 +38,7 @@ public class GuiTicketMachine extends GuiContainer {
     @Override
     public void initGui() {
         this.availableFares = MessageOpenTicketMachine.latestFares;
-        if (this.availableFares == null) this.availableFares = new ArrayList<Integer>();
+        if (this.availableFares == null) this.availableFares = new ArrayList<>();
 
         // ★運賃リストを昇順にソートし、重複を排除
         List<Integer> sortedUniqueFares = new ArrayList<>();
@@ -63,9 +65,8 @@ public class GuiTicketMachine extends GuiContainer {
         }
 
         // 入場券ボタンを最後に追加 (ボタンID 100)
-        int nIdx = maxBtn;
-        int nCol = nIdx % 2;
-        int nRow = nIdx / 2;
+        int nCol = maxBtn % 2;
+        int nRow = maxBtn / 2;
         this.buttonList.add(new GuiButton(100, x + 72 + (nCol * 35), y + 20 + (nRow * 21), 34, 20, "入場券"));
 
         // 置き換えたリストを保持

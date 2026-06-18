@@ -15,6 +15,7 @@ public class ItemMagicICCard extends ItemICCard {
         // ★修正: setTextureName を消すことで、自動的に普通のICカードと同じテクスチャになります
     }
 
+    @SuppressWarnings({"unchecked"})
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean advanced) {
         list.add("§d【魔法のICカード (検証用)】§r");

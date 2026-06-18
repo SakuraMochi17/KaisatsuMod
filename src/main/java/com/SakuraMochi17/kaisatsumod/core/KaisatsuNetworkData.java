@@ -165,16 +165,4 @@ public class KaisatsuNetworkData extends WorldSavedData {
         nbt.setTag("CompanyLines", lineList);
 
     }
-    // ★追加：指定した駅が所属する路線IDのリストを取得するメソッド
-    public java.util.List<String> getLinesForStation(String stationName) {
-        java.util.List<String> lines = new java.util.ArrayList<>();
-        if (this.companyLines != null) {
-            for (LineData line : this.companyLines.values()) {
-                if (line.stationOrder != null && line.stationOrder.contains(stationName)) {
-                    lines.add(line.lineID);
-                }
-            }
-        }
-        return lines;
-    }
 }

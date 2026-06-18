@@ -64,7 +64,6 @@ public class BlockFareChart extends BlockContainer {
         return true;
     }
 
-    @SuppressWarnings("rawtypes")
     @Override
     public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, net.minecraft.entity.Entity entity) {
         int meta = world.getBlockMetadata(x, y, z);
