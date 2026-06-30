@@ -26,7 +26,7 @@ public class GuiLineManager extends GuiScreen {
 
     // 路線編集ページ用UI
     private GuiTextField idField, nameField, baseField, costField;
-    private List<String> globalStations;
+    private final List<String> globalStations;
     private List<String> editLineStations;
     private int globalIndex = 0;
     private int stationIndex = 0;
@@ -43,6 +43,8 @@ public class GuiLineManager extends GuiScreen {
         super.initGui();
         Keyboard.enableRepeatEvents(true);
         this.buttonList.clear();
+        @SuppressWarnings("unchecked")
+        java.util.List<GuiButton> buttons = this.buttonList;
         int x = this.width / 2;
         int y = this.height / 2;
 
@@ -50,16 +52,16 @@ public class GuiLineManager extends GuiScreen {
             // ===================================
             // 【 0: トップページ 】
             // ===================================
-            this.buttonList.add(new GuiButton(15, x + 60, y - 62, 50, 20, "編集"));
+            buttons.add(new GuiButton(15, x + 60, y - 62, 50, 20, "編集"));
 
-            this.buttonList.add(new GuiButton(11, x - 100, y + 5, 20, 20, "<"));
-            this.buttonList.add(new GuiButton(12, x + 80, y + 5, 20, 20, ">"));
+            buttons.add(new GuiButton(11, x - 100, y + 5, 20, 20, "<"));
+            buttons.add(new GuiButton(12, x + 80, y + 5, 20, 20, ">"));
 
             GuiButton btnEdit = new GuiButton(13, x - 100, y + 40, 90, 20, "設定画面へ ->");
             if (data.companyLines.isEmpty()) btnEdit.enabled = false;
-            this.buttonList.add(btnEdit);
+            buttons.add(btnEdit);
 
-            this.buttonList.add(new GuiButton(14, x + 10, y + 40, 90, 20, "+ 新規路線作成"));
+            buttons.add(new GuiButton(14, x + 10, y + 40, 90, 20, "+ 新規路線作成"));
         }
         else if (guiPage == 1) {
             // ===================================
@@ -88,19 +90,19 @@ public class GuiLineManager extends GuiScreen {
                 this.costField.setText("0.15");
             }
 
-            this.buttonList.add(new GuiButton(1, x - 115, y + 20, 20, 20, "<"));
-            this.buttonList.add(new GuiButton(2, x - 25, y + 20, 20, 20, ">"));
-            this.buttonList.add(new GuiButton(3, x - 100, y + 50, 80, 20, "路線に追加 ->"));
+            buttons.add(new GuiButton(1, x - 115, y + 20, 20, 20, "<"));
+            buttons.add(new GuiButton(2, x - 25, y + 20, 20, 20, ">"));
+            buttons.add(new GuiButton(3, x - 100, y + 50, 80, 20, "路線に追加 ->"));
 
-            this.buttonList.add(new GuiButton(4, x + 95, y - 5, 20, 20, "∧"));
-            this.buttonList.add(new GuiButton(5, x + 95, y + 25, 20, 20, "∨"));
-            this.buttonList.add(new GuiButton(6, x + 120, y - 5, 30, 20, "上へ"));
-            this.buttonList.add(new GuiButton(7, x + 120, y + 25, 30, 20, "下へ"));
-            this.buttonList.add(new GuiButton(8, x + 95, y + 50, 55, 20, "削除"));
+            buttons.add(new GuiButton(4, x + 95, y - 5, 20, 20, "∧"));
+            buttons.add(new GuiButton(5, x + 95, y + 25, 20, 20, "∨"));
+            buttons.add(new GuiButton(6, x + 120, y - 5, 30, 20, "上へ"));
+            buttons.add(new GuiButton(7, x + 120, y + 25, 30, 20, "下へ"));
+            buttons.add(new GuiButton(8, x + 95, y + 50, 55, 20, "削除"));
 
-            this.buttonList.add(new GuiButton(20, x - 130, y + 85, 70, 20, "<- トップへ"));
-            this.buttonList.add(new GuiButton(9, x - 50, y + 85, 60, 20, "路線を削除"));
-            this.buttonList.add(new GuiButton(0, x + 20, y + 85, 110, 20, "設定を保存して終了"));
+            buttons.add(new GuiButton(20, x - 130, y + 85, 70, 20, "<- トップへ"));
+            buttons.add(new GuiButton(9, x - 50, y + 85, 60, 20, "路線を削除"));
+            buttons.add(new GuiButton(0, x + 20, y + 85, 110, 20, "設定を保存して終了"));
         }
         else if (guiPage == 2) {
             // ===================================
@@ -110,8 +112,8 @@ public class GuiLineManager extends GuiScreen {
             this.compField.setText(data.companyName);
             this.compField.setFocused(true);
 
-            this.buttonList.add(new GuiButton(10, x - 55, y + 10, 50, 20, "保存"));
-            this.buttonList.add(new GuiButton(16, x + 5, y + 10, 50, 20, "ｷｬﾝｾﾙ"));
+            buttons.add(new GuiButton(10, x - 55, y + 10, 50, 20, "保存"));
+            buttons.add(new GuiButton(16, x + 5, y + 10, 50, 20, "ｷｬﾝｾﾙ"));
         }
     }
 
@@ -297,7 +299,7 @@ public class GuiLineManager extends GuiScreen {
             idField.drawTextBox(); nameField.drawTextBox();
             baseField.drawTextBox(); costField.drawTextBox();
 
-            this.drawCenteredString(this.fontRendererObj, "[ 登録可能な駅 ]", x - 60, y + 0, 0xAAFFFF);
+            this.drawCenteredString(this.fontRendererObj, "[ 登録可能な駅 ]", x - 60, y, 0xAAFFFF);
             this.drawCenteredString(this.fontRendererObj, globalStations.get(globalIndex), x - 60, y + 26, 0xFFFFFF);
 
             this.drawCenteredString(this.fontRendererObj, "[ 路線の駅順 ]", x + 50, y - 25, 0xAAFFFF);
